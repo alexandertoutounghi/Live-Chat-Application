@@ -16,12 +16,32 @@
 
     &.chat {
       height: 100px;
-      transition: 1s;
-
+      $animation: ease-in-out 0.3s;
+      animation: logo-container $animation;
       .logo-wrapper {
-        transition: 1s;
         font-size: 60px;
         font-weight: 300;
+        transition: all 2s;
+        animation: logo-wrapper $animation;
+
+        @keyframes logo-wrapper {
+          from {
+            font-size: 100px;
+            font-weight: 700;
+          }
+          to {
+            font-size: 60px;
+            font-weight: 300;
+          }
+        }
+      }
+      @keyframes logo-container {
+        from {
+          height: 200px;
+        }
+        to {
+          height: 100px;
+        }
       }
     }
     .logo-wrapper {
