@@ -3,9 +3,10 @@ import React from "react";
 import { useState, useContext, useEffect, useRef } from "react";
 import LoginContainer from "./LoginContainer/LoginContainer";
 import ChatContainer from "./ChatContainer/ChatContainer";
-
 import { Div } from "../Utils/Utils";
 import "./MainContainer.scss";
+import Topbar from "./ChatContainer/Topbar/Topbar";
+
 
 //[FUNCTIONAL COMPONENTS]
 const MainContainer = (props) => {
@@ -19,15 +20,16 @@ const MainContainer = (props) => {
     );
   };
   return (
-    <Div c="main-container">
-      {loginPage ? (
-        <LoginContainer {...propGroup} />
-      ) : (
-        <ChatContainer {...propGroup} />
-      )}
-
-      <Logo {...propGroup} />
-    </Div>
+    // <Div c="main-container">
+    //   {loginPage ? (
+    //     <LoginContainer {...propGroup} />
+    //   ) : (
+    //     <ChatContainer {...propGroup} />
+    //   )}
+    //
+    //   <Logo {...propGroup} />
+    // </Div>
+      <Topbar/>
   );
 };
 
