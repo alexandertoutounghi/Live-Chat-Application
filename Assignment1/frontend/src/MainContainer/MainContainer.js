@@ -10,23 +10,31 @@ import "./MainContainer.scss";
 //[FUNCTIONAL COMPONENTS]
 const MainContainer = (props) => {
   const [loginPage, setLoginPage] = useState(true);
-  const propGroup = { loginPage, setLoginPage };
-  const Logo = (props) => {
+  const user = useRef({ name: "Anonymous" });
+
+  const handleLogin = (username) => {
+    if (username) user.current.name = username;
+    setLoginPage(false);
+  };
+
+  const Logo = () => {
     return (
       <Div c={`logo-container${!loginPage ? " chat" : ""}`}>
         <Div c="logo-wrapper">Postit</Div>
       </Div>
     );
   };
+
   return (
     <Div c="main-container">
+      <Div c=""></Div>
       {loginPage ? (
-        <LoginContainer {...propGroup} />
+        <LoginContainer {...{ handleLogin }} />
       ) : (
-        <ChatContainer {...propGroup} />
+        <ChatContainer {...{ user }} />
       )}
 
-      <Logo {...propGroup} />
+      <Logo />
     </Div>
   );
 };

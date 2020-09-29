@@ -1,90 +1,28 @@
 @import "../../Styles/Theme.scss";
 
-@media only screen and (max-width: 600px) {
-  $buttonHeight: 100px;
-  .login-wrapper {
-    height: fit-content !important;
-    display: block !important;
-    .text-input {
-      width: 100% !important;
-    }
-    .login-button {
-      margin-top: 20px;
-      height: $buttonHeight !important;
-      line-height: $buttonHeight !important;
-      width: 100% !important;
-    }
-  }
-}
-
 .login-container {
-  width: 100%;
-  height: 100%;
+  @include fullsize();
   background-color: $bg;
 
-  .login {
-    width: 100%;
-    height: fit-content;
+  @media only screen and (max-width: 600px) {
+    $buttonHeight: 45px;
 
-    .login-wrapper {
-      max-width: 500px;
-      width: 100%;
-      height: fit-content;
-      background-color: transparent;
-      border-radius: 5px;
-      display: flex;
-      justify-content: space-between;
-
+    .textbox-wrapper {
+      height: fit-content !important;
+      width: calc(100% - 40px) !important;
+      margin: 0 auto;
+      display: flex !important;
+      flex-direction: column !important;
+      border: none !important;
       .text-input {
-        width: calc(100% - 90px);
-        // width: 100%;
-        height: 50px;
-        background-color: $text_bg;
-        border: 3px solid $borders;
-        border-radius: 4px;
-        font-size: 34px;
-        line-height: 44px;
-        padding: 0 12px 0 12px;
-        outline: none;
-        box-sizing: border-box;
-
-        &::-webkit-input-placeholder {
-          font-style: italic;
-        }
-        &:-moz-placeholder {
-          font-style: italic;
-        }
-        &::-moz-placeholder {
-          font-style: italic;
-        }
-        &:-ms-input-placeholder {
-          font-style: italic;
-        }
+        width: 100% !important;
       }
-
-      .login-button {
-        width: 80px;
-        height: 50px;
-        background-color: $main;
-        color: $borders;
-        border: 3px solid $borders;
-        border-radius: 4px;
-        font-size: 34px;
-        font-weight: 1000;
-        line-height: 44px;
-        // font-style: italic;
-        text-align: center;
-        box-sizing: border-box;
-        cursor: pointer;
-        user-select: none;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
-          0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
-          0 16px 16px rgba(0, 0, 0, 0.12);
-
-        &:active {
-          background-color: rgb(221, 206, 172);
-          box-shadow: none;
-        }
+      .textbox-button {
+        margin-top: 10px !important;
+        font-size: 20px !important;
+        height: $buttonHeight !important;
+        line-height: 40px !important;
+        width: 100% !important;
       }
     }
   }
