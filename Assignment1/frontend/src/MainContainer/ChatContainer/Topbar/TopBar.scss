@@ -8,13 +8,14 @@
   --text-primary: #f5f4f4;
   --text-secondary: #e5dada;
   --btn-primary: #3e963e;
-  --btn-secondary: #236e23
-
+  --btn-secondary: #236e23;
+  --btn-outline:skyblue;
 }
 
 .navbar-nav {
   width: 100%;
-  height: 12vh;
+  height: 100%;
+  padding: 1rem;
   background-color: var(--bg-primary);
   font-size: 1.5rem;
 }
@@ -22,6 +23,8 @@
 .nav-item {
   padding: 0;
   margin: 0;
+  margin-right: 1rem;
+  margin-left: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,7 +43,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .right li {
@@ -48,10 +50,37 @@
 }
 
 .logout > button {
+  //border: 1.5px solid var(--btn-primary);
   border: none;
   border-radius: 2px;
-  padding: 0.5rem;
+  padding: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: var(--text-primary);
   background-color: var(--btn-primary);
 
+}
+button:hover {
+  //border: 1.5px solid deepskyblue;
+  cursor: pointer;
+  background-color: var(--btn-secondary);
+}
+.light-icon {
+  padding: 0.5rem;
+  //opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+.light-icon:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.7);
 
 }
+.light-icon:active {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 1);
+
+}
+
