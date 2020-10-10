@@ -94,7 +94,50 @@ public class ChatManager implements Serializable {
         }
         return this.list;
     }
+    
+    
+    public List<String> clearChat(String[] dateRange) {
 
+        if (dateRange[0] == "" && dateRange[1] == "") {
+            list.clear();
+        }
+
+        else if (dateRange[1] == "") {
+            for (int i = 0; i < listMessages().size(); i++) {
+                if (listMessages().get(i).contains(dateRange[0])) {
+                    list.remove(i);
+                }
+
+            }
+            this.list=list;
+        }
+
+        else if (dateRange[0] == "") {
+            for (int i = 0; i < listMessages().size(); i++) {
+                if (listMessages().get(i).contains(dateRange[1])) {
+                    list.remove(i);
+                }
+            }
+            this.list=list;
+        }
+
+        else {
+            for (int i = 0; i < listMessages().size(); i++) {
+
+                if (listMessages().get(i).contains(dateRange[0])) {
+                    list.remove(i);
+                }
+
+                if (listMessages().get(i).contains(dateRange[1])) {
+                    list.remove(i);
+                }
+            }
+            this.list=list;
+        }
+        return this.list;
+    }
+    
+    
     // Used to create the date. Create a new date object to update the time
     public String getDate() {
         ZonedDateTime utc = ZonedDateTime.of(LocalDateTime.now(),
