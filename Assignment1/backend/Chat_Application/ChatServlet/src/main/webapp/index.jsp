@@ -39,14 +39,14 @@
         <button>Send</button>
     </form>
 
-    <%--This is used to test the listMessages method--%>
+    <%--This is used to test the listMessages method, also select format (xml or plaintext)--%>
     <br/>
     <form action="ChatServlet" method="get">
-        From: <br/>
+        List Messages From: <br/>
         <input type="text" name="from">
         <br/>
 
-        To: <br/>
+        List Messages To: <br/>
         <input type="text" name="to">
         <br/>
 
@@ -59,6 +59,20 @@
 
         <br/>
         <button>List Messages</button>
+
+        <%--This is used to test the clearChat method--%>
+        <br/>
+        <form action="ChatServlet" method="get">
+            Delete Messages From: <br/>
+            <input type="text" name="deletefrom">
+            <br/>
+
+            Delete Messages To: <br/>
+            <input type="text" name="deleteto">
+            <br/>
+
+            <br/>
+            <input type="submit" name="delete" value="Delete Messages" />
     </form>
 </body>
 </html>

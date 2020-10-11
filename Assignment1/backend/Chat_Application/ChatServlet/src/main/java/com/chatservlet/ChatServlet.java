@@ -21,7 +21,7 @@ public class ChatServlet extends HttpServlet {
         String msg = request.getParameter("msg");
 
         // Add chat message to message list, if user field is empty string or null, set username to anonymous
-        if(user == null || user == "")
+        if (user == null || user == "")
             chatmanager.postMessage(msg);
         else
             chatmanager.postMessage(user, msg);
@@ -50,7 +50,17 @@ public class ChatServlet extends HttpServlet {
         else
             response.setContentType("text/plain");
 
+        //  if Delete Messages is submitted, delete the range. Note: Maybe put this in a method later if there's time
+        if (request.getParameter("delete") != null) {
+            String deleteFrom = request.getParameter("deletefrom");
+            String deleteTo = request.getParameter("deleteto");
+            String[] deleteDateRange = new String[2];
+            deleteDateRange[0] = deleteFrom;
+            deleteDateRange[1] = deleteTo;
 
+            session.setAttribute("chat", chatmanager.clearChat(dateRange));
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        }
 
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
