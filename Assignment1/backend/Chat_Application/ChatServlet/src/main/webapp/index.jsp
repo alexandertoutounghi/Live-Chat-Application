@@ -58,21 +58,35 @@
         <br/>
 
         <br/>
-        <button>List Messages</button>
+        <input type="submit" name="list" value="List Messages">
+    </form>
 
-        <%--This is used to test the clearChat method--%>
+    <%--This is used to test the clearChat method--%>
+    <br/>
+    <form action="ChatServlet" method="get">
+        Delete Messages From: <br/>
+        <input type="text" name="deletefrom">
         <br/>
-        <form action="ChatServlet" method="get">
-            Delete Messages From: <br/>
-            <input type="text" name="deletefrom">
-            <br/>
 
-            Delete Messages To: <br/>
-            <input type="text" name="deleteto">
-            <br/>
+        Delete Messages To: <br/>
+        <input type="text" name="deleteto">
+        <br/>
 
-            <br/>
-            <input type="submit" name="delete" value="Delete Messages" />
+        <br/>
+        <input type="submit" name="delete" value="Delete Messages">
+    </form>
+
+    <form action="ChatServlet" method="get">
+
+        Format: <br/>
+        <select name="format">
+            <option>plain</option>
+            <option>xml</option>
+        </select>
+        <br/>
+
+        <br/>
+        <input type="submit" name="download" value="Dowload Chat">
     </form>
 </body>
 </html>

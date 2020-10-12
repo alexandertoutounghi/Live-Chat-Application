@@ -15,19 +15,16 @@ public class ChatManager implements Serializable {
     private String user;
     private String message;
     private String userAndMsg;
-    private  List<String> list;
+    private  List<String> list = new ArrayList<>();
 
-    // Used to keep count of position in list when iterating through the lists date
-    private int dateRangeCount = 0;
+    // Used for singleton pattern
+    private static final ChatManager instance = new ChatManager();
 
-    // This handles the UTC formatting
-
-
-    public ChatManager() {
-        user = "Anonymous";
-        message = "";
-        list = new ArrayList<>();
+    public static ChatManager getInstance() {
+       return instance;
     }
+
+    private ChatManager() {}
 
     // Return a username with an associated message and date
     public void postMessage(String user, String message) {
@@ -98,6 +95,9 @@ public class ChatManager implements Serializable {
     
     public List<String> clearChat(String[] dateRange) {
 
+        int toIndex = 0;
+        int fromIndex = 0;
+
         if (dateRange[0] == "" && dateRange[1] == "") {
             list.clear();
         }
@@ -105,34 +105,32 @@ public class ChatManager implements Serializable {
         else if (dateRange[1] == "") {
             for (int i = 0; i < listMessages().size(); i++) {
                 if (listMessages().get(i).contains(dateRange[0])) {
-                    list.remove(i);
+                    list.subList(i, listMessages().size()).clear();
                 }
 
             }
-            this.list=list;
         }
 
         else if (dateRange[0] == "") {
             for (int i = 0; i < listMessages().size(); i++) {
                 if (listMessages().get(i).contains(dateRange[1])) {
-                    list.remove(i);
+                    list.subList(0, i + 1).clear();
                 }
             }
-            this.list=list;
         }
 
         else {
             for (int i = 0; i < listMessages().size(); i++) {
 
                 if (listMessages().get(i).contains(dateRange[0])) {
-                    list.remove(i);
+                    fromIndex = i;
                 }
 
                 if (listMessages().get(i).contains(dateRange[1])) {
-                    list.remove(i);
+                    toIndex = i;
                 }
             }
-            this.list=list;
+            list.subList(fromIndex, toIndex + 1).clear();
         }
         return this.list;
     }
