@@ -57,7 +57,7 @@ public class ChatManager implements Serializable {
         else if (dateRange[1] == "") {
             for (int i = 0; i < listMessages().size(); i++) {
                 if (listMessages().get(i).contains(dateRange[0])) {
-                    this.list = list.subList(i, listMessages().size() - 1);
+                    this.list = list.subList(i, listMessages().size());
                 }
             }
 
@@ -80,7 +80,7 @@ public class ChatManager implements Serializable {
 
                 // First iterate through and get the first date value and set the zero index to the "from" parameter
                 if (listMessages().get(i).contains(dateRange[0])) {
-                    this.list = list.subList(i, listMessages().size() - 1);
+                    this.list = list.subList(i, listMessages().size());
                 }
 
                 // With our new index being the "from" date, now set the "to" date
@@ -148,10 +148,4 @@ public class ChatManager implements Serializable {
     public List<String> listMessages() {
         return this.list;
     }
-
-    public int getListSize() {
-        return list.size();
-    }
-
-
 }
