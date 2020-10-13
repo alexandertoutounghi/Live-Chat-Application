@@ -1,25 +1,39 @@
-import React, {useDebugValue, useState} from "react";
-import "./TopBar.scss"
+import React, {useEffect, useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSun, faMoon } from '@fortawesome/free-regular-svg-icons'
+// import { faSun, faMoon } from '@fortawesome/free-regular-svg-icons'
 import Dropdown from "./DropDown/Dropdown";
+import "./TopBar.scss"
+
+
 
 const Topbar = (props) => {
-    const [darkMode,setDarkMode] = useState(true)
+    const [darkMode,setDarkMode] = useState(false);
+    const [mode,setMode] = useState("");
+    const [logout, setLogout] = useState(false);
+    useEffect(() => {
+    },[darkMode]);
    const handleClick = () => {
-        setDarkMode(!darkMode);
+       setDarkMode(!darkMode);
+       if (darkMode)
+            setMode("dark");
+        else
+            setMode("");
+   }
+   const handleLogout = () => {
+        setLogout(!logout);
    }
     return (
-        <div className={darkMode ? "topbar dark": "topbar light" }>
+        <div className={`topbar ${mode}`}>
             <nav className="navbar-nav">
                 <ul className="nav-item">
-                    <li className="nav-list left">
-                        <Dropdown/>
+                    <li className="nav-list left laptop">
+                        <Dropdown darkMode={mode}/>
                     </li>
-                    <li className="nav-list left"><h1>{props.username}</h1></li>
+
+                    <li className="nav-list username">{props.username?props.username:"Anonymous"}</li>
                     <ul className="nav-list right">
-                        <li onClick={handleClick} className="">{darkMode ? <FontAwesomeIcon icon={faSun} title={"Light Mode"} className="light-icon" color="white"/> :<FontAwesomeIcon icon={faMoon} />}</li>
-                        <li className="logout"><button>Logout</button></li>
+                        <li onClick={handleClick} className="toggle-darkmode">{darkMode ? <FontAwesomeIcon icon={['fas', 'sun']} title={"Light Mode"} className="light-icon" color="white"/>: <FontAwesomeIcon icon={['fas', 'moon']} title={"Dark Mode"} className="dark-icon" color="white"/> }</li>
+                        <li onClick={handleLogout}><button className="logout">Logout</button></li>
                     </ul>
                 </ul>
             </nav>

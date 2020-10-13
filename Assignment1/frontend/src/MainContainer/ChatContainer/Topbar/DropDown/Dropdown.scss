@@ -1,4 +1,5 @@
-//For the drop down
+@import "src/UtilityFiles/variables";
+@import "src/UtilityFiles/responsive";
 
 .dropdown-container {
   -webkit-touch-callout: none; /* iOS Safari */
@@ -7,50 +8,108 @@
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
+  //font-size: 1rem;
+  padding: 0;
+  margin: 0;
 }
 
 .dropdown-icon:hover {
   cursor: pointer;
-
-
-  //background-color: ;
-
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .dropdown-icon {
+  color: $textPrimary;
+  border-radius: 4px;
   padding: 0.5rem;
-
-}
-
-.dropdown-icon:active {
-  border-radius: 2px;
-  //padding: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.7);
-
-}
-.dropdown-menu {
-  position: absolute;
-  top:3.5rem;
-  width: 20%;
-  //background-color: ;
-  background-color: white;
-}
-.dropdown-menu ul {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
 }
 
 //.dropdown-menu
-.dropdown-menu li {
-  //color: b;
+.dropdown-menu {
+  transition: 100ms ease-in-out;
+  position: absolute;
+  top:5rem;
+  width: 30rem;
+  background-color: $textPrimary;
+  border-radius: 3px;
+
 }
-.dropdown-menu li:hover {
-  cursor: pointer;
-  width: 100%;
-  background-color: #b8b2b2;
+.dropdown-menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin-top: 1rem;
+  //margin-bottom: 1rem;
+  padding: 0;
+  &:last-child {
+    margin-bottom: 1rem;
+  }
+
+}
+.dropdown-menu-item {
+  margin: 0.5rem;
+  border-radius: 4px;
+  width: 85%;
+  text-align: center;
+  border: 1.5px solid $dropdownOutlineBorder;
+  &:hover {
+    cursor: pointer;
+    background-color:$dropdownPrimary;
+    color:$textPrimary;
+  }
+}
+//.dropdown-menu-item:hover {
+//
+//}
+//When we click the dopdown button
+.dropdown-enabled {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.date-selector {
+  padding: 0;
+  margin: 0;
+}
+
+.bars {
+
+  @include resetDisplay;
+  position: relative;
+  left: 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 50%;
+
+  &:active {
+    color: $textPrimary;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 1);
+  }
+
+  .custom-form {
+    h2 {
+
+    }
+  }
+
+
+}
+
+.dark {
+  .dropdown-menu {
+    background-color: $bgDark;
+
+  }
+  .dropdown-menu-item {
+    color: $textPrimary;
+    border-color: $dropDownOutlineBorderDark;
+  }
+  .bars {
+    color: $textPrimary;
+    &:active {
+      cursor: pointer;
+      background-color: $dropdownPrimary;
+    }
+  }
 
 }
