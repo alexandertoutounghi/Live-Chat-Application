@@ -1,2 +1,6 @@
 import React from "react";
-export const Div = (props) => <div className={props.c} {...props}></div>;
+
+export const Div = (props) => {
+  const { c, ...rest } = props;
+  return <div className={c} {...rest}></div>;
+};
