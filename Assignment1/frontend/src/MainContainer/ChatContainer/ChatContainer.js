@@ -6,10 +6,11 @@ import "./ChatContainer.scss";
 import TopBar from "./Topbar/Topbar";
 
 const ChatContainer = (props) => {
-  const { user } = props;
+  const { user, setLoginPage } = props;
   return (
     <Div c="chat-container">
       <Chatbox {...{ user }} />
+      <TopBar username={user.current.name} setLoginPage={setLoginPage}/>
     </Div>
   );
 };

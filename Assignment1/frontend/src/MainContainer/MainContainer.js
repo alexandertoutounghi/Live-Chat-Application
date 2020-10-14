@@ -16,24 +16,27 @@ const MainContainer = (props) => {
 
   const handleLogin = (username) => {
     console.log("Sent", username);
-    fetch("http://localhost:3000/ChatServlet_war/ChatServlet",{
-      method: 'POST',
-      dataType: 'json',
-      contentType: 'application/json',
-
-      data: {jsondata: JSON.stringify({user: username})},
-      url : "/ChatServlet"
-    }
-    )
-    .then(res => {
-            return res.text();
-    }).then(con=>
-      {console.log(con)}
+    // fetch("http://localhost:3000/ChatServlet_war/ChatServlet",{
+    //   method: 'POST',
+    //   headers:{
+    //     dataType: 'json',
+    //     contentType: "application/x-www-form-urlencoded",
+    //   },
+    //   data: {jsondata: username},
+    //   url : "/ChatServlet"
+    // }
+    // )
+    // .then(res => {
+    //         return res.text();
+    // }).then(con=>
+    //   {console.log(con)}
       
-    )
-    .catch(error => {
-      console.error('MyError: ', error);
-    });
+    // )
+    // .catch(error => {
+    //   console.error('MyError: ', error);
+    // });
+    user.current.name = username;
+    setLoginPage(false);
   };
 
   const Logo = () => {
@@ -50,7 +53,7 @@ const MainContainer = (props) => {
       {loginPage ? (
         <LoginContainer {...{ handleLogin }} />
       ) : (
-        <ChatContainer {...{ user }} />
+        <ChatContainer {...{ user, setLoginPage }} />
       )}
 
       <Logo />
