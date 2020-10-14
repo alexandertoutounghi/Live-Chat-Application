@@ -33,7 +33,7 @@ const Chatbox = (props) => {
         const serverMessages = await sendData({ returnMessages: "true" });
         const jsonObj = JSON.parse(serverMessages);
         console.log(jsonObj);
-        const newMessages = Object.values(jsonObj).map(msg => createMessage(msg.date, msg.time, msg.user, msg.message))
+        const newMessages = Object.values(jsonObj).map(msg => createMessage(msg.date, msg.time, msg.user, msg.message, msg.user===user.current.name ? "self": "others"))
         if(messages.length!==newMessages){
           setMessages(newMessages);
         }
