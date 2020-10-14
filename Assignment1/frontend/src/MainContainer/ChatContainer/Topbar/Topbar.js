@@ -20,7 +20,7 @@ const Topbar = (props) => {
             setMode("");
    }
    const handleLogout = () => {
-        setLogout(!logout);
+        props.setLoginPage(true);
    }
     return (
         <div className={`topbar ${mode}`}>
@@ -30,7 +30,7 @@ const Topbar = (props) => {
                         <Dropdown darkMode={mode}/>
                     </li>
 
-                    <li className="nav-list username">{props.username?props.username:"Anonymous"}</li>
+                    <li className="nav-list username">{props.username}</li>
                     <ul className="nav-list right">
                         <li onClick={handleClick} className="toggle-darkmode">{darkMode ? <FontAwesomeIcon icon={['fas', 'sun']} title={"Light Mode"} className="light-icon" color="white"/>: <FontAwesomeIcon icon={['fas', 'moon']} title={"Dark Mode"} className="dark-icon" color="white"/> }</li>
                         <li onClick={handleLogout}><button className="logout">Logout</button></li>

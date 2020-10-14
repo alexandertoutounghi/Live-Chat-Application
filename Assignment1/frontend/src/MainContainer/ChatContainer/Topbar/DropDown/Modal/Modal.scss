@@ -33,12 +33,12 @@ h3 {
   font-size: 2.5rem;
   transform: rotate(45deg);
   font-weight: bold;
+  color: $textSecondary;
 
   &:hover {
     cursor: pointer;
     color: $modalClose;
   }
-
 }
 
 .dark {
@@ -46,11 +46,10 @@ h3 {
     background-color: $bgDark;
   }
   .close {
-    color:$textPrimary;
+    color: $textPrimary;
     &:hover {
       cursor: pointer;
       color: $modalClose;
     }
   }
-
 }

@@ -1,20 +1,19 @@
-$bgPrimary:#dd7770;
+$bgPrimary: rgb(40, 0, 151);
 $bgSecondary: #514432;
-$textPrimary: #f5f4f4;
+$textPrimary: rgb(40, 0, 151);
 $textSecondary: #e5dada;
-$btnPrimary: #3e963e;
-$btnSecondary: #236e23;
+$btnPrimary: ghostwhite;
+$btnSecondary: rgb(207, 198, 233);
 $btnOutline: skyblue;
 $dropdownPrimary: #4c8bf5;
 $dropdownSecondary: #5b91ea;
 $dropdownOutlineBorder: rgba(68, 161, 205, 0.2);
 $dropdownHover: #bab1b1;
 $bgModal: rgba(0, 0, 0, 0.7);
-$modalClose: red;
-
+$modalClose: black;
 
 $bgDark: black;
-$dropDownOutlineBorderDark:white;
+$dropDownOutlineBorderDark: white;
 @mixin flexCenter {
   display: flex;
   flex-direction: row;
@@ -23,7 +22,7 @@ $dropDownOutlineBorderDark:white;
   list-style: none;
 }
 
-@mixin flexColumn  {
+@mixin flexColumn {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -18,7 +18,7 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 .dropdown-icon {
-  color: $textPrimary;
+  color: $btnPrimary;
   border-radius: 4px;
   padding: 0.5rem;
 }
@@ -27,11 +27,10 @@
 .dropdown-menu {
   transition: 100ms ease-in-out;
   position: absolute;
-  top:5rem;
+  top: 5rem;
   width: 30rem;
-  background-color: $textPrimary;
+  background-color: $btnPrimary;
   border-radius: 3px;
-
 }
 .dropdown-menu-list {
   display: flex;
@@ -45,7 +44,6 @@
   &:last-child {
     margin-bottom: 1rem;
   }
-
 }
 .dropdown-menu-item {
   margin: 0.5rem;
@@ -55,8 +53,8 @@
   border: 1.5px solid $dropdownOutlineBorder;
   &:hover {
     cursor: pointer;
-    background-color:$dropdownPrimary;
-    color:$textPrimary;
+    background-color: $dropdownPrimary;
+    color: $textPrimary;
   }
 }
 //.dropdown-menu-item:hover {
@@ -73,7 +71,6 @@
 }
 
 .bars {
-
   @include resetDisplay;
   position: relative;
   left: 0;
@@ -88,17 +85,13 @@
 
   .custom-form {
     h2 {
-
     }
   }
-
-
 }
 
 .dark {
   .dropdown-menu {
     background-color: $bgDark;
-
   }
   .dropdown-menu-item {
     color: $textPrimary;
@@ -111,5 +104,4 @@
       background-color: $dropdownPrimary;
     }
   }
-
 }

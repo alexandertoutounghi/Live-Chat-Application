@@ -4,22 +4,26 @@ import Textbox from "./Textbox";
 import Message from "./Message";
 import { Div } from "../../../Utils/Utils";
 import { v4 as uuid } from "uuid";
+import fetchToCurl from 'fetch-to-curl';
+
 
 import "./Chatbox.scss";
 
-const createMessage = (username, content, type = "others") => (
-  <Message key={uuid()} {...{ username, content, type }} />
-);
+const createMessage = (username, content, type = "others") => {
+  return <Message key={uuid()} {...{ username, content, type }} />
+
+};
 
 const Chatbox = (props) => {
   const { user } = props;
 
   const [messages, setMessages] = useState([
     createMessage(
-      "Elon",
-      "Hello James, my name is Elon. I work 40 hours a day!"
-    ),
+      "Postit Team",
+      "Welcome to the chat!"
+    )
   ]);
+
   const handleMessage = (type, content, username) => {
     const arr = [...messages];
     arr.push(createMessage(username, content, type));
@@ -33,6 +37,7 @@ const Chatbox = (props) => {
   const sendMessage = (message) => {
     handleMessage("self", message, user.current.name);
   };
+  
 
   // if (
   //   messages[messages.length - 1].props.content.toLowerCase().includes("kanye")
@@ -53,6 +58,7 @@ const Chatbox = (props) => {
   //     handleMessage("others", "np bro", "Jeff Be$oz");
   //   }, 1000);
   // }
+
 
   return (
     <Div c="chatbox">

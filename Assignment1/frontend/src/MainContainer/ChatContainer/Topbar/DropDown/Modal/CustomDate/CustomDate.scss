@@ -2,7 +2,6 @@
 @import "src/UtilityFiles/config";
 @import "src/MainContainer/ChatContainer/Topbar/TopBar";
 
-
 .custom-form {
   margin-top: 0;
 
@@ -10,6 +9,10 @@
     text-align: center;
     padding: 0;
     margin-bottom: 0;
+  }
+  h2,
+  h3 {
+    color: $textSecondary;
   }
 }
 
@@ -22,7 +25,6 @@
   align-items: flex-start;
   justify-items: flex-start;
   margin: 0;
-
 }
 
 .date-list-item {
@@ -44,6 +46,7 @@ li {
   border: 2px solid $dropdownOutlineBorder;
   border-radius: 2px;
   font-size: 1rem;
+  color: $textSecondary;
 }
 
 .date-picker-item:hover {
@@ -60,8 +63,8 @@ hr {
 .calendar {
   margin-right: 0.5rem;
   font-size: 1rem;
+  color: $textSecondary;
 }
-
 
 .custom-submit {
   margin-top: 1rem;
@@ -69,7 +72,8 @@ hr {
 }
 
 .dark {
-  h2, h3 {
+  h2,
+  h3 {
     color: $textPrimary;
   }
   .calendar {
@@ -87,5 +91,4 @@ hr {
       background-color: $dropdownSecondary;
     }
   }
-
 }

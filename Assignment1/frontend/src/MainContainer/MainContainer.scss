@@ -15,6 +15,7 @@
     justify-content: center;
 
     &.chat {
+      display: none;
       height: 100px;
       $animation: ease-in-out 0.3s;
       animation: logo-container $animation;

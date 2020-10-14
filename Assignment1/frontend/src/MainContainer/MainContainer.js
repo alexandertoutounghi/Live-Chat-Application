@@ -12,8 +12,30 @@ const MainContainer = (props) => {
   const [loginPage, setLoginPage] = useState(true);
   const user = useRef({ name: "Anonymous" });
 
+
+
   const handleLogin = (username) => {
-    if (username) user.current.name = username;
+    console.log("Sent", username);
+    // fetch("http://localhost:3000/ChatServlet_war/ChatServlet",{
+    //   method: 'POST',
+    //   headers:{
+    //     dataType: 'json',
+    //     contentType: "application/x-www-form-urlencoded",
+    //   },
+    //   data: {jsondata: username},
+    //   url : "/ChatServlet"
+    // }
+    // )
+    // .then(res => {
+    //         return res.text();
+    // }).then(con=>
+    //   {console.log(con)}
+      
+    // )
+    // .catch(error => {
+    //   console.error('MyError: ', error);
+    // });
+    user.current.name = username;
     setLoginPage(false);
   };
 
@@ -31,7 +53,7 @@ const MainContainer = (props) => {
       {loginPage ? (
         <LoginContainer {...{ handleLogin }} />
       ) : (
-        <ChatContainer {...{ user }} />
+        <ChatContainer {...{ user, setLoginPage }} />
       )}
 
       <Logo />
