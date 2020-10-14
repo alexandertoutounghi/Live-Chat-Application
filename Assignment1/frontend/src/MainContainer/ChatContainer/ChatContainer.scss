@@ -6,4 +6,14 @@
   background-color: $bg;
   display: grid;
   grid-template-rows: 100px calc(100% - 100px);
+
+  &.times-hidden {
+    .message {
+      .bottom-container {
+        :not(.username) {
+          display: none;
+        }
+      }
+    }
+  }
 }

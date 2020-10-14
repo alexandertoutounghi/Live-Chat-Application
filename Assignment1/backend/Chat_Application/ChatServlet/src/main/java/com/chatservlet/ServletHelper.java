@@ -25,7 +25,7 @@ public class ServletHelper extends HttpServlet {
         deleteDateRange[0] = deleteFrom;
         deleteDateRange[1] = deleteTo;
 
-        session.setAttribute("chat", chatmanager.clearChat(deleteDateRange));
+        session.setAttribute("chat", chatmanager.listMessages());
 
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
@@ -66,7 +66,7 @@ public class ServletHelper extends HttpServlet {
         dateRange[0] = from;
         dateRange[1] = to;
 
-        session.setAttribute("chat", chatmanager.listMessages(dateRange));
+        session.setAttribute("chat", chatmanager.listMessages());
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
