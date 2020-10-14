@@ -12,9 +12,28 @@ const MainContainer = (props) => {
   const [loginPage, setLoginPage] = useState(true);
   const user = useRef({ name: "Anonymous" });
 
+
+
   const handleLogin = (username) => {
-    if (username) user.current.name = username;
-    setLoginPage(false);
+    console.log("Sent", username);
+    fetch("http://localhost:3000/ChatServlet_war/ChatServlet",{
+      method: 'POST',
+      dataType: 'json',
+      contentType: 'application/json',
+
+      data: {jsondata: JSON.stringify({user: username})},
+      url : "/ChatServlet"
+    }
+    )
+    .then(res => {
+            return res.text();
+    }).then(con=>
+      {console.log(con)}
+      
+    )
+    .catch(error => {
+      console.error('MyError: ', error);
+    });
   };
 
   const Logo = () => {
