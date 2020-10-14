@@ -7,27 +7,21 @@ import "./TopBar.scss"
 
 
 const Topbar = (props) => {
-    const [darkMode,setDarkMode] = useState(false);
-    const [mode,setMode] = useState("");
-    const [logout, setLogout] = useState(false);
-    useEffect(() => {
-    },[darkMode]);
+    const [darkMode, setDarkMode] = useState(false);
+
    const handleClick = () => {
+       props.setHideTimes()
        setDarkMode(!darkMode);
-       if (darkMode)
-            setMode("dark");
-        else
-            setMode("");
    }
    const handleLogout = () => {
         props.setLoginPage(true);
    }
     return (
-        <div className={`topbar ${mode}`}>
+        <div className={`topbar${darkMode ? ' dark': ''}`}>
             <nav className="navbar-nav">
                 <ul className="nav-item">
                     <li className="nav-list left laptop">
-                        <Dropdown darkMode={mode}/>
+                        <Dropdown darkMode={darkMode}/>
                     </li>
 
                     <li className="nav-list username">{props.username}</li>

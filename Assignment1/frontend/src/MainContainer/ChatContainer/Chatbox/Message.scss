@@ -57,10 +57,7 @@
       height: 26px;
       display: flex;
       margin-top: -1px;
-      .username {
-        font-size: 16px;
-        line-height: 26px;
-        font-weight: 500;
+      .bottom-container {
         width: fit-content;
         height: inherit;
         border: 1px solid $text_bg;
@@ -70,8 +67,26 @@
         padding: 0 10px 0 10px;
         background-color: $main;
         box-shadow: $boxshadow;
+        display: flex;
 
-        color: $bg;
+        > div {
+          font-size: 16px;
+          line-height: 26px;
+          font-weight: 500;
+        }
+        .username {
+          color: $bg;
+        }
+        .date,
+        .time,
+        .kw {
+          font-style: italic;
+          color: ghostwhite;
+          opacity: 0.8;
+        }
+        .kw {
+          opacity: 0.6;
+        }
       }
     }
   }

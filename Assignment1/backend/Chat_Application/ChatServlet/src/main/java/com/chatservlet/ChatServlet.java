@@ -1,6 +1,7 @@
 package com.chatservlet;
 
 import chatmanager.ChatManager;
+import chatmanager.Message;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.security.MessageDigest;
 import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.List;
 
 @WebServlet(name = "ChatServlet", urlPatterns = {"/ChatServlet"})
 public class ChatServlet extends ServletHelper {
@@ -18,57 +22,57 @@ public class ChatServlet extends ServletHelper {
     private static Gson gson = new Gson();
     private static final int BYTES_DOWNLOAD = 1024;
 
-    private static String getJSONValue (ServletInputStream stream) throws IOException {
-        String tempReader;
-        StringBuilder sbuild = new StringBuilder(new String(""));
-        BufferedReader br =
-                new BufferedReader(new InputStreamReader(stream));
-
-        while ((tempReader = br.readLine()) != null) {
-            sbuild.append(tempReader);
+    private static void printParameters (HttpServletRequest request) throws IOException {
+        System.out.println("Printing the parameters");
+        Enumeration<String> params = request.getParameterNames();
+        System.out.println("Params" + params.toString());
+        while(params.hasMoreElements()){
+            String paramName = params.nextElement();
+            System.out.println("Parameter Name - "+paramName+", Value - "+request.getParameter(paramName));
         }
-        String finalRes = sbuild.toString();
-        System.out.println(finalRes);
-
-        try
-        {
-            String[] jsonRes = gson.fromJson(finalRes, String[].class);
-            //this one is printing so that means it actually succeed to parse?
-            System.out.println(Arrays.toString(jsonRes));
-        }
-        catch( Exception e )
-        {
-            // just want to test out if it really failed
-            System.out.println( "failed" );
-            System.out.println( "Unable to get parse request" + e );
-        }
-        return finalRes;
     };
+
+    private static String encodeJson (String str){
+        return "\"" + str + "\"";
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         checkHeader(request);
         HttpSession session = request.getSession();
 
+        // Print parameters
+        printParameters(request);
 
-        try {
-            String json = request.getParameter("jsondata");
-            System.out.println(json.toString());
-        } catch(Exception e){
-            System.out.println("Error" + e.toString());
-        }
-
-        String user = " ";
-        String msg = request.getParameter("msg");
-
-        System.out.println(user);
+        // Retrieving the message
+        String user = request.getParameter("username");;
+        String msg = request.getParameter("message");
+        String returnMessages = request.getParameter("returnMessages");
 
 //         Add chat message to message list, if user field is empty string or null, set username to anonymous
-        if (user == null || user == "")
-            chatmanager.postMessage(msg);
-        else
+        String type = "";
+        String userResponse = "";
+        if(returnMessages!=null){
+            type = "outputMessages";
+            StringBuilder encodedContent = new StringBuilder();
+            List<Message> ls = chatmanager.listMessages();
+            for(int i = 0; i< ls.size(); i++){
+                encodedContent.append(encodeJson(String.format("m%d", i))).append(":").append(gson.toJson(ls.get(i)));
+                if(i!=ls.size()-1) encodedContent.append(",");
+            }
+            userResponse = String.format("{%s}", encodedContent.toString());
+            System.out.println(userResponse);
+        }
+        else if (msg != null) {
+            type = "inputMessages";
+            userResponse = "message_accepted";
             chatmanager.postMessage(user, msg);
-
+            System.out.println(chatmanager.listMessages());
+        }
+        else if(user!= null){
+            type = "login";
+            userResponse = "found_account";
+        }
 //         Print out the chat messages
         session.setAttribute("chat", chatmanager.listMessages());
 
@@ -76,7 +80,8 @@ public class ChatServlet extends ServletHelper {
         response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Origin", "GET, POST, DELETE, PUT, OPTIONS");
         response.addHeader("Access-Control-Allow-Origin", "X-PINGOTHER, Content-Type");
-        response.getWriter().write("Account found!");
+
+        response.getWriter().write(userResponse);
 //        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

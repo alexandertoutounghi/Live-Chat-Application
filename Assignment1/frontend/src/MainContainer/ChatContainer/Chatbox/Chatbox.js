@@ -1,63 +1,52 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Textbox from "./Textbox";
 import Message from "./Message";
-import { Div } from "../../../Utils/Utils";
+import { Div, sendData } from "../../../Utils/Utils";
 import { v4 as uuid } from "uuid";
 import fetchToCurl from 'fetch-to-curl';
 
 
 import "./Chatbox.scss";
 
-const createMessage = (username, content, type = "others") => {
-  return <Message key={uuid()} {...{ username, content, type }} />
+const createMessage = (date, time, username, content, type = "others") => {
+  return <Message key={uuid()} {...{ date, time, content, username, type }} />
 
 };
 
 const Chatbox = (props) => {
   const { user } = props;
-
+  const intervalId = useRef(0);
   const [messages, setMessages] = useState([
-    createMessage(
-      "Postit Team",
-      "Welcome to the chat!"
-    )
   ]);
 
-  const handleMessage = (type, content, username) => {
-    const arr = [...messages];
-    arr.push(createMessage(username, content, type));
-    // if (content.toLowerCase().includes("cybertruck")) {
-    //   arr.push(
-    //     createMessage("Elon", "No cybertruck for you James.")
-    //   );
-    // }
-    setMessages(arr);
+  const sendMessage = async (message, username = user.current.name) => {
+    const response = await sendData({ username: username, message: message });
+    if (response !== "message_accepted") {
+      alert("Your message couldn't be sent!")
+    }
   };
-  const sendMessage = (message) => {
-    handleMessage("self", message, user.current.name);
-  };
-  
 
-  // if (
-  //   messages[messages.length - 1].props.content.toLowerCase().includes("kanye")
-  // ) {
-  //   window.setTimeout(() => {
-  //     handleMessage(
-  //       "others",
-  //       "James, I will buy you a Blue Ocean rocket.",
-  //       "Jeff Be$oz"
-  //     );
-  //   }, 1500);
-  // }
+  React.useEffect(() => {
+    intervalId.current = window.setInterval(async () => {
+      try {
+        const serverMessages = await sendData({ returnMessages: "true" });
+        const jsonObj = JSON.parse(serverMessages);
+        console.log(jsonObj);
+        const newMessages = Object.values(jsonObj).map(msg => createMessage(msg.date, msg.time, msg.user, msg.message))
+        if(messages.length!==newMessages){
+          setMessages(newMessages);
+        }
+      }
+      catch (e) {
+        console.log(`Error: ${e}`)
+      }
 
-  // if (
-  //   messages[messages.length - 1].props.content.toLowerCase().includes("jeff")
-  // ) {
-  //   window.setTimeout(() => {
-  //     handleMessage("others", "np bro", "Jeff Be$oz");
-  //   }, 1000);
-  // }
+    }, 250)
+    return() => {
+      window.clearInterval(intervalId.current);
+    }
+  }, [messages])
 
 
   return (

@@ -4,7 +4,7 @@ import { useState, useContext, useEffect, useRef } from "react";
 import LoginContainer from "./LoginContainer/LoginContainer";
 import ChatContainer from "./ChatContainer/ChatContainer";
 
-import { Div } from "../Utils/Utils";
+import { Div, sendData } from "../Utils/Utils";
 import "./MainContainer.scss";
 
 //[FUNCTIONAL COMPONENTS]
@@ -14,29 +14,15 @@ const MainContainer = (props) => {
 
 
 
-  const handleLogin = (username) => {
-    console.log("Sent", username);
-    // fetch("http://localhost:3000/ChatServlet_war/ChatServlet",{
-    //   method: 'POST',
-    //   headers:{
-    //     dataType: 'json',
-    //     contentType: "application/x-www-form-urlencoded",
-    //   },
-    //   data: {jsondata: username},
-    //   url : "/ChatServlet"
-    // }
-    // )
-    // .then(res => {
-    //         return res.text();
-    // }).then(con=>
-    //   {console.log(con)}
-      
-    // )
-    // .catch(error => {
-    //   console.error('MyError: ', error);
-    // });
-    user.current.name = username;
-    setLoginPage(false);
+  const handleLogin = async (username) => {
+    const response = await sendData({username: username});
+    if(response==="found_account"){
+      user.current.name = username;
+      setLoginPage(false);
+    }
+    else{
+      alert("Server rejected your login...")
+    }
   };
 
   const Logo = () => {
