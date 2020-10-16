@@ -17,21 +17,36 @@
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.7);
 }
+//.dropdown  {
+  //.dropdown-menu
+ .dropdown {
+    transition: 100ms ease-in-out;
+    position: absolute;
+    top: 5rem;
+    width: 30rem;
+    background-color: $btnPrimary;
+    border-radius: 3px;
+  }
+//}
+
+.popup {
+  //.dropdown-menu
+  .dropdown-menu {
+    transition: 100ms ease-in-out;
+    position: absolute;
+    top: 5rem;
+    width: 30rem;
+    background-color: $btnPrimary;
+    border-radius: 3px;
+  }
+}
 .dropdown-icon {
   color: $btnPrimary;
   border-radius: 4px;
   padding: 0.5rem;
 }
 
-//.dropdown-menu
-.dropdown-menu {
-  transition: 100ms ease-in-out;
-  position: absolute;
-  top: 5rem;
-  width: 30rem;
-  background-color: $btnPrimary;
-  border-radius: 3px;
-}
+
 .dropdown-menu-list {
   display: flex;
   flex-direction: column;

@@ -21,13 +21,13 @@ public class ChatManager implements Serializable {
     private String user;
     private String message;
     private String userAndMsg;
-    private  List<Message> list = new ArrayList<>();
+    private List<Message> list = new ArrayList<>();
 
     // Used for singleton pattern
     private static final ChatManager instance = new ChatManager();
 
     public static ChatManager getInstance() {
-       return instance;
+        return instance;
     }
 
     private ChatManager() {
@@ -36,15 +36,82 @@ public class ChatManager implements Serializable {
 
     // Return a username with an associated message and date
     public void postMessage(String user, String message) {
-
+        ZonedDateTime utc = ZonedDateTime.of(LocalDateTime.now(),
+                ZoneId.of("Canada/Central"));
         String[] dt = getDateTime();
-        list.add(new Message(dt[0], dt[1], user, message));
+        list.add(new Message(utc, user, message));
     }
 
-    public void clearChat(){
+    public void clearChat() {
         this.list = new LinkedList<Message>();
     }
 
+    // Print messages from a cetain date range, must enter date and time. This reads an array from the servlet that contains two strings, from and to.
+    public List<String> listMessages(ZonedDateTime from, ZonedDateTime to) {
+        int fromIndex = list.indexOf(new Message(from));
+        int toIndex = list.indexOf(new Message(to));
+        List<Message> result;
+        if (fromIndex == -1 && toIndex == -1)
+            return new ArrayList<String>();
+        else if (fromIndex == -1)
+            result = list.subList(0, toIndex);
+        else if (toIndex == -1)
+            result = list.subList(fromIndex, list.size() - 1);
+        else
+            result = list.subList(fromIndex, toIndex);
+
+        ArrayList<String> resultMessages = new ArrayList<>(list.size());
+        for (Message m : result)
+            resultMessages.add(m.toString());
+
+
+
+        return resultMessages;
+    }
+
+
+//    public List<String> clearChat(String[] dateRange) {
+//
+//        int toIndex = 0;
+//        int fromIndex = 0;
+//
+//        if (dateRange[0] == "" && dateRange[1] == "") {
+//            list.clear();
+//        }
+//
+//        else if (dateRange[1] == "") {
+//            for (int i = 0; i < listMessages().size(); i++) {
+//                if (listMessages().get(i).contains(dateRange[0])) {
+//                    list.subList(i, listMessages().size()).clear();
+//                }
+//
+//            }
+//        }
+//
+//        else if (dateRange[0] == "") {
+//            for (int i = 0; i < listMessages().size(); i++) {
+//                if (listMessages().get(i).contains(dateRange[1])) {
+//                    list.subList(0, i + 1).clear();
+//                }
+//            }
+//        }
+//
+//        else {
+//            for (int i = 0; i < listMessages().size(); i++) {
+//
+//                if (listMessages().get(i).contains(dateRange[0])) {
+//                    fromIndex = i;
+//                }
+//
+//                if (listMessages().get(i).contains(dateRange[1])) {
+//                    toIndex = i;
+//                }
+//            }
+//            list.subList(fromIndex, toIndex + 1).clear();
+//        }
+//        return this.list;
+//
+//    }
     // Print messages from a cetain date range, must enter date and time. This reads an array from the servlet that contains two strings, from and to.
 //    public List<String> listMessages(String[] dateRange) {
 //
@@ -91,8 +158,8 @@ public class ChatManager implements Serializable {
 //        }
 //        return this.list;
 //    }
-    
-    
+
+
 //    public List<String> clearChat(String[] dateRange) {
 //
 //        int toIndex = 0;
@@ -135,8 +202,8 @@ public class ChatManager implements Serializable {
 //        return this.list;
 //
 //    }
-    
-    
+
+
     // Used to create the date. Create a new date object to update the time
     public String[] getDateTime() {
         ZonedDateTime utc = ZonedDateTime.of(LocalDateTime.now(),
