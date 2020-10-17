@@ -1,7 +1,7 @@
 /*
-* This class contains a lot of the code to provide the functionality of the servlet.
-* Use these functions in the ChatServlet class.
-* */
+ * This class contains a lot of the code to provide the functionality of the servlet.
+ * Use these functions in the ChatServlet class.
+ * */
 
 package com.chatservlet;
 
@@ -14,9 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ListIterator;
+import java.util.Locale;
 
 public class ServletHelper extends HttpServlet {
     private ChatManager chatmanager = ChatManager.getInstance();
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("MM/dd/yyyy, hh:mm:ss a", Locale.ENGLISH);
+
+
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String deleteFrom = request.getParameter("deletefrom");
@@ -30,6 +39,12 @@ public class ServletHelper extends HttpServlet {
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
+    protected ZonedDateTime stringToZonedDate(String date) {
+        LocalDateTime ld = LocalDateTime.parse(date, FORMATTER);
+        ZonedDateTime zt = ZonedDateTime.of(ld,
+                ZoneId.of("Canada/Central"));
+        return zt;
+    }
     protected void downloadChat(HttpServletResponse response, HttpServletRequest request, ChatManager chat) throws IOException, ServletException {
         String format = request.getParameter("format");
         String fileType;
@@ -38,22 +53,28 @@ public class ServletHelper extends HttpServlet {
         if (format.equals("xml")) {
             response.setContentType("text/xml");
             fileType = "ChatLogs.xml";
-        }
-        else {
+        } else {
             response.setContentType("text/plain");
             fileType = "ChatLogs.txt";
         }
 
-        response.setHeader("Content-Disposition",
-                "attachment;filename="+fileType);
+        ZonedDateTime fromTime = stringToZonedDate(request.getParameter("from"));
+        ZonedDateTime toTime = stringToZonedDate(request.getParameter("to"));
+
+        response.setHeader("Content-Disposition", "attachment;filename=" + fileType);
+        response.setHeader("Content-Transfer-Encoding", "binary");
+
         ServletContext ctx = getServletContext();
         String relativePath = ctx.getRealPath("/" + fileType);
-        try(PrintWriter pw = new PrintWriter(new FileOutputStream(relativePath))) {
 
-            for (int i = 0; i < chat.listMessages().size(); i++) {
-                pw.println(chat.listMessages().get(i));
+        ListIterator<String> iterator = chat.listMessages(fromTime, toTime).listIterator();
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(relativePath))) {
+            while (iterator.hasNext()) {
+               pw.println(iterator.next());
             }
+
         }
+//        request.getRequestDispatcher("/com/chatservlet/ChatServlet.java").forward(request, response);
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
@@ -72,13 +93,13 @@ public class ServletHelper extends HttpServlet {
 
     // Make sure user doesn't cache the data
     protected void clearCache(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
-        response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+        response.setHeader("Cache-Control", "no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+        response.setHeader("Cache-Control", "no-store"); //Directs caches not to store the page under any circumstance
         response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
-        response.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
+        response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility
     }
 
-        protected void checkHeader(HttpServletRequest request) throws ServletException {
+    protected void checkHeader(HttpServletRequest request) throws ServletException {
         String refererHeader = request.getHeader("referer");
         // no need to continue if the header is missing
         if (refererHeader == null) {

@@ -15,6 +15,7 @@ import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
+import com.chatservlet.ServletHelper;
 
 @WebServlet(name = "ChatServlet", urlPatterns = {"/ChatServlet"})
 public class ChatServlet extends ServletHelper {
@@ -100,6 +101,7 @@ public class ChatServlet extends ServletHelper {
 
         } else if (request.getParameter("download") != null) {
             downloadChat(response, request, chatmanager);
+
         }
 
         clearCache(request, response);

@@ -45,10 +45,18 @@ const Dropdown = (props) => {
     const getMessage = async (from, to) => {
         console.log(from);
         console.log(to);
-        const response = await getData({format: format, from: from, to: to});
-        if (response !== "message_accepted") {
-            alert("Your message couldn't be sent!")
-        }
+        const response = await getData({format: format, from: from, to: to,download:"download"});
+        console.log(response);
+
+        const filename = response.headers.get('Content-Disposition').split('filename=')[1];
+        response.blob().then(blob => {
+            let url = window.URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+        });
+
     };
 
 

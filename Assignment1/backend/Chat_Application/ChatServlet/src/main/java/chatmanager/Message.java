@@ -1,6 +1,7 @@
 package chatmanager;
 
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Message {
@@ -21,6 +22,9 @@ public class Message {
         this.dateTime = dateTime;
         this.user = user;
         this.message = message;
+        this.date = dateTime.format(DateTimeFormatter.ofPattern("MM/dd/uuuu"));
+        this.time = dateTime.format(DateTimeFormatter.ofPattern("h:mm:ss a"));
+
     }
     public Message(ZonedDateTime dateTime) {
         this.dateTime = dateTime;
@@ -31,12 +35,14 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message1 = (Message) o;
-        return this.dateTime.equals(message1.dateTime);
+//        compareto returns if its less than ore
+        int result = this.dateTime.compareTo(message1.dateTime);
+        return (result < 1 || this.dateTime.equals(message1.dateTime));
     }
 
     @Override
     public String toString() {
-        return "Message{" + date + ", " + time +  " - "+ user + ": " + message;
+        return date + ", " + time +  " - "+ user + ": " + message;
     }
 
     public String getDate() {

@@ -31,15 +31,12 @@ public class ChatManager implements Serializable {
     }
 
     private ChatManager() {
-        list.add(new Message(getDateTime()[0], getDateTime()[1], "Postit Team", "Welcome to Postit!"));
+        list.add(new Message(getDateTime(), "Postit Team", "Welcome to Postit!"));
     }
 
     // Return a username with an associated message and date
     public void postMessage(String user, String message) {
-        ZonedDateTime utc = ZonedDateTime.of(LocalDateTime.now(),
-                ZoneId.of("Canada/Central"));
-        String[] dt = getDateTime();
-        list.add(new Message(utc, user, message));
+        list.add(new Message(getDateTime(), user, message));
     }
 
     public void clearChat() {
@@ -63,8 +60,6 @@ public class ChatManager implements Serializable {
         ArrayList<String> resultMessages = new ArrayList<>(list.size());
         for (Message m : result)
             resultMessages.add(m.toString());
-
-
 
         return resultMessages;
     }
@@ -205,10 +200,8 @@ public class ChatManager implements Serializable {
 
 
     // Used to create the date. Create a new date object to update the time
-    public String[] getDateTime() {
-        ZonedDateTime utc = ZonedDateTime.of(LocalDateTime.now(),
-                ZoneId.of("Canada/Central"));
-        return new String[]{utc.format(DateTimeFormatter.ofPattern("MM/dd/uuuu")), utc.format(DateTimeFormatter.ofPattern("h:mm:ss a"))};
+    public ZonedDateTime getDateTime() {
+       return ZonedDateTime.of(LocalDateTime.now(), ZoneId.of("Canada/Central"));
     }
 
     // Print the entire list

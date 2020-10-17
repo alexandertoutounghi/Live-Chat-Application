@@ -36,13 +36,13 @@ const MainContainer = (props) => {
   return (
     <Div c="main-container">
       <Div c=""></Div>
-      {/*{loginPage ? (*/}
-      {/*  <LoginContainer {...{ handleLogin }} />*/}
-      {/*) : (*/}
+      {loginPage ? (
+        <LoginContainer {...{ handleLogin }} />
+      ) : (
         <ChatContainer {...{ user, setLoginPage }} />
-      {/*)}*/}
+      )}
 
-      {/*<Logo />*/}
+      <Logo />
     </Div>
   );
 };
