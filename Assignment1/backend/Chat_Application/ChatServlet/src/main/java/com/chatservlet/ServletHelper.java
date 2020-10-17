@@ -24,6 +24,7 @@ import java.util.Locale;
 public class ServletHelper extends HttpServlet {
     private ChatManager chatmanager = ChatManager.getInstance();
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("MM/dd/yyyy, hh:mm:ss a", Locale.ENGLISH);
+    private static final DateTimeFormatter FORMATTER_2 = DateTimeFormatter.ofPattern("MM/dd/yyyy, h:mm:ss a", Locale.ENGLISH);
 
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +41,13 @@ public class ServletHelper extends HttpServlet {
     }
 
     protected ZonedDateTime stringToZonedDate(String date) {
-        LocalDateTime ld = LocalDateTime.parse(date, FORMATTER);
+        LocalDateTime ld;
+        try {
+            ld = LocalDateTime.parse(date, FORMATTER);
+        }
+        catch (Exception e) {
+          ld = LocalDateTime.parse(date, FORMATTER_2);
+        }
         ZonedDateTime zt = ZonedDateTime.of(ld,
                 ZoneId.of("Canada/Central"));
         return zt;

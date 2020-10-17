@@ -3,10 +3,13 @@ import "./CustomDate.scss";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {getData} from "../../../../../../Utils/Utils";
+// import {getMessage} from "../../../../../../Utils/Utils";
+
 
 const CustomDate = (props) => {
     const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date)
+    const [endDate, setEndDate] = useState(new Date());
     const DateButton = ({Range, value, onClick}) => (
         <React.Fragment>
             <label htmlFor="date" className={"calendar"}>{Range}</label>
@@ -18,8 +21,28 @@ const CustomDate = (props) => {
     );
 
 
+    const getMessage = async () => {
+        const from = startDate.toLocaleString();
+        const to = endDate.toLocaleString();
+        console.log(startDate.toLocaleString());
+        console.log(endDate.toLocaleString());
+        console.log(props.format);
+        const response = await getData({format: props.format, from: from, to: to, download: "download"});
+        console.log(response);
+        const filename = response.headers.get('Content-Disposition').split('filename=')[1];
+        response.blob().then(blob => {
+            let url = window.URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+        });
+
+    };
+
+
     return (
-        <form className={`custom-form ${props.darkMode}`} method="post">
+        <div className={`custom-form ${props.darkMode}`}>
             <h2>Date Range</h2>
             <ul className={"date-list"}>
                 <li className={"date-list-item"}><h3>Choose a Date...</h3></li>
@@ -59,14 +82,13 @@ const CustomDate = (props) => {
                                          enabled: true,
                                      },
                                  }}
-
                     />}
                 </ul>
                 <li className={"date-list-item"}>
-                    <button className={"custom-submit"}>Submit</button>
+                    <button className={"custom-submit"} onClick={getMessage}>Submit</button>
                 </li>
             </ul>
-        </form>
+        </div>
     );
 }
 

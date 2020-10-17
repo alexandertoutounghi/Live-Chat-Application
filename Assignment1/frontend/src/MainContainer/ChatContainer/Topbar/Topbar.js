@@ -25,7 +25,7 @@ const Topbar = (props) => {
                     </li>
                     <li className="nav-list center username">Welcome {props.username}</li>
                     <ul className="nav-list right">
-                        <li><Dropdown darkMode={darkMode} type={"Clear"} drop={"dropdown"}/></li>
+                        <li><Dropdown darkMode={darkMode} type={"clear"} drop={"dropdown"}/></li>
                         <li onClick={handleClick} className="toggle-darkmode">{darkMode ? <FontAwesomeIcon icon={['fas', 'sun']} title={"Light Mode"} className="light-icon" color="white"/>: <FontAwesomeIcon icon={['fas', 'moon']} title={"Dark Mode"} className="dark-icon" color="white"/> }</li>
                         <li onClick={handleLogout}><button className="logout">Logout</button></li>
                     </ul>

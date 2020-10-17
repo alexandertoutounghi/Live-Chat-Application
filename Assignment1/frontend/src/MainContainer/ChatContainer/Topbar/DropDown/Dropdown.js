@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import "./Dropdown.scss"
 import CustomDate from "./Modal/CustomDate/CustomDate";
 import Modal from "./Modal/Modal";
-import {getData, sendData} from "../../../../Utils/Utils";
+import {getData, sendData, getMessage} from "../../../../Utils/Utils";
 
 const Dropdown = (props) => {
     const [dropdown, setDropdown] = useState(false)
@@ -30,7 +30,7 @@ const Dropdown = (props) => {
         var yesterdayFrom = new Date() - 1;
         yesterdayFrom.setHours(0, 0, 0, 0);
         yesterdayTo.setHours(23, 59, 59, 99);
-        getMessage(yesterdayFrom.toUTCString(), yesterdayTo.toUTCString());
+       getMessage(yesterdayFrom.toLocaleString(), yesterdayTo.toLocaleString());
     };
 
     const customToday = async () => {
@@ -38,16 +38,22 @@ const Dropdown = (props) => {
         var todayFrom = new Date();
         todayFrom.setHours(0, 0, 0, 0);
         todayTo.setHours(23, 59, 59, 99);
-        console.log(todayFrom.toLocaleString());
+        // console.log(todayFrom.toLocaleString());
+        // console.log(todayTo.toLocaleString());
         getMessage(todayFrom.toLocaleString(),todayTo.toLocaleString());
     }
 
     const getMessage = async (from, to) => {
-        console.log(from);
-        console.log(to);
-        const response = await getData({format: format, from: from, to: to,download:"download"});
-        console.log(response);
+        var response;
+        if (props.type === "download")
+            response = await getData({format: format, from: from, to: to,download:"download"});
+        else if (props.type === "clear")
+            response = await getData({format: format, from: from, to: to,delete:"delete"});
 
+        console.log(from.toLocaleDateString());
+        console.log(to);
+        // const response = await getData({format: format, from: from, to: to,download:"download"});
+        console.log(response);
         const filename = response.headers.get('Content-Disposition').split('filename=')[1];
         response.blob().then(blob => {
             let url = window.URL.createObjectURL(blob);
@@ -76,7 +82,7 @@ const Dropdown = (props) => {
                         <li className="dropdown-menu-item" onClick={handleOpen}>Custom...</li>
                     </ul>
                 </div> : ""}
-            {custom ? <Modal onClose={handleClose} darkMode={props.darkMode}/> : ""}
+            {custom ? <Modal format={format} onClose={handleClose} darkMode={props.darkMode}/> : ""}
 
         </div>
     );
