@@ -6,6 +6,8 @@ import ChatContainer from "./ChatContainer/ChatContainer";
 
 import { Div, sendData } from "../Utils/Utils";
 import "./MainContainer.scss";
+import Toggle from "./ChatContainer/Topbar/DropDown/Toggle/Toggle";
+import Topbar from "./ChatContainer/Topbar/Topbar";
 
 //[FUNCTIONAL COMPONENTS]
 const MainContainer = (props) => {

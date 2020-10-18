@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {faDownload, faCaretDown, faCaretUp} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import "./Dropdown.scss"
-import CustomDate from "./Modal/CustomDate/CustomDate";
 import Modal from "./Modal/Modal";
 import {getData, sendData, getMessage} from "../../../../Utils/Utils";
+import Toggle from "./Toggle/Toggle";
 
 const Dropdown = (props) => {
     const [dropdown, setDropdown] = useState(false)
@@ -30,7 +30,12 @@ const Dropdown = (props) => {
         var yesterdayFrom = new Date() - 1;
         yesterdayFrom.setHours(0, 0, 0, 0);
         yesterdayTo.setHours(23, 59, 59, 99);
-       getMessage(yesterdayFrom.toLocaleString(), yesterdayTo.toLocaleString());
+        yesterdayFrom= yesterdayFrom.toLocaleString();
+        yesterdayTo = yesterdayTo.toLocaleString();
+        if (props.type === "Download")
+            getMessage(yesterdayFrom, yesterdayTo);
+        else
+            deleteMessage(yesterdayFrom,yesterdayTo);
     };
 
     const customToday = async () => {
@@ -38,22 +43,24 @@ const Dropdown = (props) => {
         var todayFrom = new Date();
         todayFrom.setHours(0, 0, 0, 0);
         todayTo.setHours(23, 59, 59, 99);
-        // console.log(todayFrom.toLocaleString());
-        // console.log(todayTo.toLocaleString());
-        getMessage(todayFrom.toLocaleString(),todayTo.toLocaleString());
+        todayFrom = todayFrom.toLocaleString();
+        todayTo = todayTo.toLocaleString();
+        if (props.type === "Download")
+            getMessage(todayFrom, todayTo);
+        else
+            deleteMessage(todayFrom, todayTo);
+    }
+
+
+    const deleteMessage = async () => {
+        const response = await getData({format: format, from: from, to: to, delete: "delete"});
     }
 
     const getMessage = async (from, to) => {
-        var response;
-        if (props.type === "download")
-            response = await getData({format: format, from: from, to: to,download:"download"});
-        else if (props.type === "clear")
-            response = await getData({format: format, from: from, to: to,delete:"delete"});
-
-        console.log(from.toLocaleDateString());
-        console.log(to);
-        // const response = await getData({format: format, from: from, to: to,download:"download"});
-        console.log(response);
+        const response = await getData({format: format, from: from, to: to, download: "download"});
+        // console.log(from.toLocaleDateString());
+        // console.log(to);
+        // console.log(response);
         const filename = response.headers.get('Content-Disposition').split('filename=')[1];
         response.blob().then(blob => {
             let url = window.URL.createObjectURL(blob);
@@ -62,14 +69,22 @@ const Dropdown = (props) => {
             a.download = filename;
             a.click();
         });
-
     };
+
+    const toggleFormat = () => {
+        if (format === "text")
+            setFormat("xml");
+        else
+            setFormat("text");
+        console.log(format);
+    }
 
 
     return (
         <div className={`dropdown-container ${props.darkMode}`}>
             <div className={dropdown ? "dropdown-icon dropdown-enabled" : "dropdown-icon"} onClick={handleClick}>
-                <FontAwesomeIcon icon={props.type==="download"?faDownload:['fas', 'trash']}/> <span className={"md"}>{props.type} Messages</span>
+                <FontAwesomeIcon icon={props.type === "Download" ? faDownload : ['fas', 'trash']}/> <span
+                className={"md"}>{props.type} Messages</span>
                 <FontAwesomeIcon icon={dropdown ? faCaretUp : faCaretDown} className={"md"}/>
                 <FontAwesomeIcon className={"xs-right-caret-icon"} icon={['fas', 'caret-right']}/>
             </div>
@@ -77,6 +92,10 @@ const Dropdown = (props) => {
                 <div className={`dropdown-menu ${props.drop}`}>
                     <ul className="dropdown-menu-list">
                         <li className={"xs bars"} onClick={handleClick}><FontAwesomeIcon icon={['fas', 'bars']}/></li>
+                        {props.type === "Download" ?
+                            <li><Toggle toggle={toggleFormat} format={format}/></li> :
+                            ""
+                        }
                         <li className="dropdown-menu-item" onClick={customToday}>Today</li>
                         <li className="dropdown-menu-item" onClick={customYesterday}>Yesterday</li>
                         <li className="dropdown-menu-item" onClick={handleOpen}>Custom...</li>
