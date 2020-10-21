@@ -3,7 +3,88 @@
 .chat-container {
   @include fullsize();
 
-  background-color: $bg;
+  &.light {
+    background-color: $bg;
+    .dropdown-container {
+      background-color: $bg_tp;
+      box-shadow: $boxshadow;
+      .action-toggle {
+        &.active {
+          background-color: $bg;
+          color: $main;
+          svg {
+            color: $main !important;
+          }
+          transition: 0.25s ease-in-out;
+        }
+        &:not(.active) {
+          background-color: $bg_tp;
+          color: $bg;
+          svg {
+            color: $bg !important;
+          }
+          transition: 0.25s ease-in-out;
+        }
+        &:hover {
+          cursor: pointer;
+          // color: white;
+          // svg {
+          //   color: white;
+          // }
+          // background-color: rgba(0, 0, 0, 0.7);
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+  &.dark {
+    background-color: $bg_dark;
+
+    .dropdown-container {
+      background-color: $main_dark;
+    }
+
+    .chatbox {
+      background-color: $bg_dark;
+      .messagebox {
+        border: 30px solid $main_dark;
+        background-color: $main_dark;
+      }
+      .textbox-container {
+        .textbox {
+          .textbox-wrapper {
+            .text-input {
+              color: $text_bg_dark;
+              background-color: $main_dark;
+              border: 3px solid $borders_dark;
+            }
+            .textbox-button {
+              background-color: $main_dark;
+              border: 3px solid $borders_dark;
+            }
+          }
+        }
+      }
+      .message {
+        .message-container {
+          .content-container {
+            .content {
+              background-color: $text_bg_dark;
+            }
+          }
+          .username-container {
+            .bottom-container {
+              border: 1px solid $text_bg_dark;
+              background-color: $main_dark;
+              .username {
+                color: $bg_dark;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   display: grid;
   grid-template-rows: 100px calc(100% - 100px);
 
