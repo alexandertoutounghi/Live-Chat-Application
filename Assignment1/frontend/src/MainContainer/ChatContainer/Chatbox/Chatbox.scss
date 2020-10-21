@@ -71,6 +71,7 @@
 
   .textbox-container {
     @include fullsize();
+    width: 100%;
     grid-row: 2 / span 1;
     box-sizing: border-box;
     padding: 20px;
