@@ -68,6 +68,11 @@ public class ServletHelper extends HttpServlet {
         ZonedDateTime fromTime = stringToZonedDate(request.getParameter("from"));
         ZonedDateTime toTime = stringToZonedDate(request.getParameter("to"));
 
+
+        HttpSession session = request.getSession();
+        session.setAttribute("download",chatmanager.listMessages(fromTime, toTime));
+
+
         response.setHeader("Content-Disposition", "attachment;filename=" + fileType);
         response.setHeader("Content-Transfer-Encoding", "binary");
 
@@ -76,13 +81,14 @@ public class ServletHelper extends HttpServlet {
 
         ListIterator<String> iterator = chat.listMessages(fromTime, toTime).listIterator();
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(relativePath))) {
-            while (iterator.hasNext()) {
-               pw.println(iterator.next());
-            }
-
+//            while (iterator.hasNext()) {
+//               pw.println(iterator.next());
+//            }
         }
 //        request.getRequestDispatcher("/com/chatservlet/ChatServlet.java").forward(request, response);
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/download.jsp").forward(request, response);
+//        request.getRequestDispatcher("localhost").forward(request, response);
+
     }
 
     protected void doList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

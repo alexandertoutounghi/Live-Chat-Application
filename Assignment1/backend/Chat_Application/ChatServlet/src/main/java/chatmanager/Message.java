@@ -4,7 +4,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Message {
+public class Message implements Comparable<Message> {
     private String date;
     private String time;
     private String user;
@@ -26,6 +26,7 @@ public class Message {
         this.time = dateTime.format(DateTimeFormatter.ofPattern("h:mm:ss a"));
 
     }
+
     public Message(ZonedDateTime dateTime) {
         this.dateTime = dateTime;
     }
@@ -36,13 +37,24 @@ public class Message {
         if (o == null || getClass() != o.getClass()) return false;
         Message message1 = (Message) o;
 //        compareto returns if its less than ore
+//        return ((this.dateTime.getYear() == message1.dateTime.getYear()) &&
+//                (this.dateTime.getMonthValue()  == message1.dateTime.getMonthValue()) &&
+//                (this.dateTime.getDayOfMonth() ==  message1.dateTime.getDayOfMonth()) &&
+//                (this.dateTime.getHour() <= message1.dateTime.getHour()) &&
+//                (this.dateTime.getMinute() <= message1.dateTime.getMinute()) &&
+//                (this.dateTime.getSecond() <= message1.dateTime.getSecond()));
         int result = this.dateTime.compareTo(message1.dateTime);
         return (result < 1 || this.dateTime.equals(message1.dateTime));
     }
 
     @Override
+    public int compareTo(Message o) {
+        return o.dateTime.compareTo(this.dateTime);
+    }
+
+    @Override
     public String toString() {
-        return date + ", " + time +  " - "+ user + ": " + message;
+        return date + ", " + time + " - " + user + ": " + message;
     }
 
     public String getDate() {
@@ -60,4 +72,5 @@ public class Message {
     public String getMessage() {
         return message;
     }
+
 }

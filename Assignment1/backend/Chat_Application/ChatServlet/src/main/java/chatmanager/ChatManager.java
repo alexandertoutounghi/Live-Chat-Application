@@ -45,17 +45,29 @@ public class ChatManager implements Serializable {
 
     // Print messages from a cetain date range, must enter date and time. This reads an array from the servlet that contains two strings, from and to.
     public List<String> listMessages(ZonedDateTime from, ZonedDateTime to) {
-        int fromIndex = list.indexOf(new Message(from));
-        int toIndex = list.indexOf(new Message(to));
+        Message messageFrom = new Message(from);
+        Message messageTo = new Message(to);
         List<Message> result;
-        if (fromIndex == -1 && toIndex == -1)
+
+        //if the earliest message is outside the range
+        if (messageTo.compareTo(list.get(0)) > 0)
             return new ArrayList<String>();
-        else if (fromIndex == -1)
-            result = list.subList(0, toIndex);
-        else if (toIndex == -1)
-            result = list.subList(fromIndex, list.size() - 1);
-        else
-            result = list.subList(fromIndex, toIndex);
+//        else if (list.size() == 1) {
+//           return new ArrayList<String>(){{add(list.get(0).toString());}};
+//        }
+        else {
+
+            int fromIndex = list.indexOf(messageFrom);
+            int toIndex = list.indexOf(messageTo);
+            if (fromIndex == -1 && toIndex == -1)
+                return new ArrayList<String>();
+            else if (fromIndex == -1)
+                result = list.subList(0, toIndex);
+            else if (toIndex == -1)
+                result = list.subList(fromIndex, list.size());
+            else
+                result = list.subList(fromIndex, toIndex);
+        }
 
         ArrayList<String> resultMessages = new ArrayList<>(list.size());
         for (Message m : result)
@@ -201,7 +213,7 @@ public class ChatManager implements Serializable {
 
     // Used to create the date. Create a new date object to update the time
     public ZonedDateTime getDateTime() {
-       return ZonedDateTime.of(LocalDateTime.now(), ZoneId.of("Canada/Central"));
+        return ZonedDateTime.of(LocalDateTime.now(), ZoneId.of("Canada/Central"));
     }
 
     // Print the entire list

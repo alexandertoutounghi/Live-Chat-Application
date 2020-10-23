@@ -8,7 +8,6 @@ const Toggle = (props) => {
                 <li> Format <strong>{props.format}</strong>
                 </li>
                 <li> <input onClick={props.toggle} className={"toggle"} type="checkbox"/></li>
-                <li></li>
             </ul>
         </div>
     );

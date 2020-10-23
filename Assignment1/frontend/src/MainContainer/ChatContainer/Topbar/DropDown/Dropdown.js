@@ -30,12 +30,16 @@ const Dropdown = (props) => {
   };
 
   const customYesterday = async () => {
-    var yesterdayTo = new Date() - 1;
-    var yesterdayFrom = new Date() - 1;
+    var yesterdayTo = new Date();
+    yesterdayTo.setDate(yesterdayTo.getDate() -1);
+    var yesterdayFrom = new Date();
+    yesterdayFrom.setDate(yesterdayFrom.getDate() -1);
     yesterdayFrom.setHours(0, 0, 0, 0);
     yesterdayTo.setHours(23, 59, 59, 99);
     yesterdayFrom = yesterdayFrom.toLocaleString();
     yesterdayTo = yesterdayTo.toLocaleString();
+    console.log(yesterdayTo);
+    console.log(yesterdayFrom);
     if (props.type === "Download") getMessage(yesterdayFrom, yesterdayTo);
     else deleteMessage(yesterdayFrom, yesterdayTo);
   };
@@ -83,8 +87,10 @@ const Dropdown = (props) => {
   };
 
   const toggleFormat = () => {
-    if (format === "text") setFormat("xml");
-    else setFormat("text");
+    if (format === "text")
+      setFormat("xml");
+    else
+      setFormat("text");
     console.log(format);
   };
 
@@ -103,7 +109,7 @@ const Dropdown = (props) => {
             ) : (
               ""
             )}
-            <li className="dropdown-menu-item" onClick={customToday}>
+            <li className="dropdown-menu-item" onClick={customToday} >
               Today
             </li>
             <li className="dropdown-menu-item" onClick={customYesterday}>
@@ -119,6 +125,7 @@ const Dropdown = (props) => {
       )}
       {custom ? (
         <Modal
+          type={props.type}
           format={format}
           onClose={handleClose}
           darkMode={props.darkMode}

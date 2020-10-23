@@ -119,7 +119,7 @@ const CaretDropdown = (props) => {
     <StyledCaretDropdown
       className={`${darkMode ? "dark" : "light"} ${show ? "show" : "hide"}`}
       tabIndex={1}
-      onBlur={() => setShow(false)}
+      // onBlur={() => setShow(false)}
     >
       <div className={`icon-container`} onClick={() => setShow(!show)}>
         <FontAwesomeIcon icon={faChevronCircleDown} size="2x" color={"white"} />
@@ -162,14 +162,14 @@ const Topbar = (props) => {
     props.setLoginPage(true);
   };
   return (
-    <div className={`topbar${darkMode ? " dark" : ""}`}>
+    <div className={`topbar ${darkMode ? "dark" : ""}`}>
       <div className="navbar-nav">
         <CaretDropdown darkMode={darkMode} />
-        <div className="username">Hello, ${props.username}</div>
+        <div className="username">Hello, {props.username}</div>
         <div style={{ width: "fit-content" }}>
           <ul className="nav-list right">
             <li>
-              <Dropdown darkMode={darkMode} type={"Clear"} drop={"dropdown"} />
+              <Dropdown darkMode={darkMode} type={"Delete"} drop={"dropdown"} />
             </li>
             <li onClick={handleClick} className="toggle-darkmode">
               {darkMode ? (
