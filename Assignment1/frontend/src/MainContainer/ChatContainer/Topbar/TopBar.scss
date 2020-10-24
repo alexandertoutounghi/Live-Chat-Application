@@ -143,5 +143,6 @@ html {
   }
   .username {
     color: $textSecondary;
+    user-select: none;
   }
 }

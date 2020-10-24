@@ -36,7 +36,7 @@ const StyledCaretDropdown = styled.div`
   }
   
   .dropdown-container {
-    transition: 0.4 ease;
+    transition: 0.4s ease;
     position: absolute;
     top: 90px;
     left: 20px;
@@ -79,6 +79,17 @@ const StyledCaretDropdown = styled.div`
             }
         }
 
+    }
+  }
+   @media screen and (max-width: 640px) {
+    .dropdown-container {
+      width: calc(100% - 48px) !important;
+      min-height: calc(100% - 300px);
+      max-height: calc(100% - 200px)
+      height: fit-content;
+      top: 120px;
+      left: 20px;
+      border: none;
     }
   }
   &.show {

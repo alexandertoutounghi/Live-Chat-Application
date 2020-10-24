@@ -99,9 +99,9 @@ const Dropdown = (props) => {
       {dropdown ? (
         <div className={`dropdown-menu ${props.drop}`}>
           <ul className="dropdown-menu-list">
-            <li className={"xs bars"} onClick={handleClick}>
-              <FontAwesomeIcon icon={["fas", "bars"]} />
-            </li>
+            {/*<li className={"xs bars"} onClick={handleClick}>*/}
+            {/*  <FontAwesomeIcon icon={["fas", "bars"]} />*/}
+            {/*</li>*/}
             {props.type === "Download" ? (
               <li>
                 <Toggle darkMode={props.darkMode} toggle={toggleFormat} format={format} />
