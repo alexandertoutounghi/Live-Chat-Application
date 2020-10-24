@@ -29,15 +29,16 @@ public class ServletHelper extends HttpServlet {
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String deleteFrom = request.getParameter("deletefrom");
-        String deleteTo = request.getParameter("deleteto");
-        String[] deleteDateRange = new String[2];
-        deleteDateRange[0] = deleteFrom;
-        deleteDateRange[1] = deleteTo;
 
-        session.setAttribute("chat", chatmanager.listMessages());
+        ZonedDateTime fromTime = stringToZonedDate(request.getParameter("from"));
+        ZonedDateTime toTime = stringToZonedDate(request.getParameter("to"));
 
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        session.setAttribute("chat", chatmanager.clearMessages(fromTime, toTime));
+
+        response.setContentType("text/plain");
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Origin", "GET, POST, DELETE, PUT, OPTIONS");
+        response.addHeader("Access-Control-Allow-Origin", "X-PINGOTHER, Content-Type");
     }
 
     protected ZonedDateTime stringToZonedDate(String date) {
@@ -55,11 +56,13 @@ public class ServletHelper extends HttpServlet {
     protected void downloadChat(HttpServletResponse response, HttpServletRequest request, ChatManager chat) throws IOException, ServletException {
         String format = request.getParameter("format");
         String fileType;
+        boolean isXml =  false;
 
         // Return xml or plaintext
         if (format.equals("xml")) {
             response.setContentType("text/xml");
             fileType = "ChatLogs.xml";
+            isXml = true;
         } else {
             response.setContentType("text/plain");
             fileType = "ChatLogs.txt";
@@ -94,11 +97,10 @@ public class ServletHelper extends HttpServlet {
     protected void doList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        String from = request.getParameter("from");
-        String to = request.getParameter("to");
-        String[] dateRange = new String[2];
-        dateRange[0] = from;
-        dateRange[1] = to;
+        ZonedDateTime fromTime = stringToZonedDate(request.getParameter("from"));
+        ZonedDateTime toTime = stringToZonedDate(request.getParameter("to"));
+
+        session.setAttribute("chat", chatmanager.listMessages(fromTime, toTime));
 
         session.setAttribute("chat", chatmanager.listMessages());
         request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -112,7 +114,7 @@ public class ServletHelper extends HttpServlet {
         response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility
     }
 
-    protected void checkHeader(HttpServletRequest request) throws ServletException {
+/*    protected void checkHeader(HttpServletRequest request) throws ServletException {
         String refererHeader = request.getHeader("referer");
         // no need to continue if the header is missing
         if (refererHeader == null) {
@@ -120,5 +122,5 @@ public class ServletHelper extends HttpServlet {
             // return;
             throw new ServletException("Referer Header is null");
         }
-    }
+    }*/
 }

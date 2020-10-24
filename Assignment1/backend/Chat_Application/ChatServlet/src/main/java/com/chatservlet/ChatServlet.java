@@ -39,8 +39,6 @@ public class ChatServlet extends ServletHelper {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        checkHeader(request);
         HttpSession session = request.getSession();
 
         // Print parameters
@@ -88,10 +86,6 @@ public class ChatServlet extends ServletHelper {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        checkHeader(request);
-
-
-
         // List messages
         if (request.getParameter("list") != null) {
             doList(request, response);

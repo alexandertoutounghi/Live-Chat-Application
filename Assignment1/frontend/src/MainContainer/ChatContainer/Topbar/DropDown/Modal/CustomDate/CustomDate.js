@@ -26,6 +26,7 @@ const CustomDate = (props) => {
         const to = endDate.toLocaleString();
         console.log(startDate.toLocaleString());
         console.log(endDate.toLocaleString());
+        console.log("type",props.type);
         console.log(props.format);
         if (props.type === "Download") {
             const response = await getData({format: props.format, from: from, to: to, download: "download"});

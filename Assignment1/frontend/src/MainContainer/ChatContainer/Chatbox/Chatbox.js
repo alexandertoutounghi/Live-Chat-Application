@@ -46,7 +46,7 @@ const Chatbox = (props) => {
       } catch (e) {
         console.log(`Error: ${e}`);
       }
-    }, 3000);
+    }, 250);
     return () => {
       window.clearInterval(intervalId.current);
     };

@@ -55,7 +55,7 @@ const Dropdown = (props) => {
     else deleteMessage(todayFrom, todayTo);
   };
 
-  const deleteMessage = async () => {
+  const deleteMessage = async (from, to) => {
     const response = await getData({
       format: format,
       from: from,
