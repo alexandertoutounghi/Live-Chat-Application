@@ -43,6 +43,38 @@ public class ChatManager implements Serializable {
         this.list = new LinkedList<Message>();
     }
 
+    public List<String> listMessageXml(ZonedDateTime from, ZonedDateTime to) {
+        Message messageFrom = new Message(from);
+        Message messageTo = new Message(to);
+        List<Message> result;
+
+        if (list.size() == 0) {
+            return new ArrayList<String>();
+        }
+        //if the earliest message is outside the range
+        else if (messageTo.compareTo(list.get(0)) > 0)
+            return new ArrayList<String>();
+        else {
+
+            int fromIndex = list.indexOf(messageFrom);
+            int toIndex = list.indexOf(messageTo);
+            if (fromIndex == -1 && toIndex == -1)
+                return new ArrayList<String>();
+            else if (fromIndex == -1)
+                result = list.subList(0, toIndex);
+            else if (toIndex == -1)
+                result = list.subList(fromIndex, list.size());
+            else
+                result = list.subList(fromIndex, toIndex);
+        }
+
+        ArrayList<String> resultMessages = new ArrayList<>(list.size());
+        for (Message m : result)
+            resultMessages.add(m.toStringXml());
+
+        return resultMessages;
+    }
+
     // Print messages from a cetain date range, must enter date and time. This reads an array from the servlet that contains two strings, from and to.
     public List<String> listMessages(ZonedDateTime from, ZonedDateTime to) {
         Message messageFrom = new Message(from);
