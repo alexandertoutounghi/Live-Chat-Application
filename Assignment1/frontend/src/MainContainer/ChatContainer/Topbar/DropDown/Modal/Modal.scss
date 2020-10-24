@@ -18,6 +18,7 @@ h3 {
   justify-content: center;
 }
 .modal-content {
+  z-index: 2;
   width: 40%;
   height: 60%;
   background-color: $textPrimary;
@@ -46,10 +47,10 @@ h3 {
     background-color: $bgDark;
   }
   .close {
-    color: $textPrimary;
+    color: $textSecondary;
     &:hover {
       cursor: pointer;
-      color: $modalClose;
+      color: $dropdownSecondary;
     }
   }
 }

@@ -74,13 +74,17 @@ hr {
 .dark {
   h2,
   h3 {
-    color: $textPrimary;
+    color: $textSecondary;
   }
   .calendar {
-    color: $textPrimary;
+    color: $textSecondary;
   }
   .date-picker-item {
-    color: $textPrimary;
+    color: $textSecondary;
+     &:hover {
+         cursor: pointer;
+         background-color: $dropdownSecondary;
+     }
   }
 
   .custom-submit {

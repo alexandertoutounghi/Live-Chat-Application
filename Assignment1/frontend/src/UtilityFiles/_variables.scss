@@ -6,13 +6,13 @@ $btnPrimary: ghostwhite;
 $btnSecondary: rgb(207, 198, 233);
 $btnOutline: skyblue;
 $dropdownPrimary: #4c8bf5;
-$dropdownSecondary: #5b91ea;
+$dropdownSecondary: #6592dd;
 $dropdownOutlineBorder: rgba(68, 161, 205, 0.2);
 $dropdownHover: #bab1b1;
 $bgModal: rgba(0, 0, 0, 0.7);
 $modalClose: black;
 
-$bgDark: black;
+$bgDark: #302e2e;
 $dropDownOutlineBorderDark: white;
 @mixin flexCenter {
   display: flex;
