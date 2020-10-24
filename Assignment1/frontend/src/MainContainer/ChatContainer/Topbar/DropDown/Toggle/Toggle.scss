@@ -1,3 +1,4 @@
+@import "src/UtilityFiles/variables";
 .center {
 //  margin: 0;
 //  padding: 0;
@@ -66,4 +67,12 @@ input[type="checkbox"] {
 
 
   }
+}
+
+.dark {
+  color:$textSecondary;
+  input[type="checkbox"] {
+    //background: blue;
+  }
+
 }

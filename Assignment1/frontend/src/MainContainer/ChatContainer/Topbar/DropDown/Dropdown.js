@@ -104,7 +104,7 @@ const Dropdown = (props) => {
             </li>
             {props.type === "Download" ? (
               <li>
-                <Toggle toggle={toggleFormat} format={format} />
+                <Toggle darkMode={props.darkMode} toggle={toggleFormat} format={format} />
               </li>
             ) : (
               ""

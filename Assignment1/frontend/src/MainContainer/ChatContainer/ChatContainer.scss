@@ -1,4 +1,5 @@
 @import "../../Styles/Theme.scss";
+@import "../../UtilityFiles/variables.scss";
 
 .chat-container {
   @include fullsize();
@@ -40,6 +41,7 @@
   &.dark {
     background-color: $bg_dark;
 
+
     .dropdown-container {
       background-color: $main_dark;
 
@@ -48,25 +50,26 @@
     .chatbox {
       background-color: $bg_dark;
       .messagebox {
-        border: 30px solid $main_dark;
-        background-color: $main_dark;
+        border: 30px solid $bgDark;
+        background-color: $bgDark;
       }
       .textbox-container {
         .textbox {
           .textbox-wrapper {
             .text-input {
               color: $text_bg_dark;
-              background-color: $main_dark;
-              border: 3px solid $borders_dark;
+              background-color: $bgDark;
+              border: 3px solid $bgDark;
             }
             .textbox-button {
-              background-color: $main_dark;
-              border: 3px solid $borders_dark;
+              background-color: $bgDark;
+              border: 3px solid $bgDark;
             }
           }
         }
       }
       .message {
+        color: $bgModal;
         .message-container {
           .content-container {
             .content {
@@ -76,7 +79,7 @@
           .username-container {
             .bottom-container {
               border: 1px solid $text_bg_dark;
-              background-color: $main_dark;
+              background-color: $bgDark;
               .username {
                 color: $bg_dark;
               }
@@ -93,7 +96,7 @@
     .message {
       .bottom-container {
         :not(.username) {
-          display: none;
+          //display: none;
         }
       }
     }

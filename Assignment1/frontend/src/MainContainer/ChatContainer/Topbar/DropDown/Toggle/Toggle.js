@@ -3,7 +3,7 @@ import "./Toggle.scss"
 
 const Toggle = (props) => {
     return (
-        <div className="center">
+        <div className={`center ${props.darkMode}`}>
             <ul>
                 <li> Format <strong>{props.format}</strong>
                 </li>

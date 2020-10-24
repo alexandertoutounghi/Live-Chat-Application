@@ -106,21 +106,31 @@ html {
 //--------------------------------------------------------
 
 .dark {
+  .action-toggle {
+    &:hover {
+      cursor: pointer;
+      background-color: $dropdownPrimary !important;
+    }
+  }
+
+  .dropdown {
+    background-color: $bgDark;
+  }
   .navbar-nav {
-    background-color: black;
+    background-color: $bgDark;
   }
 
   .dark-icon {
-    background-color: $dropdownPrimary;
+    background-color: $dropdownPrimary !important;
 
     &:hover {
       cursor: pointer;
-      background-color: $dropdownSecondary;
+      background-color: $dropdownSecondary !important;
     }
 
     &:active {
       cursor: pointer;
-      background-color: $dropdownSecondary;
+      background-color: $dropdownSecondary !important;
     }
   }
 
