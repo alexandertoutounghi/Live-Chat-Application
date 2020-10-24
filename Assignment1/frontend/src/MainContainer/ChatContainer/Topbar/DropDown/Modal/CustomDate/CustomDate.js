@@ -26,20 +26,33 @@ const CustomDate = (props) => {
         const to = endDate.toLocaleString();
         console.log(startDate.toLocaleString());
         console.log(endDate.toLocaleString());
+        console.log("type",props.type);
         console.log(props.format);
-        const response = await getData({format: props.format, from: from, to: to, download: "download"});
-        console.log(response);
-        const filename = response.headers.get('Content-Disposition').split('filename=')[1];
-        response.blob().then(blob => {
-            let url = window.URL.createObjectURL(blob);
-            let a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            a.click();
-        });
+        if (props.type === "Download") {
+            const response = await getData({format: props.format, from: from, to: to, download: "download"});
+            console.log(response);
+            const filename = response.headers.get('Content-Disposition').split('filename=')[1];
+            response.blob().then(blob => {
+                let url = window.URL.createObjectURL(blob);
+                let a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                a.click();
+            });
+        }
+        else {
+            deleteMessage(from,to)
+        }
 
     };
 
+    const deleteMessage = async (from,to) => {
+        const response = await getData({
+            from: from,
+            to: to,
+            delete: "delete",
+        });
+    };
 
     return (
         <div className={`custom-form ${props.darkMode}`}>

@@ -1,0 +1,24 @@
+CURL COMMANDS:
+
+Download Chat:
+*: curl --output Chatlogs.txt -v "http://localhost:3000/ChatServlet_war/ChatServlet?format=text&from=10%2F23%2F2020%2C%2012%3A00%3A00%20AM&to=10%2F23%2F2020%2C%2011%3A59%3A59%20PM&download=download" 
+
+Text:
+curl -v -X GET "http://localhost:3000/ChatServlet_war/ChatServlet?format=text&from=10%2F23%2F2020%2C%2012%3A00%3A00%20AM&to=10%2F23%2F2020%2C%2011%3A59%3A59%20PM&download=download"
+
+XML:
+curl -v -X GET "http://localhost:3000/ChatServlet_war/ChatServlet?format=xml&from=10%2F23%2F2020%2C%2012%3A00%3A00%20AM&to=10%2F23%2F2020%2C%2011%3A59%3A59%20PM&download=download"
+
+Post Message:
+*Username should match the one that user is logged in with
+
+curl -d "username=Dork&message=Hello, I'm a Dork" http://localhost:3000/ChatServlet_war/ChatServlet
+
+Login as a different user:
+curl -d "username=Dweeb" http://localhost:3000/ChatServlet_war/ChatServlet
+
+Post as newly logged in user:
+curl -d "username=Dweeb&message=Hello I'm a Dweeb" http://localhost:3000/ChatServlet_war/ChatServlet
+
+Clear:
+curl -v -X GET "http://localhost:3000/ChatServlet_war/ChatServlet?format=text&from=10%2F23%2F2020%2C%2012%3A00%3A00%20AM&to=10%2F23%2F2020%2C%2011%3A59%3A59%20PM&delete=delete"

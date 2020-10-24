@@ -1,7 +1,7 @@
 @import "src/UtilityFiles/variables";
 @import "src/UtilityFiles/responsive";
 
-.dropdown-container {
+.dropdown {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -18,15 +18,15 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 //.dropdown  {
-  //.dropdown-menu
- .dropdown {
-    transition: 100ms ease-in-out;
-    position: absolute;
-    top: 5rem;
-    width: 30rem;
-    background-color: $btnPrimary;
-    border-radius: 3px;
-  }
+//.dropdown-menu
+.dropdown {
+  transition: 100ms ease-in-out;
+  position: absolute;
+  top: 5rem;
+  width: 30rem;
+  background-color: $btnPrimary;
+  border-radius: 3px;
+}
 //}
 
 .popup {
@@ -45,7 +45,6 @@
   border-radius: 4px;
   padding: 0.5rem;
 }
-
 
 .dropdown-menu-list {
   display: flex;

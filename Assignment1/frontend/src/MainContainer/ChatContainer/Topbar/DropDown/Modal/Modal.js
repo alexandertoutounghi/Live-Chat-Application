@@ -8,7 +8,7 @@ const Modal = (props) => {
         <div className={`bg-modal ${props.darkMode}`}>
             <div className="modal-content">
                 <div className="close" onClick={props.onClose}>+</div>
-                <CustomDate format={props.format} darkMode={props.darkMode}/>
+                <CustomDate format={props.format} darkMode={props.darkMode} type={props.type}/>
             </div>
         </div>
     );

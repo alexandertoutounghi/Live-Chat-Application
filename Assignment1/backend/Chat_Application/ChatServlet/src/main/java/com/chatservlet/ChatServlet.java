@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.security.MessageDigest;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
@@ -38,8 +39,6 @@ public class ChatServlet extends ServletHelper {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        checkHeader(request);
         HttpSession session = request.getSession();
 
         // Print parameters
@@ -87,11 +86,6 @@ public class ChatServlet extends ServletHelper {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("heheajkhlfkawehjsfh");
-
-        checkHeader(request);
-        HttpSession session = request.getSession();
-
         // List messages
         if (request.getParameter("list") != null) {
             doList(request, response);

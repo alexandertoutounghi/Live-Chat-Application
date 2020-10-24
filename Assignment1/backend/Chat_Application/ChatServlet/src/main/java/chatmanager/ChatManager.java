@@ -45,17 +45,32 @@ public class ChatManager implements Serializable {
 
     // Print messages from a cetain date range, must enter date and time. This reads an array from the servlet that contains two strings, from and to.
     public List<String> listMessages(ZonedDateTime from, ZonedDateTime to) {
-        int fromIndex = list.indexOf(new Message(from));
-        int toIndex = list.indexOf(new Message(to));
+        Message messageFrom = new Message(from);
+        Message messageTo = new Message(to);
         List<Message> result;
-        if (fromIndex == -1 && toIndex == -1)
+
+        if (list.size() == 0) {
             return new ArrayList<String>();
-        else if (fromIndex == -1)
-            result = list.subList(0, toIndex);
-        else if (toIndex == -1)
-            result = list.subList(fromIndex, list.size() - 1);
-        else
-            result = list.subList(fromIndex, toIndex);
+        }
+        //if the earliest message is outside the range
+        else if (messageTo.compareTo(list.get(0)) > 0)
+            return new ArrayList<String>();
+//        else if (list.size() == 1) {
+//           return new ArrayList<String>(){{add(list.get(0).toString());}};
+//        }
+        else {
+
+            int fromIndex = list.indexOf(messageFrom);
+            int toIndex = list.indexOf(messageTo);
+            if (fromIndex == -1 && toIndex == -1)
+                return new ArrayList<String>();
+            else if (fromIndex == -1)
+                result = list.subList(0, toIndex);
+            else if (toIndex == -1)
+                result = list.subList(fromIndex, list.size());
+            else
+                result = list.subList(fromIndex, toIndex);
+        }
 
         ArrayList<String> resultMessages = new ArrayList<>(list.size());
         for (Message m : result)
@@ -64,144 +79,24 @@ public class ChatManager implements Serializable {
         return resultMessages;
     }
 
+    public List<Message> clearMessages(ZonedDateTime from, ZonedDateTime to) {
+        int deleteFromIndex = list.indexOf(new Message(from));
+        int deleteToIndex = list.indexOf(new Message(to));
+        if (deleteFromIndex == -1 && deleteToIndex == -1)
+            return new ArrayList<Message>();
+        else if (deleteFromIndex == -1)
+            list.subList(0, deleteToIndex).clear();
+        else if (deleteToIndex == -1)
+            list.subList(deleteFromIndex, list.size()).clear();
+        else
+            list.subList(deleteFromIndex, deleteToIndex).clear();
 
-//    public List<String> clearChat(String[] dateRange) {
-//
-//        int toIndex = 0;
-//        int fromIndex = 0;
-//
-//        if (dateRange[0] == "" && dateRange[1] == "") {
-//            list.clear();
-//        }
-//
-//        else if (dateRange[1] == "") {
-//            for (int i = 0; i < listMessages().size(); i++) {
-//                if (listMessages().get(i).contains(dateRange[0])) {
-//                    list.subList(i, listMessages().size()).clear();
-//                }
-//
-//            }
-//        }
-//
-//        else if (dateRange[0] == "") {
-//            for (int i = 0; i < listMessages().size(); i++) {
-//                if (listMessages().get(i).contains(dateRange[1])) {
-//                    list.subList(0, i + 1).clear();
-//                }
-//            }
-//        }
-//
-//        else {
-//            for (int i = 0; i < listMessages().size(); i++) {
-//
-//                if (listMessages().get(i).contains(dateRange[0])) {
-//                    fromIndex = i;
-//                }
-//
-//                if (listMessages().get(i).contains(dateRange[1])) {
-//                    toIndex = i;
-//                }
-//            }
-//            list.subList(fromIndex, toIndex + 1).clear();
-//        }
-//        return this.list;
-//
-//    }
-    // Print messages from a cetain date range, must enter date and time. This reads an array from the servlet that contains two strings, from and to.
-//    public List<String> listMessages(String[] dateRange) {
-//
-//        // Both parameters are empty, so just return the whole list
-//        if (dateRange[0] == "" && dateRange[1] == "") {
-//            list = listMessages();
-//        }
-//
-//        // The "to" parameter is empty, so only use the from parameter
-//        else if (dateRange[1] == "") {
-//            for (int i = 0; i < listMessages().size(); i++) {
-//                if (listMessages().get(i).contains(dateRange[0])) {
-//                    this.list = list.subList(i, listMessages().size());
-//                }
-//            }
-//
-//        }
-//
-//        // The "from" parameter is empty, so only use the to parameter
-//        else if (dateRange[0] == "") {
-//            for (int i = 0; i < listMessages().size(); i++) {
-//                if (listMessages().get(i).contains(dateRange[1])) {
-//
-//                    // Since sublists exclude the paramter in the toindex, we must add 1 to the end
-//                    this.list = list.subList(0, i + 1);
-//                }
-//            }
-//        }
-//
-//        // Both parameters are entered, so create a sublist of our list that lies within the date range
-//        else {
-//            for (int i = 0; i < listMessages().size(); i++) {
-//
-//                // First iterate through and get the first date value and set the zero index to the "from" parameter
-//                if (listMessages().get(i).contains(dateRange[0])) {
-//                    this.list = list.subList(i, listMessages().size());
-//                }
-//
-//                // With our new index being the "from" date, now set the "to" date
-//                if (listMessages().get(i).contains(dateRange[1])) {
-//                    this.list = list.subList(0, i + 1);
-//                }
-//            }
-//        }
-//        return this.list;
-//    }
-
-
-//    public List<String> clearChat(String[] dateRange) {
-//
-//        int toIndex = 0;
-//        int fromIndex = 0;
-//
-//        if (dateRange[0] == "" && dateRange[1] == "") {
-//            list.clear();
-//        }
-//
-//        else if (dateRange[1] == "") {
-//            for (int i = 0; i < listMessages().size(); i++) {
-//                if (listMessages().get(i).contains(dateRange[0])) {
-//                    list.subList(i, listMessages().size()).clear();
-//                }
-//
-//            }
-//        }
-//
-//        else if (dateRange[0] == "") {
-//            for (int i = 0; i < listMessages().size(); i++) {
-//                if (listMessages().get(i).contains(dateRange[1])) {
-//                    list.subList(0, i + 1).clear();
-//                }
-//            }
-//        }
-//
-//        else {
-//            for (int i = 0; i < listMessages().size(); i++) {
-//
-//                if (listMessages().get(i).contains(dateRange[0])) {
-//                    fromIndex = i;
-//                }
-//
-//                if (listMessages().get(i).contains(dateRange[1])) {
-//                    toIndex = i;
-//                }
-//            }
-//            list.subList(fromIndex, toIndex + 1).clear();
-//        }
-//        return this.list;
-//
-//    }
-
+        return list;
+    }
 
     // Used to create the date. Create a new date object to update the time
     public ZonedDateTime getDateTime() {
-       return ZonedDateTime.of(LocalDateTime.now(), ZoneId.of("Canada/Central"));
+        return ZonedDateTime.of(LocalDateTime.now(), ZoneId.of("Canada/Central"));
     }
 
     // Print the entire list
