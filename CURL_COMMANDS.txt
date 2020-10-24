@@ -1,20 +1,17 @@
 CURL COMMANDS:
 
 Download Chat:
-*: curl --output Chatlogs.txt -v "http://localhost:3000/ChatServlet_war/ChatServlet?format=text&from=10%2F23%2F2020%2C%2012%3A00%3A00%20AM&to=10%2F23%2F2020%2C%2011%3A59%3A59%20PM&download=download" 
+Text Format:
+curl --output Chatlogs.txt -v "http://localhost:3000/ChatServlet_war/ChatServlet?format=text&from=10%2F23%2F2020%2C%2012%3A00%3A00%20AM&to=10%2F23%2F2020%2C%2011%3A59%3A59%20PM&download=download"
 
-Text:
-curl -v -X GET "http://localhost:3000/ChatServlet_war/ChatServlet?format=text&from=10%2F23%2F2020%2C%2012%3A00%3A00%20AM&to=10%2F23%2F2020%2C%2011%3A59%3A59%20PM&download=download"
-
-XML:
-curl -v -X GET "http://localhost:3000/ChatServlet_war/ChatServlet?format=xml&from=10%2F23%2F2020%2C%2012%3A00%3A00%20AM&to=10%2F23%2F2020%2C%2011%3A59%3A59%20PM&download=download"
+XML Format:
+curl --output Chatlogs.xml -v "http://localhost:3000/ChatServlet_war/ChatServlet?format=xml&from=10%2F23%2F2020%2C%2012%3A00%3A00%20AM&to=10%2F23%2F2020%2C%2011%3A59%3A59%20PM&download=download"
 
 Post Message:
-*Username should match the one that user is logged in with
-
+This will post a message as the user that is currently logged in:
 curl -d "username=Dork&message=Hello, I'm a Dork" http://localhost:3000/ChatServlet_war/ChatServlet
 
-Login as a different user:
+Register a new user to post messages:
 curl -d "username=Dweeb" http://localhost:3000/ChatServlet_war/ChatServlet
 
 Post as newly logged in user:
