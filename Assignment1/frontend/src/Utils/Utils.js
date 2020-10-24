@@ -5,6 +5,7 @@ export const Div = (props) => {
     return <div className={c} {...rest}></div>;
 };
 const url = "http://localhost:3000/ChatServlet_war/ChatServlet";
+// const download = "http://localhost:3000/ChatServlet_war/download.jsp";
 
 
 export const sendData = async (keyValuePairs) => {
@@ -35,7 +36,7 @@ export const getData = async (keyValuePairs) => {
     const response = await fetch(`${url}?${queryString}`, {
             method: 'GET',
             headers: {},
-            url: "/ChatServlet"
+            url: "/download.jsp"
         }
     )
 

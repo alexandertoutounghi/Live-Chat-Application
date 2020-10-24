@@ -8,17 +8,28 @@ html {
   @include resetDisplay;
 }
 
-
 .navbar-nav {
   width: 100%;
   height: 100%;
   background-color: $bgPrimary;
   font-size: 1.5rem;
   margin: 0;
-  padding: 0 1rem 0 1rem;
+  // padding: 0 1rem 0 1rem;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  .username {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    position: absolute;
+    pointer-events: none;
+    font-weight: 700;
+    top: 0;
+    left: 0;
+    color: $textSecondary;
+  }
 }
 
 .nav-item {
@@ -27,12 +38,7 @@ html {
   margin-right: 1rem;
   margin-left: 1rem;
   @include flexCenter();
-
   list-style: none;
-}
-
-.username {
-  color: $textSecondary;
 }
 
 .nav-list {

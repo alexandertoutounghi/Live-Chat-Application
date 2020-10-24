@@ -17,6 +17,9 @@ const MainContainer = (props) => {
 
 
   const handleLogin = async (username) => {
+    if (username === "") {
+      username = "Anonymous";
+    }
     const response = await sendData({username: username});
     if(response==="found_account"){
       user.current.name = username;
