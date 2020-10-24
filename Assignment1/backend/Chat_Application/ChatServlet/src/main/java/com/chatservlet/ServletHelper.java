@@ -56,7 +56,9 @@ public class ServletHelper extends HttpServlet {
     protected void downloadChat(HttpServletResponse response, HttpServletRequest request, ChatManager chat) throws IOException, ServletException {
         String format = request.getParameter("format");
         String fileType;
-        boolean isXml =  false;
+
+        HttpSession session = request.getSession();
+        boolean isXml;
 
         // Return xml or plaintext
         if (format.equals("xml")) {
@@ -66,14 +68,18 @@ public class ServletHelper extends HttpServlet {
         } else {
             response.setContentType("text/plain");
             fileType = "ChatLogs.txt";
+            isXml = false;
         }
+
+        session.setAttribute("isXml", isXml);
 
         ZonedDateTime fromTime = stringToZonedDate(request.getParameter("from"));
         ZonedDateTime toTime = stringToZonedDate(request.getParameter("to"));
 
-
-        HttpSession session = request.getSession();
-        session.setAttribute("download",chatmanager.listMessages(fromTime, toTime));
+        if (isXml)
+            session.setAttribute("download",chatmanager.listMessageXml(fromTime, toTime));
+        else
+            session.setAttribute("download",chatmanager.listMessages(fromTime, toTime));
 
 
         response.setHeader("Content-Disposition", "attachment;filename=" + fileType);

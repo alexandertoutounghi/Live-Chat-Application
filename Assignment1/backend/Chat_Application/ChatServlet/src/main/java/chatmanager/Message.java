@@ -57,6 +57,11 @@ public class Message implements Comparable<Message> {
         return date + ", " + time + " - " + user + ": " + message;
     }
 
+    public String toStringXml() { return "\t<date>" + date + "</date>\n" +
+            "\t\t\t<time>" + time + "</time>\n" +
+            "\t\t\t<user>" + time + "</user>\n" +
+            "\t\t\t<text>" + time + "</text>";}
+
     public String getDate() {
         return date;
     }
