@@ -41,10 +41,8 @@
   &.dark {
     background-color: $bg_dark;
 
-
     .dropdown-container {
       background-color: $main_dark;
-
     }
 
     .chatbox {
@@ -96,7 +94,7 @@
     .message {
       .bottom-container {
         :not(.username) {
-          //display: none;
+          display: none;
         }
       }
     }

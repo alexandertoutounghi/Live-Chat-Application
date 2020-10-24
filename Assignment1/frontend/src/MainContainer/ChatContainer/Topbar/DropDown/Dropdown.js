@@ -31,9 +31,9 @@ const Dropdown = (props) => {
 
   const customYesterday = async () => {
     var yesterdayTo = new Date();
-    yesterdayTo.setDate(yesterdayTo.getDate() -1);
+    yesterdayTo.setDate(yesterdayTo.getDate() - 1);
     var yesterdayFrom = new Date();
-    yesterdayFrom.setDate(yesterdayFrom.getDate() -1);
+    yesterdayFrom.setDate(yesterdayFrom.getDate() - 1);
     yesterdayFrom.setHours(0, 0, 0, 0);
     yesterdayTo.setHours(23, 59, 59, 99);
     yesterdayFrom = yesterdayFrom.toLocaleString();
@@ -87,10 +87,8 @@ const Dropdown = (props) => {
   };
 
   const toggleFormat = () => {
-    if (format === "text")
-      setFormat("xml");
-    else
-      setFormat("text");
+    if (format === "text") setFormat("xml");
+    else setFormat("text");
     console.log(format);
   };
 
@@ -99,17 +97,18 @@ const Dropdown = (props) => {
       {dropdown ? (
         <div className={`dropdown-menu ${props.drop}`}>
           <ul className="dropdown-menu-list">
-            <li className={"xs bars"} onClick={handleClick}>
-              <FontAwesomeIcon icon={["fas", "bars"]} />
-            </li>
             {props.type === "Download" ? (
               <li>
-                <Toggle darkMode={props.darkMode} toggle={toggleFormat} format={format} />
+                <Toggle
+                  darkMode={props.darkMode}
+                  toggle={toggleFormat}
+                  format={format}
+                />
               </li>
             ) : (
               ""
             )}
-            <li className="dropdown-menu-item" onClick={customToday} >
+            <li className="dropdown-menu-item" onClick={customToday}>
               Today
             </li>
             <li className="dropdown-menu-item" onClick={customYesterday}>
