@@ -1,0 +1,7 @@
+com/msgboard/Auth.class
+com/msgboard/DbAccess.class
+com/msgboard/MsgBoard.class
+com/chatmanager/ChatManager.class
+com/chatmanager/Message.class
+com/msgboardservlet/MsgBoardServlet.class
+com/msgboardservlet/ServletHelper.class
