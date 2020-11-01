@@ -1,0 +1,148 @@
+@import "src/UtilityFiles/variables";
+@import "src/UtilityFiles/responsive";
+@import "src/UtilityFiles/config";
+@import "src/Styles/Theme.scss";
+
+html {
+  overflow-x: hidden;
+  @include resetDisplay;
+}
+
+.navbar-nav {
+  width: 100%;
+  height: 100%;
+  background-color: $bgPrimary;
+  font-size: 1.5rem;
+  margin: 0;
+  // padding: 0 1rem 0 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .username {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    position: absolute;
+    pointer-events: none;
+    font-weight: 700;
+    top: 0;
+    left: 0;
+    color: $textSecondary;
+  }
+}
+
+.nav-item {
+  padding: 0;
+  margin: 0;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  @include flexCenter();
+  list-style: none;
+}
+
+.nav-list {
+  //margin-top: 1.2rem;
+}
+
+.left {
+  padding-left: 1rem;
+}
+
+.right {
+  @include flexCenter();
+  //list-style: none;
+  //display: flex;
+  //justify-content: space-between;
+  //align-items: center;
+}
+
+.right li {
+  margin-right: 1rem;
+}
+
+.logout {
+  //border: 1.5px solid var(--btn-primary);
+  box-shadow: $boxshadow;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  padding: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $textPrimary;
+  background-color: $btnPrimary;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $btnSecondary;
+  }
+}
+
+//button:hover {
+//  //border: 1.5px solid deepskyblue;
+//
+//}
+//--------------------------------------------------------
+.light-icon,
+.dark-icon {
+  padding: 0.5rem;
+  //opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  &:active {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 1);
+  }
+}
+
+//--------------------------------------------------------
+
+.dark {
+  .action-toggle {
+    &:hover {
+      cursor: pointer;
+      background-color: $dropdownPrimary !important;
+    }
+  }
+
+  .dropdown {
+    background-color: $bgDark;
+  }
+  .navbar-nav {
+    background-color: $bgDark;
+  }
+
+  .dark-icon {
+    background-color: $dropdownPrimary !important;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $dropdownSecondary !important;
+    }
+
+    &:active {
+      cursor: pointer;
+      background-color: $dropdownSecondary !important;
+    }
+  }
+
+  .logout {
+    background-color: $dropdownPrimary;
+    &:hover {
+      cursor: pointer;
+      background-color: $dropdownSecondary;
+    }
+  }
+  .username {
+    color: $textSecondary;
+    //user-select: none;
+  }
+}

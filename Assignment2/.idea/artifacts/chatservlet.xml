@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="chatservlet">
+    <output-path>$PROJECT_DIR$/backend/out/artifacts/chatservlet</output-path>
+    <root id="root" />
+  </artifact>
+</component>

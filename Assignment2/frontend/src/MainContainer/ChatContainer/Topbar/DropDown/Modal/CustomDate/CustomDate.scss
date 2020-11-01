@@ -1,0 +1,98 @@
+@import "src/UtilityFiles/variables";
+@import "src/UtilityFiles/config";
+@import "src/MainContainer/ChatContainer/Topbar/TopBar";
+
+.custom-form {
+  margin-top: 0;
+
+  h2 {
+    text-align: center;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  h2,
+  h3 {
+    color: $textSecondary;
+  }
+}
+
+.date-list {
+  display: flex;
+  list-style: none;
+  //@include flexCenter;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  justify-items: flex-start;
+  margin: 0;
+}
+
+.date-list-item {
+  padding-left: 0;
+}
+
+.date-picker {
+  @include flexCenter();
+  align-items: center;
+  padding: 0;
+}
+
+li {
+  //justify-content: center;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.date-picker-item {
+  border: 2px solid $dropdownOutlineBorder;
+  border-radius: 2px;
+  font-size: 1rem;
+  color: $textSecondary;
+}
+
+.date-picker-item:hover {
+  cursor: pointer;
+  background-color: $dropdownHover;
+}
+
+hr {
+  border: 2px solid $dropdownHover;
+  background-color: $dropdownHover;
+  width: 1rem;
+}
+
+.calendar {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  color: $textSecondary;
+}
+
+.custom-submit {
+  margin-top: 1rem;
+  @extend .logout;
+}
+
+.dark {
+  h2,
+  h3 {
+    color: $textSecondary;
+  }
+  .calendar {
+    color: $textSecondary;
+  }
+  .date-picker-item {
+    color: $textSecondary;
+     &:hover {
+         cursor: pointer;
+         background-color: $dropdownSecondary;
+     }
+  }
+
+  .custom-submit {
+    background-color: $dropdownPrimary;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $dropdownSecondary;
+    }
+  }
+}

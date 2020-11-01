@@ -1,0 +1,21 @@
+// Light
+$bg: ghostwhite;
+$bg_tp: rgb(40, 0, 151);
+$main: rgb(48, 48, 224);
+$borders: black;
+$text_bg: ghostwhite;
+
+// Dark
+$bg_dark: ghostwhite;
+$main_dark: black;
+$borders_dark: black;
+$text_bg_dark: ghostwhite;
+
+$boxshadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+  0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+  0 16px 16px rgba(0, 0, 0, 0.12);
+
+@mixin fullsize() {
+  width: 100%;
+  height: 100%;
+}
