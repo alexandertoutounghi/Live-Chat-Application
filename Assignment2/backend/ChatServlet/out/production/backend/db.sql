@@ -17,19 +17,20 @@ CREATE TABLE IF NOT EXISTS messageauthor (
 );
 
 CREATE TABLE IF NOT EXISTS msg (
-    messageid int NOT NULL AUTO_INCREMENT,
+    messageid INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
     content TEXT NOT NULL,
-    created DATE NOT NULL,
-    modified DATE NOT NULL,
+    created DATETIME NOT NULL,
+    modified DATETIME NOT NULL,
     attachment LONGBLOB,
     PRIMARY KEY (messageid)
 );
 
-CREATE TABLE IF NOT EXISTS hashtags (
-    messageid int NOT NULL,
+CREATE TABLE IF NOT EXISTS hashtag (
+    hashtagid INT NOT NULL AUTO_INCREMENT,
+    messageid INT NOT NULL,
     content VARCHAR(50) NOT NULL,
-    PRIMARY KEY (messageid)
+    PRIMARY KEY (hashtagid)
 );
 
 /* Inserting values */
