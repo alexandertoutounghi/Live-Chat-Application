@@ -1,0 +1,117 @@
+@import "src/UtilityFiles/config";
+@import "src/UtilityFiles/variables";
+
+@include media-xs {
+  .username {
+    font-size: 1rem !important;
+  }
+  .md {
+    display: none;
+  }
+  .xs-right-caret-icon {
+    //display: inline-block;
+    //margin-right: 0.5rem;
+  }
+  .left > li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .right {
+    li {
+      @include resetDisplay;
+    }
+
+    @include resetDisplay;
+  }
+
+  .toggle-darkmode {
+    position: fixed;
+    top: 50%;
+    right: 0;
+  }
+  .dropdown-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    //min-height: -webkit;
+    height: 100rem;
+    width: 70vw;
+    transition: 1000ms ease-in-out;
+
+  }
+
+  .dropdown-menu-list {
+    @include resetDisplay;
+
+    &:last-child {
+      @include resetDisplay;
+    }
+  }
+
+  .dropdown-menu-item {
+    width: 50%;
+    font-size: 1rem;
+  }
+
+  .modal-content {
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+  }
+
+  .custom-form {
+    li > hr {
+      display: none;
+    }
+    h2 {
+      margin-top: 2rem;
+    }
+    .date-list {
+      margin-top: 2rem;
+    }
+
+    .date-picker {
+      @include flexColumn;
+      justify-items: center;
+    }
+    .custom-submit {
+      margin-top: 2rem;
+    }
+
+  }
+
+}
+
+@include media-sm {
+  .xs-right-caret-icon {
+    display: none;
+  }
+  .bars {
+    display: none;
+  }
+}
+@include media-md {
+  .modal-content {
+    width: 70%;
+    height: 60%;
+  }
+
+}
+@include media-lg {
+  .modal-content {
+    width: 50%;
+    height: 60%;
+  }
+}
+@include media-xl {
+  .modal-content {
+    width: 35%;
+    height: 60%;
+  }
+}
