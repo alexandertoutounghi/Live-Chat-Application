@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="net.sourceforge.stripes:stripes:1.5.7" type="repository">
+    <properties maven-id="net.sourceforge.stripes:stripes:1.5.7" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/stripes/stripes/1.5.7/stripes-1.5.7.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

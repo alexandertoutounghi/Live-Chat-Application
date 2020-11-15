@@ -56,9 +56,9 @@ const CustomDate = (props) => {
 
     return (
         <div className={`custom-form ${props.darkMode}`}>
-            <h2>Date Range</h2>
+            <h3>Date Range</h3>
             <ul className={"date-list"}>
-                <li className={"date-list-item"}><h3>Choose a Date...</h3></li>
+                {/*<li className={"date-list-item"}><h3>Choose a Date...</h3></li>*/}
                 <ul className={"date-picker"}>
                     {<DatePicker selected={startDate}
                                  onChange={date => setStartDate(date)}
@@ -97,9 +97,9 @@ const CustomDate = (props) => {
                                  }}
                     />}
                 </ul>
-                <li className={"date-list-item"}>
-                    <button className={"custom-submit"} onClick={getMessage}>Submit</button>
-                </li>
+                {/*<li className={"date-list-item"}>*/}
+                {/*    <button className={"custom-submit"} onClick={getMessage}>Submit</button>*/}
+                {/*</li>*/}
             </ul>
         </div>
     );

@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="chatservlet" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3c57eb54-72c5-4d9b-bf49-0e7f0e316d05" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/GoodVersion.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/ChatServlet_war.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/ChatServlet_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__jstl_jstl_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_6_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_6_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_6_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_6_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/ChatServlet-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/ChatServlet-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/ChatServlet-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/ChatServlet-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/chatmanager/ChatManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/chatmanager/ChatManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/chatmanager/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/chatmanager/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/chatservlet/ServletHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/chatservlet/ServletHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/classes/chatmanager/ChatManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/classes/chatmanager/ChatManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/classes/chatmanager/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/classes/chatmanager/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/classes/com/chatservlet/ServletHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment1/backend/Chat_Application/ChatServlet/target/classes/com/chatservlet/ServletHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CURL_COMMANDS.txt" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Assignment2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/chatservlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/chatservlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/frontend/package.json" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1jhAxWKLvavGUur4fMIt33AQduS" />
   <component name="ProjectViewState">
@@ -52,7 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -62,7 +62,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.39">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -146,6 +146,25 @@
         </option>
       </method>
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.39" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -156,6 +175,7 @@
       <option name="presentableId" value="Default" />
       <updated>1604246196904</updated>
       <workItem from="1604246198184" duration="340000" />
+      <workItem from="1605033739620" duration="1371000" />
     </task>
     <servers />
   </component>
@@ -163,21 +183,83 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="475" y="199" key="#BuildArtifactsBeforeRunChooser" timestamp="1605034930375">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="475" y="199" key="#BuildArtifactsBeforeRunChooser/0.0.1280.680@0.0.1280.680" timestamp="1605034930375" />
     <state x="448" y="121" key="#Project_Structure" timestamp="1604246524251">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="448" y="121" key="#Project_Structure/0.0.1920.1080@0.0.1920.1080" timestamp="1604246524251" />
-    <state x="424" y="202" width="1071" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604246538585">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="426" y="219" key="#Tomcat_Server" timestamp="1605034622610">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="426" y="219" key="#Tomcat_Server/0.0.1280.680@0.0.1280.680" timestamp="1605034622610" />
+    <state x="283" y="107" width="823" height="573" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605034931386">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="283" y="107" width="823" height="573" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1605034931386" />
     <state x="424" y="202" width="1071" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604246538585" />
     <state x="698" y="337" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1604246274702">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="698" y="337" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604246274702" />
-    <state x="469" y="179" key="SettingsEditor" timestamp="1604246351698">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="427" y="82" key="FileChooserDialogImpl" timestamp="1605035129123">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="427" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1605035129123" />
+    <state width="845" height="2" key="GridCell.Tab.0.bottom" timestamp="1605035133410">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1605035133410" />
+    <state width="845" height="2" key="GridCell.Tab.0.center" timestamp="1605035133410">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1605035133410" />
+    <state width="845" height="2" key="GridCell.Tab.0.left" timestamp="1605035133410">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1605035133410" />
+    <state width="845" height="2" key="GridCell.Tab.0.right" timestamp="1605035133410">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1605035133410" />
+    <state width="845" height="2" key="GridCell.Tab.1.bottom" timestamp="1605035133410">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1605035133410" />
+    <state width="845" height="2" key="GridCell.Tab.1.center" timestamp="1605035133410">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1605035133410" />
+    <state width="845" height="2" key="GridCell.Tab.1.left" timestamp="1605035133410">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1605035133410" />
+    <state width="845" height="2" key="GridCell.Tab.1.right" timestamp="1605035133410">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1605035133410" />
+    <state width="845" height="2" key="GridCell.Tab.2.bottom" timestamp="1605035133411">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1605035133411" />
+    <state width="845" height="2" key="GridCell.Tab.2.center" timestamp="1605035133411">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1605035133411" />
+    <state width="845" height="2" key="GridCell.Tab.2.left" timestamp="1605035133410">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1605035133410" />
+    <state width="845" height="2" key="GridCell.Tab.2.right" timestamp="1605035133411">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="2" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1605035133411" />
+    <state x="242" y="0" key="SettingsEditor" timestamp="1605034924273">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="242" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1605034924273" />
     <state x="469" y="179" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1604246351698" />
   </component>
 </project>
