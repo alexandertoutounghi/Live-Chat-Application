@@ -32,7 +32,9 @@ public class RetrieveUserData {
             try {
                 ObjectMapper objectMapper = new ObjectMapper();
                 userData = access.query(getUserData).get(0);
-                UserInfo userInfo = new UserInfo(userData.get(0), userData.get(1));
+                UserInfo userInfo = new UserInfo(userData.get(0), userData.get(1), userData.get(2), userData.get(3));
+
+                // The first item in the list is the user's name
                 User user = new User(userData.get(0));
                 File userJsonFile = new File("userData_" + user.getUsername() + ".json");
 
@@ -51,15 +53,21 @@ public class RetrieveUserData {
     private class UserInfo {
         String username;
         String passwordMD5;
+        String fullName;
+        String email;
 
         private UserInfo() {
             username = "";
             passwordMD5 = "";
+            fullName = "";
+            email = "";
         }
 
-        private UserInfo(String username, String passwordMD5) {
+        private UserInfo(String username, String passwordMD5, String fullName, String email) {
             this.username = username;
             this.passwordMD5 = passwordMD5;
+            this.fullName = fullName;
+            this.email = email;
         }
     }
 }
