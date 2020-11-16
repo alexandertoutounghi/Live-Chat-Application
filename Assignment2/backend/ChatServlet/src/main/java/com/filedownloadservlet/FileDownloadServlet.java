@@ -13,6 +13,9 @@ import javax.servlet.RequestDispatcher;
 import com.chatmanager.ChatManager;
 import com.chatmanager.Message;
 import com.google.gson.Gson;
+import com.msgboard.RetrieveUserData;
+import com.msgboard.User;
+
 import java.io.*;
 import java.util.Enumeration;
 import java.util.List;
@@ -77,6 +80,30 @@ public class FileDownloadServlet extends HttpServlet {
             request.setAttribute("message", message); // a error page
             RequestDispatcher rd = request.getRequestDispatcher("/message.jsp");
             rd.forward(request, response);
+        }
+    }
+
+    // Check if user is authenticated to allow for user data download
+    public void checkUserAuth(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        // Retreive username and password from front-end
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String success = "success";
+
+        User user = new User(username);
+
+        // Check if user logged in successfully
+        // Maybe put password in here instead of getUserName?
+        if (user.authenticate(user.getUsername()).equals(success)) {
+
+            // Change parameters to match frontend once it's available
+            if (request.getParameter("downloadJson") != null) {
+                
+            }
+
+            else if (request.getParameter("downloadAttachment") != null) {
+
+            }
         }
     }
 }
