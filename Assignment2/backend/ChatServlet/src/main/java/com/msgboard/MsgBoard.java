@@ -2,6 +2,8 @@ package com.msgboard;
 
 import static java.util.stream.Collectors.joining;
 
+import java.io.*;
+import java.nio.file.Files;
 import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -17,15 +19,41 @@ public class MsgBoard {
     DbAccess access = new DbAccess();
 
     // If there are hashtags insert them into the database
-      String hashtagsInsertQuery = String.format(
-              "INSERT INTO hashtag (messageid, content) VALUES %s;",
-              Arrays
-                      .stream(msg.hashtags)
-                      .map(elem -> String.format("(%s, '%s')", messageid, elem))
-                      .collect(joining(", "))
-      );
-      access.query(hashtagsInsertQuery);
+    String hashtagsInsertQuery = String.format(
+      "INSERT INTO hashtag (messageid, content) VALUES %s;",
+      Arrays
+        .stream(msg.hashtags)
+        .map(elem -> String.format("(%s, '%s')", messageid, elem))
+        .collect(joining(", "))
+    );
+    access.query(hashtagsInsertQuery);
+  }
 
+  // Add. Add attachment
+  public void postAttachment(Msg msg, String messageid) {
+    // Insert attachmetn into database
+    String sql =
+      "INSERT INTO attachment (filename, filesize, filetype, messageid, content) VALUES (?, ?, ?, ?, ?);";
+    try (
+      Connection conn = DriverManager.getConnection(
+        "jdbc:mariadb://localhost:3306/assignment2",
+        "root",
+        "root"
+      );
+      PreparedStatement pstmt = conn.prepareStatement(sql)
+    ) {
+      pstmt.setString(1, msg.attachment.filename);
+      pstmt.setLong(2, msg.attachment.filesize);
+      pstmt.setString(3, msg.attachment.filetype);
+      pstmt.setInt(4, Integer.parseInt(messageid));
+
+      FileInputStream fis = new FileInputStream(msg.attachment.file);
+      pstmt.setBinaryStream(5, fis);
+      pstmt.executeUpdate();
+      fis.close();
+    } catch (SQLException | IOException e) {
+      System.out.println(e.getMessage());
+    }
   }
 
   // 1. Create a post
@@ -34,7 +62,7 @@ public class MsgBoard {
    * @param msg The message to be posted
    * @throws SQLException
    */
-  public void postMsg(Msg msg) throws SQLException {
+  public void postMsg(Msg msg) throws SQLException, IOException {
     // Connect to database
     DbAccess access = new DbAccess();
 
@@ -55,6 +83,9 @@ public class MsgBoard {
     if (msg.hashtags.length != 0) {
       this.postHashtags(msg, messageid);
     }
+    if (msg.attachment != null) {
+      this.postAttachment(msg, messageid);
+    }
   }
 
   // 2. Delete a post
@@ -69,12 +100,17 @@ public class MsgBoard {
       messageid,
       username
     );
+    String deleteCorrespondingHashtagsQuery = String.format(
+      "DELETE FROM hashtag WHERE messageid=%s;",
+      messageid
+    );
     access.query(deleteMsgQuery);
+    access.query(deleteCorrespondingHashtagsQuery);
   }
 
   // 3. Update a post
   /**
-   * Deletes a message
+   * Updates a message
    * @throws SQLException
    */
   public void updateMsg(String messageid, Msg msg) throws SQLException {
@@ -83,21 +119,33 @@ public class MsgBoard {
       "UPDATE msg SET content='%s', modified='%s' WHERE messageid=%s AND username='%s';",
       msg.content,
       msg.modified,
-            messageid,
-            msg.username
+      messageid,
+      msg.username
     );
     access.query(updateMsgQuery);
 
     // Delete old hashtags
     String hashtagsDeleteQuery = String.format(
-            "DELETE FROM hashtag WHERE messageid=%s;",
-            messageid
+      "DELETE FROM hashtag WHERE messageid=%s;",
+      messageid
     );
     access.query(hashtagsDeleteQuery);
 
     // If there are hashtags insert them into the database
     if (msg.hashtags.length != 0) {
       this.postHashtags(msg, messageid);
+    }
+
+    // Delete old attachment
+    String attachmentDeleteQuery = String.format(
+      "DELETE FROM attachment WHERE messageid=%s;",
+      messageid
+    );
+    access.query(hashtagsDeleteQuery);
+
+    // Add new attachment if available
+    if (msg.attachment != null) {
+      this.postAttachment(msg, messageid);
     }
   }
 
