@@ -1,9 +1,13 @@
 com/msgboard/DbAccess.class
+com/filedownloadservlet/FileDownloadServlet.class
+com/msgboard/UserAuth.class
 com/msgboard/MsgBoard.class
+com/Test.class
+com/persistence/UserData$UserInfo.class
+com/Test$Cities.class
+com/persistence/UserData$1.class
+com/msgboard/Attachment.class
 com/persistence/Posts.class
-com/msgboard/Test$Cities.class
-com/msgboard/Test.class
 com/msgboard/Msg.class
-com/msgboard/User.class
 com/persistence/Attachments.class
 com/persistence/UserData.class

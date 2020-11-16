@@ -20,13 +20,13 @@ public class Msg {
     this.content = content;
     this.created = now;
     this.modified = now.minusHours((new Random()).nextInt(22) + 1);
-    this.hashtags =
-      Pattern
-        .compile("(?!\\s)#[a-zA-Z0-9]+")
-        .matcher(this.content)
-        .results()
-        .map(MatchResult::group)
-        .toArray(String[]::new);
+//    this.hashtags =
+//      Pattern
+//        .compile("(?!\\s)#[a-zA-Z0-9]+")
+//        .matcher(this.content)
+//        .results()
+//        .map(MatchResult::group)
+//        .toArray(String[]::new);
     this.attachment = attachment;
   }
 

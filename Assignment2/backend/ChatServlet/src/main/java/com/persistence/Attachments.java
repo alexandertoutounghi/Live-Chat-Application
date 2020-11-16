@@ -24,8 +24,7 @@ public class Attachments {
     //    return access.query(getMsgQuery);
     ResultSet rs = null;
 
-    String sql =
-      "SELECT filename, filesize, content FROM attachment WHERE messageid=?;";
+    String sql = "SELECT filename, filesize, content FROM attachment WHERE messageid=?;";
     try (
       Connection conn = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/assignment2",
@@ -43,7 +42,7 @@ public class Attachments {
         int filesize = rs.getInt("filesize");
         System.out.println(filename + "  " + filesize);
         InputStream input = rs.getBinaryStream("content");
-        FileOutputStream output = new FileOutputStream("hellozzz_"+filename);
+        FileOutputStream output = new FileOutputStream("hellozzz_" + filename);
 
         byte[] buffer = new byte[filesize];
         while (input.read(buffer) > 0) {

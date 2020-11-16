@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ChatServlet:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2378d903-98e9-463b-811e-796d87644e25" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/artifacts/filedownloadservlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ChatServlet.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ChatServlet_war.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ChatServlet_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_cbor_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jstl_jstl_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mariadb_jdbc_mariadb_java_client_2_6_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/filedownloadservlet/LoginServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/MsgBoard-1.0-SNAPSHOT.war" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/MsgBoard-1.0-SNAPSHOT/WEB-INF/lib/jackson-annotations-2.11.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/MsgBoard-1.0-SNAPSHOT/WEB-INF/lib/jackson-core-2.11.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/MsgBoard-1.0-SNAPSHOT/WEB-INF/lib/jackson-databind-2.11.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/MsgBoard-1.0-SNAPSHOT/WEB-INF/lib/jackson-dataformat-cbor-2.11.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/MsgBoard-1.0-SNAPSHOT/WEB-INF/lib/jstl-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/MsgBoard-1.0-SNAPSHOT/WEB-INF/lib/mariadb-java-client-2.6.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/MsgBoard-1.0-SNAPSHOT/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/MsgBoard-1.0-SNAPSHOT/download.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/MsgBoard-1.0-SNAPSHOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/backend.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/com_fasterxml_jackson_core_jackson_annotations_2_10_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/com_fasterxml_jackson_core_jackson_annotations_2_11_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/backend/com/msgboard/RetrieveUserData$UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/backend/com/msgboard/RetrieveUserData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/backend/com/msgboard/Test2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/backend/db2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/backend/main/java/db2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/filedownloadservlet/FileDownloadServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/filedownloadservlet/FileDownloadServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/msgboard/Msg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/msgboard/Msg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/persistence/Attachments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/persistence/Attachments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/persistence/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/persistence/UserData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/chatmanager/ChatManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/chatmanager/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/chatservlet/ChatServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/chatservlet/ServletHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/msgboard/DbAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/msgboard/Msg.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/msgboard/MsgBoard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/msgboard/Test$Cities.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/msgboard/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/msgboard/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/persistence/Attachments.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/persistence/Posts.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/classes/com/persistence/UserData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/jackson-annotations-2.11.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/jackson-annotations-2.11.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/jackson-core-2.11.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/jackson-core-2.11.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/jackson-databind-2.11.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/jackson-databind-2.11.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/jackson-dataformat-cbor-2.11.3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/jackson-dataformat-cbor-2.11.3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/jstl-1.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/mariadb-java-client-2.6.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatServlet-1.0-SNAPSHOT/WEB-INF/lib/mariadb-java-client-2.6.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/chatmanager/ChatManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/chatmanager/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/chatservlet/ChatServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/chatservlet/ServletHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/msgboard/DbAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/msgboard/Msg.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/msgboard/MsgBoard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/msgboard/Test$Cities.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/msgboard/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/msgboard/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/persistence/Attachments.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/persistence/Posts.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/persistence/UserData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Utils/Utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Utils/Utils.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1kM9yZa82Vt5PtbLrSjctGyym8K" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.28965518" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.39" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.39" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="ChatServlet:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/ChatServlet_war" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_ChatServlet" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="64681" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ChatServlet:war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2378d903-98e9-463b-811e-796d87644e25" name="Default Changelist" comment="" />
+      <created>1605499848939</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605499848939</updated>
+      <workItem from="1605499850396" duration="1823000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="457" y="161" key="#Project_Structure" timestamp="1605500195373">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="457" y="161" key="#Project_Structure/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500195373" />
+    <state x="424" y="199" width="1071" height="744" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605500162469">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="424" y="199" width="1071" height="744" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500162469" />
+    <state width="1294" height="305" key="GridCell.Tab.0.bottom" timestamp="1605500383686">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383686" />
+    <state width="1294" height="305" key="GridCell.Tab.0.center" timestamp="1605500383683">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.0.center/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383683" />
+    <state width="1294" height="305" key="GridCell.Tab.0.left" timestamp="1605500383682">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.0.left/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383682" />
+    <state width="1294" height="305" key="GridCell.Tab.0.right" timestamp="1605500383684">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.0.right/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383684" />
+    <state width="1294" height="305" key="GridCell.Tab.1.bottom" timestamp="1605500383570">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.1.bottom/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383570" />
+    <state width="1294" height="305" key="GridCell.Tab.1.center" timestamp="1605500383568">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.1.center/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383568" />
+    <state width="1294" height="305" key="GridCell.Tab.1.left" timestamp="1605500383567">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.1.left/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383567" />
+    <state width="1294" height="305" key="GridCell.Tab.1.right" timestamp="1605500383569">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.1.right/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383569" />
+    <state width="1294" height="305" key="GridCell.Tab.2.bottom" timestamp="1605500383574">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.2.bottom/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383574" />
+    <state width="1294" height="305" key="GridCell.Tab.2.center" timestamp="1605500383572">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.2.center/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383572" />
+    <state width="1294" height="305" key="GridCell.Tab.2.left" timestamp="1605500383571">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.2.left/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383571" />
+    <state width="1294" height="305" key="GridCell.Tab.2.right" timestamp="1605500383573">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1294" height="305" key="GridCell.Tab.2.right/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500383573" />
+    <state x="469" y="176" key="SettingsEditor" timestamp="1605500172596">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="469" y="176" key="SettingsEditor/0.0.1920.1080/-1792.0.1792.1120@0.0.1920.1080" timestamp="1605500172596" />
+  </component>
+</project>
