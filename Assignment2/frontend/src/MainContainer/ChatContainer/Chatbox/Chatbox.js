@@ -8,6 +8,7 @@ import fetchToCurl from "fetch-to-curl";
 
 import "./Chatbox.scss";
 import Dropdown from "../Topbar/DropDown/Dropdown";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const handleMessage = (message) => {
     console.log(message);
@@ -21,7 +22,6 @@ const handleEdit = (msg) => {
 }
 
 
-
 const createMessage = (date, time, username, content, type = "others") => {
     return <Message key={uuid()} {...{date, time, content, username, type,}} />;
 };
@@ -30,7 +30,6 @@ const Chatbox = (props) => {
     const {user} = props;
     const intervalId = useRef(0);
     const [messages, setMessages] = useState([]);
-
 
 
     const sendMessage = async (message, username = sessionStorage.getItem("Username")) => {
@@ -66,7 +65,7 @@ const Chatbox = (props) => {
 
 
     }
-    React.useEffect( () => {
+    React.useEffect(() => {
         getMessages()
     }, []);
 
@@ -83,6 +82,17 @@ const Chatbox = (props) => {
                     buttonContent="Send"
                     onClick={(e) => sendMessage(e)}
                 />
+
+                {/*<form className={"send-msg-txtbox"}>*/}
+                {/*    <input type="text" placeholder="Send a Message"/>*/}
+
+                {/*    <label htmlFor="file-upload" className="upload" title={"Upload a File"}>*/}
+                {/*        <FontAwesomeIcon icon={['fas', 'file-upload']} color="black" size="2x"/>*/}
+                {/*    </label>*/}
+                {/*    <input id="file-upload" type="file" />*/}
+                {/*    <input type="submit"/>*/}
+                {/*</form>*/}
+
             </Div>
         </Div>
     );
