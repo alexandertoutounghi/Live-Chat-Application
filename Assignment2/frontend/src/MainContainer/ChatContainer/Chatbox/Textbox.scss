@@ -4,6 +4,20 @@
   width: 100%;
   height: fit-content;
 
+  position: relative;
+
+  input[type="file"] {
+    display: none;
+  }
+
+  .upload {
+    margin-top: 0.2rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+
   .textbox-wrapper {
     max-width: 500px;
     width: 100%;
@@ -25,16 +39,20 @@
       outline: none;
       box-sizing: border-box;
       transition: 0.25s ease;
+      margin-left: 1rem;
 
       &::-webkit-input-placeholder {
         font-style: italic;
       }
+
       &:-moz-placeholder {
         font-style: italic;
       }
+
       &::-moz-placeholder {
         font-style: italic;
       }
+
       &:-ms-input-placeholder {
         font-style: italic;
       }

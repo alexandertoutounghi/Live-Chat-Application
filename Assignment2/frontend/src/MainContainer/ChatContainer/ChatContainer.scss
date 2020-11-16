@@ -6,26 +6,34 @@
 
   &.light {
     background-color: $bg;
+
     .dropdown-container {
       background-color: $bg_tp;
       box-shadow: $boxshadow;
+
       .action-toggle {
         &.active {
           background-color: $bg;
           color: $main;
+
           svg {
             color: $main !important;
           }
+
           transition: 0.25s ease-in-out;
         }
+
         &:not(.active) {
           background-color: $bg_tp;
           color: $bg;
+
           svg {
             color: $bg !important;
           }
+
           transition: 0.25s ease-in-out;
         }
+
         &:hover {
           cursor: pointer;
           // color: white;
@@ -49,11 +57,34 @@
 
     .chatbox {
       background-color: $bg_dark;
+
       .messagebox {
         border: 30px solid $bgDark;
         background-color: $bgDark;
       }
+
       .textbox-container {
+        //position: relative;
+        //input[type="file"] {
+        //  display: none;
+        //}
+        //
+        //.upload {
+        //
+        //  position: absolute;
+        //  top: 25px;
+        //  left: 25px;
+        //
+        //
+        //  svg {
+        //    color: white;
+        //  }
+        //
+        //  &:hover {
+        //    cursor: pointer;
+        //  }
+        //}
+
         .textbox {
           .textbox-wrapper {
             .text-input {
@@ -61,6 +92,7 @@
               background-color: $bgDark;
               border: 3px solid $bgDark;
             }
+
             .textbox-button {
               background-color: $bgDark;
               border: 3px solid $bgDark;
@@ -68,18 +100,22 @@
           }
         }
       }
+
       .message {
         color: $bgModal;
+
         .message-container {
           .content-container {
             .content {
               background-color: $text_bg_dark;
             }
           }
+
           .username-container {
             .bottom-container {
               border: 1px solid $text_bg_dark;
               background-color: $bgDark;
+
               .username {
                 color: $bg_dark;
               }
@@ -89,6 +125,7 @@
       }
     }
   }
+
   display: grid;
   grid-template-rows: 100px calc(100% - 100px);
 
