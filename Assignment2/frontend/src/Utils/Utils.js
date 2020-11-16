@@ -4,7 +4,8 @@ export const Div = (props) => {
   const { c, ...rest } = props;
   return <div className={c} {...rest}></div>;
 };
-const url = "http://localhost:3000/ChatServlet_war/ChatServlet";
+// const url = "http://localhost:3000/ChatServlet_war/ChatServlet";
+const url = "http://localhost:3000/backend_war_exploded/ChatServlet";
 // const download = "http://localhost:3000/ChatServlet_war/download.jsp";
 
 export const sendData = async (keyValuePairs) => {

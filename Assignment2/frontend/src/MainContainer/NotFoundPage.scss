@@ -1,0 +1,23 @@
+.msg {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+
+  right: 30%;
+  .description {
+    display: flex;
+    flex-direction: column;
+    h1 {
+      align-self:center;
+    }
+    h3 {
+      color:gray;
+      font-weight: normal;
+    }
+  }
+
+  //justify-content: center;
+  //justify-self: center;
+  //align-items: center;
+
+}

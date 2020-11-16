@@ -8,6 +8,103 @@ html {
   @include resetDisplay;
 }
 
+
+.dropdown-container {
+  color: white;
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  .dropdown-items {
+    margin-top:1rem;
+    display:flex;
+    flex-direction: column;
+    &:last-of-type {
+      margin-bottom:1rem;
+      align-self: flex-start;
+    }
+    button {
+      padding: 1rem;
+      background-color: #f1ebeb;
+      border:none;
+      outline:none;
+      height: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+      box-shadow: 4px 4px rgba(0,0,0,0.2);
+      color: darkblue;
+      //width:4rem;
+      border-radius: 3px;
+      &:hover {
+        cursor: pointer;
+        background-color: #cfcfcf;
+        //border:solid #0871be 3px;
+
+
+      }
+    }
+  }
+  select {
+    width: 80%;
+    border-radius: 4px;
+
+    //background-color: blue;
+    height: 2rem;
+    //appearance: none;
+    //background-image: ;
+  }
+
+
+}
+
+.left-menu  {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-items: flex-start;
+  justify-content: flex-start;
+  .msg-container {
+    margin-left: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    h6 {
+      color: white;
+      margin: 0;
+      padding: 0 0 0.5rem 0;
+    }
+
+    .message-val {
+      display: flex;
+      align-items: center;
+      input {
+        height: 22px;
+        width: 20px;
+      }
+      .dec {
+        color:gray;
+        &:hover {
+          cursor: pointer;
+          color: #626262;
+
+        }
+      }
+      .inc {
+        color:red;
+        &:hover {
+          cursor: pointer;
+          color: #a90505;
+        }
+      }
+    }
+
+  }
+
+
+}
 .navbar-nav {
   width: 100%;
   height: 100%;
@@ -18,6 +115,7 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   .username {
     width: 100%;
     height: 100px;
@@ -43,6 +141,25 @@ html {
 
 .nav-list {
   //margin-top: 1.2rem;
+  .message-val {
+
+    display: flex;
+    align-items: center;
+    input {
+      height: 22px;
+      width: 20px;
+    }
+    .inc {
+      //color: ;
+    }
+  }
+  .message-range {
+    //margin: 0 rem 0 1rem;
+    padding: 0 1rem 0 1rem;
+    border: solid black 1px;
+
+  }
+
 }
 
 .left {
@@ -116,6 +233,7 @@ html {
   .dropdown {
     background-color: $bgDark;
   }
+
   .navbar-nav {
     background-color: $bgDark;
   }
@@ -136,11 +254,13 @@ html {
 
   .logout {
     background-color: $dropdownPrimary;
+
     &:hover {
       cursor: pointer;
       background-color: $dropdownSecondary;
     }
   }
+
   .username {
     color: $textSecondary;
     //user-select: none;

@@ -5,6 +5,14 @@ import "./Textbox.scss";
 import "../../../Styles/Utils.scss";
 
 const Textbox = (props) => {
+  // useEffect(() => {
+  //  window.addEventListener("onEdit",console.log("hello world"))
+  //
+  //   return () => {
+  //     window.removeEventListener('onEdit');
+  //   };
+  // },[])
+
   const { type, placeholder, buttonContent, onClick } = props;
   const refs = {
     input: useRef(null),
