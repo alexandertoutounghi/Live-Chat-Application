@@ -16,6 +16,7 @@ const Login = (props) => {
 
     // const onSubmit = async (data) => {
     const onSubmit = (data) => {
+        console.log(data);
         // const response = await sendData(data);
         // if (response === "found_account") {
         //     localStorage.setItem("Username",data.username);
@@ -30,6 +31,8 @@ const Login = (props) => {
 
 
     }
+
+
 
 
     return (

@@ -8,6 +8,10 @@ import {useForm} from "react-hook-form";
 
 const Textbox = (props) => {
     const {register, handleSubmit, errors} = useForm();
+    const onSubmit = (data) => {
+
+        console.log(data);
+    }
 
 
 
@@ -66,10 +70,10 @@ const Textbox = (props) => {
     return (
         <Div c="textbox flex-row">
 
-                <label htmlFor="file-upload" className="upload" title={"Upload a File"}>
+                <label htmlFor="file-upload" className="upload" title={"Upload a File"} ref={register}>
                     <FontAwesomeIcon icon={['fas', 'file-upload']} color="black" size="2x"/>
                 </label>
-                <input id="file-upload" type="file" />
+                <input id="file-upload" type="file" ref={register}/>
             {/*<FontAwesomeIcon icon={['fas', 'file-upload']} color="black" size="2x"/>*/}
             <Div c="textbox-wrapper">
                 {((
@@ -83,9 +87,9 @@ const Textbox = (props) => {
                     }
                 ) =>
                     type === "input" ? (
-                        <input type="text" {...props} />
+                        <input type="text" {...props} ref={register}/>
                     ) : (
-                        <textarea onChange={handlers.onChange} {...props} />
+                        <textarea  ref={register} onChange={handlers.onChange} {...props} />
                     ))()}
 
                 <div
@@ -94,7 +98,9 @@ const Textbox = (props) => {
                     className={`textbox-button${
                         type === "textarea" ? " unavailable" : ""
                     }`}
-                    // onClick={() => handlers.onSend()}
+                    // onClick={handleSubmit(onSubmit)}
+
+                    onClick={() => handlers.onSend()}
                 >
                     {buttonContent}
                 </div>

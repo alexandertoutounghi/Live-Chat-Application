@@ -25,29 +25,30 @@ const MainContainer = (props) => {
         }
         , [])
 
-    // const handleLogin = async (username) => {
-    //     if (username === "") {
-    //         username = "Anonymous";
-    //     }
-    //     const response = await sendData({username: username});
-    //     if (response === "found_account") {
-    //         user.current.name = username;
-    //         setLoginPage("chat");
-    //         sessionStorage.setItem("Username", username);
-    //     } else {
-    //         alert("Server rejected your login...")
-    //     }
-    // };
-    const handleLogin = (data) => {
-        sessionStorage.setItem("Username", data.username);
-        sessionStorage.setItem("NumbMsgs", 10);
-
-
-        // user.current.name = data.username;
-        // console.log(user.current.name);
-        // setUser(data.username);
-        setLoginPage("chat");
+    const handleLogin = async (data) => {
+        console.log(data);
+        // if (data.username === "") {
+        //     username = "Anonymous";
+        // }
+        const response = await sendData(data);
+        if (response === "found_account") {
+            // user.current.name = username;
+            setLoginPage("chat");
+            sessionStorage.setItem("Username", data.username);
+        } else {
+            alert("Server rejected your login...")
+        }
     };
+    // const handleLogin = (data) => {
+    //     sessionStorage.setItem("Username", data.username);
+    //     sessionStorage.setItem("NumbMsgs", 10);
+    //
+    //
+    //     // user.current.name = data.username;
+    //     // console.log(user.current.name);
+    //     // setUser(data.username);
+    //     setLoginPage("chat");
+    // };
 
 
 

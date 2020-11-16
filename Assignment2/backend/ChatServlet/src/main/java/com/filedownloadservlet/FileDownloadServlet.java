@@ -1,5 +1,6 @@
 package com.filedownloadservlet;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,17 +20,22 @@ import java.io.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
+@WebServlet(name="/FileDownloadServlet")
 public class FileDownloadServlet extends HttpServlet {
     Posts posts = new Posts();
 
     // TODO: List all posts on the front end
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("hello world");
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        System.out.println("msg received");
+        System.out.println(request.getParameter("username"));
 
         HttpSession session = request.getSession();
 

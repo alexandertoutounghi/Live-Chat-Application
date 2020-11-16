@@ -5,7 +5,7 @@ export const Div = (props) => {
   return <div className={c} {...rest}></div>;
 };
 // const url = "http://localhost:3000/ChatServlet_war/ChatServlet";
-const url = "http://localhost:3000/backend_war_exploded/ChatServlet";
+const url = "http://localhost:3000/ChatServlet_war_exploded/FileDownloadServlet";
 // const download = "http://localhost:3000/ChatServlet_war/download.jsp";
 
 export const sendData = async (keyValuePairs) => {
@@ -22,7 +22,8 @@ export const sendData = async (keyValuePairs) => {
       Accept: "application/x-www-form-urlencoded",
       contentType: "application/x-www-form-urlencoded",
     },
-    url: "/ChatServlet",
+    // url: "/ChatServlet",
+    url: "/FileDownloadServlet",
   });
   const res = await req.text();
   return res;
