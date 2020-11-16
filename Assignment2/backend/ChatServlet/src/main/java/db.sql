@@ -1,20 +1,18 @@
 /* Creating the db */
 DROP DATABASE IF EXISTS assignment2;
 CREATE DATABASE assignment2;
+ALTER DATABASE assignment2 CHARSET utf8;
 USE assignment2;
 
 /* Creating the tables */
 CREATE TABLE IF NOT EXISTS member (
     username VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
+	fullname VARCHAR(50) NOT NULL,
+	email VARCHAR(50) NOT NULL,
     PRIMARY KEY (username)
 );
 
-CREATE TABLE IF NOT EXISTS messageauthor (
-    messageid INT NOT NULL,
-    username VARCHAR(50) NOT NULL,
-    PRIMARY KEY (username)
-);
 
 CREATE TABLE IF NOT EXISTS msg (
     messageid INT NOT NULL AUTO_INCREMENT,
@@ -22,7 +20,6 @@ CREATE TABLE IF NOT EXISTS msg (
     content TEXT NOT NULL,
     created DATETIME NOT NULL,
     modified DATETIME NOT NULL,
-    attachment LONGBLOB,
     PRIMARY KEY (messageid)
 );
 
@@ -33,10 +30,20 @@ CREATE TABLE IF NOT EXISTS hashtag (
     PRIMARY KEY (hashtagid)
 );
 
+CREATE TABLE IF NOT EXISTS attachment (
+    attachmentid INT NOT NULL AUTO_INCREMENT,
+    filename VARCHAR(100) NOT NULL,
+    filesize INT NOT NULL,
+    filetype VARCHAR(10) NOT NULL,
+    messageid INT NOT NULL,
+    content LONGBLOB NOT NULL,
+    PRIMARY KEY (attachmentid)
+);
+
 /* Inserting values */
-INSERT INTO member (username, password)
+INSERT INTO member (username, password, fullname, email)
     VALUES
-        ('antoine', MD5('antoine')),
-        ('alex', MD5('alex')),
-        ('zayn', MD5('zayn')),
-        ('wen', MD5('wen'));
+        ('antoine', MD5('antoine'), 'antoine farley', 'antoine@example.com'),
+        ('alex', MD5('alex'), 'alex cohen', 'alex@example.com'),
+        ('zayn', MD5('zayn'), 'zayn muhammad', 'zayn@example.com'),
+        ('wen', MD5('wen'), 'wen sun', 'wen@example.com');

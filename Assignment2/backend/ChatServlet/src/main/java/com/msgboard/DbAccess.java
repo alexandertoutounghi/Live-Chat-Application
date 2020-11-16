@@ -31,6 +31,7 @@ public class DbAccess {
             temp = new ArrayList<>();
             // Iterating through columns and adding to the inner list
             for (int i = 1; i <= numberColumns; i++) {
+              System.out.println(rs.getString(i));
               temp.add(rs.getString(i));
             }
             rows.add(temp);

@@ -6,15 +6,15 @@ import java.util.Random;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 
-class Msg {
+public class Msg {
   String username;
   String content;
   LocalDateTime created;
   LocalDateTime modified;
   String[] hashtags;
-  Byte[] attachment;
+  Attachment attachment;
 
-  public Msg(String author, String content, Byte[]... attachment) {
+  public Msg(String author, String content, Attachment attachment) {
     LocalDateTime now = LocalDateTime.now();
     this.username = author;
     this.content = content;
@@ -27,9 +27,7 @@ class Msg {
         .results()
         .map(MatchResult::group)
         .toArray(String[]::new);
-    if (attachment.length != 0) {
-      this.attachment = attachment[0];
-    }
+    this.attachment = attachment;
   }
 
   @Override
