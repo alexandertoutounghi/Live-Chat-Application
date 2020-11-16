@@ -2,7 +2,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 import {faCalendar}  from "@fortawesome/free-regular-svg-icons";
 import {far} from "@fortawesome/free-regular-svg-icons";
-import {faSun, faMoon,faCaretRight, faCaretDown, faCaretUp, faBars, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faSun, faMoon,faCaretRight, faCaretDown, faCaretUp, faBars, faTrash,
+    faEllipsisH, faPencilAlt, faTrashAlt, faSearch, faTimes, faUser, faPlusSquare, faMinusSquare} from "@fortawesome/free-solid-svg-icons";
 
 library.add (
     faTrash,
@@ -13,7 +14,15 @@ library.add (
     faCalendar,
     far,
     faMoon,
-    faSun
+    faSun,
+    faEllipsisH,
+    faPencilAlt,
+    faTrashAlt,
+    faSearch,
+    faTimes,
+    faUser,
+    faPlusSquare,
+    faMinusSquare
 );
 
 

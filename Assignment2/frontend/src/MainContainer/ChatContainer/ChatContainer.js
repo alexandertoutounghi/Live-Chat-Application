@@ -20,7 +20,7 @@ const ChatContainer = (props) => {
       <Chatbox {...{ user }} />
       <TopBar
         {...{
-          username: user.current.name,
+          username: user,
           setLoginPage,
           darkMode,
           setDarkMode,
