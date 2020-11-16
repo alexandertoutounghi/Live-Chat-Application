@@ -3,46 +3,108 @@ package com.filedownloadservlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 
-import com.chatmanager.ChatManager;
-import com.chatmanager.Message;
-import com.google.gson.Gson;
-import com.msgboard.RetrieveUserData;
-import com.msgboard.User;
+
+import com.msgboard.Msg;
+import com.msgboard.UserAuth;
+import com.persistence.Attachments;
+import com.persistence.Posts;
+import com.persistence.UserData;
 
 import java.io.*;
-import java.util.Enumeration;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class FileDownloadServlet extends HttpServlet {
+    Posts posts = new Posts();
 
+    // TODO: List all posts on the front end
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String servletPath = request.getServletPath();
 
-        if ("/fileview".equals(servletPath))
-            fileview(request, response);
-        else if ("/filedownload".equals(servletPath))
-            filedownload(request, response);
+        HttpSession session = request.getSession();
+
+        // List all posts from user, change attribute to match frontend, change chat to match frontend param
+        try {
+            session.setAttribute("chat", posts.getAll());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        // Update these parameters to match the frontend paramaters
+/*
+        String addPost = request.getParameter("post");
+        String updatePost = request.getParameter("update");
+        String deletePost = request.getParameter("delete");
+        String searchPost = request.getParameter("search");
+        if (addPost != null) {
+
+            posts.add();
+        }
+
+        else if (updatePost != null) {
+            posts.update();
+        }
+
+        else if (deletePost != null) {
+            posts.delete();
+        }
+
+        else if (searchPost != null) {
+            posts.search();
+        }
+*/
+
+
+        String servletPath = request.getServletPath();
+        String auth = request.getParameter("authenticate");
+        if (auth != null)
+            try {
+                checkUserAuth(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
 
-    private void fileview(HttpServletRequest request, HttpServletResponse response)
+
+    // Check if user is authenticated to allow for user data download
+    // TODO: Set Content-Type to match the file type and Content-Disposition
+    public void checkUserAuth(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        // Retreive username and password from front-end
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String success = "success";
+
+        UserAuth user = new UserAuth(username);
+
+        // Check if user logged in successfully
+        // Maybe put password in here instead of getUserName?
+        if (user.authenticate(user.authenticate(password)).equals(success)) {
+
+            // Change parameters to match frontend once it's available
+            if (request.getParameter("downloadJson") != null) {
+                UserData downloadJson = new UserData();
+                downloadJson.userDataToJson(username);
+            }
+
+            else if (request.getParameter("downloadAttachment") != null) {
+                String messageId = request.getParameter("messageid");
+                Attachments attachment = new Attachments();
+                attachment.get(messageId);
+            }
+        }
+    }
+
+/*    private void fileview(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         File afile = new File(); // need to match filexxx.java
@@ -81,29 +143,7 @@ public class FileDownloadServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/message.jsp");
             rd.forward(request, response);
         }
-    }
-
-    // Check if user is authenticated to allow for user data download
-    public void checkUserAuth(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        // Retreive username and password from front-end
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String success = "success";
-
-        User user = new User(username);
-
-        // Check if user logged in successfully
-        // Maybe put password in here instead of getUserName?
-        if (user.authenticate(user.getUsername()).equals(success)) {
-
-            // Change parameters to match frontend once it's available
-            if (request.getParameter("downloadJson") != null) {
-                
-            }
-
-            else if (request.getParameter("downloadAttachment") != null) {
-
-            }
-        }
-    }
+    }*/
 }
+
+
