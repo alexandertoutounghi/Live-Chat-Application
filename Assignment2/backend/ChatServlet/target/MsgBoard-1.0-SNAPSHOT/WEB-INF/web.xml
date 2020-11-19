@@ -5,7 +5,7 @@
          version="4.0">
     <servlet>
         <servlet-name>FileDownloadServlet</servlet-name>
-        <servlet-class>com.filedownloadservlet.FileDownloadServlet</servlet-class>
+        <servlet-class>com.servlets.FileDownloadServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -14,7 +14,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.filedownloadservlet.LoginServlet</servlet-class>
+        <servlet-class>com.servlets.LoginServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
