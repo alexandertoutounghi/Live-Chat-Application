@@ -10,42 +10,71 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserData {
-  List<String> userData = new ArrayList<>();
+  UserInfo userInfo;
+
+  public UserData(String username) throws SQLException {
+    this.initilizeUserInfo(username);
+  }
 
   /**
-   * Download a specified user's username, password (hased MD5) and email. The file is readonly
+   * Initializes the user info object member
    * @param username of the user whose data we want to download as JSON
-   * @return JSON file that can be located in the ../../backend directory
    * @throws SQLException
-   * @throws IOException
    */
-  public File userDataToJson(String username) throws Exception {
+  private void initilizeUserInfo(String username) throws SQLException {
     DbAccess access = new DbAccess();
     String getUserData = String.format(
       "SELECT * FROM member WHERE member.username='%s';",
       username
     );
+    try {
+      List<String> userData = access.query(getUserData).get(0);
+      this.userInfo =
+        new UserInfo(userData.get(0), userData.get(1), userData.get(2), userData.get(3));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Generates a specified user's username, password (hased MD5) and email. The file is readonly
+   * @param username of the user whose data we want to download as JSON
+   * @return JSON file that can be located in the ../../backend directory
+   * @throws IOException
+   */
+  public File getJsonFile() throws IOException {
     File userJsonFile = null;
     try {
+      // Intitialize object mapper
       ObjectMapper objectMapper = new ObjectMapper();
-      userData = access.query(getUserData).get(0);
-      UserInfo userInfo = new UserInfo(
-        userData.get(0),
-        userData.get(1),
-        userData.get(2),
-        userData.get(3)
-      );
 
       // The first item in the list is the user's name
-      userJsonFile = new File("./userData_" + userInfo.username + ".json");
+      userJsonFile = new File("./userData_" + this.userInfo.username + ".json");
 
-      objectMapper.writeValue(userJsonFile, userInfo);
+      objectMapper.writeValue(userJsonFile, this.userInfo);
       //      boolean wasIsReadOnly = userJsonFile.setReadOnly();
       //      if (!wasIsReadOnly) throw new ReadOnlyFileSystemException();
     } catch (Exception e) {
       e.printStackTrace();
     }
     return userJsonFile;
+  }
+
+  /**
+   * Generates user info as a json string
+   * @return JSON string
+   * @throws IOException
+   */
+  public String getJsonString() {
+    try {
+      // Intitialize object mapper
+      ObjectMapper objectMapper = new ObjectMapper();
+
+      return objectMapper.writeValueAsString(this.userInfo);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return e.toString();
+    }
   }
 
   /**

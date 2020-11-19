@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" build-on-make="true" name="servlets">
-    <output-path>$PROJECT_DIR$/ChatServlet/out/artifacts/servlets</output-path>
+    <output-path>$PROJECT_DIR$/ChatServlet/out</output-path>
     <root id="root" />
   </artifact>
 </component>

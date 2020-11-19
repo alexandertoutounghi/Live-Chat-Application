@@ -23,13 +23,15 @@ const MainContainer = (props) => {
   }, []);
 
   const handleLogin = async (data) => {
-    const response = await sendData(data);
+    const response = await sendData("login", data);
+    console.log(response);
     if (response) {
-      user.current.name = data.username;
-      setLoginPage("chat");
-      sessionStorage.setItem("Username", data.username);
+      // console.log(response);
+      // user.current.name = data.username;
+      // setLoginPage("chat");
+      // sessionStorage.setItem("Username", data.username);
     } else {
-      alert("Server rejected your login...");
+      // alert("Server rejected your login...");
     }
   };
 

@@ -4,27 +4,27 @@ export const Div = (props) => {
   const { c, ...rest } = props;
   return <div className={c} {...rest}></div>;
 };
-// const url = "http://localhost:3000/ChatServlet_war/ChatServlet";
-const url = "http://localhost:3000/ChatServlet_war/LoginServlet";
-// const download = "http://localhost:3000/ChatServlet_war/download.jsp";
 
-export const sendData = async (keyValuePairs) => {
-  let queryString = "";
-  Object.entries(keyValuePairs).forEach(([key, val], index) => {
-    queryString += `${key}=${encodeURIComponent(val)}${
-      index !== Object.keys(keyValuePairs).length - 1 ? "&" : ""
-    }`;
-  });
-  console.log(queryString);
-  const req = await fetch(`${url}?${queryString}`, {
+const url = "http://localhost:3000/ChatServlet_war/";
+const paths = {
+  login: "/LoginServlet",
+  fileupload: "/FileUploadServlet",
+};
+
+export const sendData = async (subUrl, keyValuePairs) => {
+  console.log(JSON.stringify(keyValuePairs));
+  const req = await fetch(`${url}${paths[subUrl]}`, {
     method: "POST",
     headers: {
-      Accept: "application/x-www-form-urlencoded",
-      contentType: "application/x-www-form-urlencoded",
+      Accept: "application/json",
+      contentType: "application/json",
+      dataType: "text",
     },
-    url: "/LoginServlet",
+    body: JSON.stringify(keyValuePairs),
   });
+  console.log(req.toString());
   const res = await req.text();
+  console.log("RESPONSE", res);
   return res;
 };
 
