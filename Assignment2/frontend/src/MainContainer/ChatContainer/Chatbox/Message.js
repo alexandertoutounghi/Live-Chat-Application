@@ -18,6 +18,8 @@ const Message = (props) => {
     const [EditName, setEditName] = useState("Filename")
     const [EditSize, setEditSize] = useState("FileSize.kB");
     const [fileEdited, setfileEdited] = useState(false)
+    const [hasafile,setHasAFile] = useState(true)
+    const [focus,setFocus] = useState(false)
 
     // const hashcode,username,etc.
 
@@ -31,7 +33,8 @@ const Message = (props) => {
     }
 
     onkeydown = (e) => {
-        // console.log(e.key);
+        console.log("focus",focus)
+
         if (e.key === "Escape") {
             setEditMode(false);
             setfileEdited(false);
@@ -42,21 +45,14 @@ const Message = (props) => {
 
         }
         else if (e.key === "Enter" && !e.shiftKey) {
-
+            if (!focus)
+                return
             e.preventDefault()
             //if the text or the file has been changed
-            console.log("isfiledited",fileEdited)
-            console.log(e.target.value)
-            console.log(content)
-            console.log("content",e.target.value !== content)
-            console.log(fileEdited===true)
-            console.log(false || false)
-
-
-
-            if ((e.target.value !== content) || (fileEdited===true))  {
+            if (editMode && ((e.target.value !== content) || (fileEdited===true)))  {
                 //    send the content to the business layer
                 //    modify the date
+                console.log(e.target.value)
                 console.log("hellooo")
 
                 //TODO send to server the necessary info
@@ -93,23 +89,33 @@ const Message = (props) => {
         // contentRef.current.classList.add("editing")
     }
 
+    const handleDelete = () => {
+        //file was already changed
+        if (fileEdited) {
+            setEditName("Filename")
+            setEditSize("FileSize.kB");
+        }
+        // else
+
+    }
+
     const MessageOptions = (props) => {
         return (
             <Div c="user-options">
 
                 <ul className={"options-list"}>
-                    <li className={"options-list-item"} title="More Options">
-                        <FontAwesomeIcon icon={['fas', 'ellipsis-h']} size={"lg"} className={"message-options"}/>
-                    </li>
+                    {/*<li className={"options-list-item"} title="More Options">*/}
+                    {/*    <FontAwesomeIcon icon={['fas', 'ellipsis-h']} size={"lg"} className={"message-options"}/>*/}
+                    {/*</li>*/}
                     <li className={"options-list-item"} onClick={handleEdit} title={"Edit Message"}>
                         <FontAwesomeIcon icon={['fas', 'pencil-alt']} size={"lg"} className={"message-options"}/>
                     </li>
                     {props.edit ?
                         <li className={"options-list-item"}><FontAwesomeIcon icon={['fas', 'times']} size={"lg"}
-                                                                             onClick={handleEdit}/></li>
+                                                                             onClick={()=>setEditMode(false)} title="Cancel"/></li>
                         :
                         <li className={"options-list-item delete"} title={"Delete Message"}>
-                            <FontAwesomeIcon icon={['fas', 'trash-alt']} size={"lg"} className={"message-options"}/>
+                            <FontAwesomeIcon icon={['fas', 'trash-alt']} size={"lg"} className={"message-options"} />
                         </li>
                     }
 
@@ -136,22 +142,6 @@ const Message = (props) => {
         );
     }
 
-    const fileAttachment = () => {
-        return (
-            <FontAwesomeIcon className={"file-download-icon"} icon={['fa', 'download']} size={"2x"}
-                             title="Download"/>
-        );
-    }
-    const fileAttachmentEdit = () => {
-        return (
-            <div>
-                <label htmlFor="file-edit-download" className="fil">
-                    <FontAwesomeIcon icon={['fas', 'file-download']} color="black" size="2x"/>
-                </label>
-                <input id="file-upload" type="file" name={"File"}/>
-            </div>
-        )
-    }
 
     const handleFileEdit = (e) => {
         setEditName(e.target.files[0].name)
@@ -193,21 +183,22 @@ const Message = (props) => {
             <Div c="message-container">
                 <Div c="content-container">
                     <div className={`${editMode ? "edit" : "content"}`}  contentEditable="true">
-                        {editMode ? <EditMessageBox handleEdit={handleEdit} content={props.content}/> : Content}
+                        {editMode ? <EditMessageBox  {...{setFocus,content,handleEdit}}/> : Content}
                     </div>
 
                 </Div>
 
                 {editMode ? "" : <UserInfoContainer {...props} />}
+
+                {hasafile &&
                 <div className={"file-attachment"}>
                     <FontAwesomeIcon icon={['fa', 'file-alt']} size={"2x"}/>
                     <span>
                         <div className={"file-name"}>{EditName}</div>
                         <div className={"file-size"}>{EditSize}</div>
-
                     </span>
                     {!editMode &&
-                    <FontAwesomeIcon icon={['fa', 'download']} className={"file-download-icon"} size={"2x"}/>}
+                    <FontAwesomeIcon icon={['fa', 'download']} className={"file-download-icon"} size={"2x"} title={"download..."}/>}
 
                     <div className={"edit-file-container"}>
                         {editMode &&
@@ -221,13 +212,14 @@ const Message = (props) => {
 
 
                             <FontAwesomeIcon icon={['fa', 'trash-alt']} size={"md"} title="Delete Attachment"
-                                             className="delete-attachment"/>
+                                             className="delete-attachment" onclick={handleDelete}/>
                         </div>
                         }
                     </div>
 
 
-                </div>
+
+                </div>}
 
             </Div>
 

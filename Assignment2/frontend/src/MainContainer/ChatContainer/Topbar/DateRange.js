@@ -10,7 +10,7 @@ const DateButton = ({Range, value, onClick}) => (
         {/*<li className="date-picker-item" onClick={onClick}>*/}
         <div className={"range-label"}>
             <FontAwesomeIcon icon={['far', 'calendar-alt']} color={"#4c8bf5"} className={"calendar"}/>
-            {console.log(value)}
+            {/*{console.log(value)}*/}
             {value}
         </div>
         {/*</li>*/}
@@ -19,20 +19,23 @@ const DateButton = ({Range, value, onClick}) => (
 
 
 const DateRange = (props) => {
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+    const {to,setTo,from, setFrom} = props;
+    // const [startDate, setStartDate] = useState(new Date());
+    // const [endDate, setEndDate] = useState(new Date());
+
     return (
         <div className="calendar">
 
-            {<DatePicker selected={startDate}
-                         onChange={date => setStartDate(date)}
+            {<DatePicker selected={from}
+                         // onChange={date => setStartDate(date)}
+                         onChange={date => setFrom(date)}
                          customInput={<DateButton Range={"From"}/>}
                          timeInputLabel="Time:"
                          dateFormat="dd.MM.yyyy h:mm aa"
                          showTimeInput
                          selectsStart
-                         startDate={startDate}
-                         endDate={endDate}
+                         startDate={from}
+                         endDate={to}
                          popperModifiers={{
                              preventOverflow: {
                                  enabled: true,
@@ -42,16 +45,16 @@ const DateRange = (props) => {
 
             <hr/>
 
-            {<DatePicker selected={endDate}
-                         onChange={date => setEndDate(date)}
+            {<DatePicker selected={to}
+                         onChange={date => setTo(date)}
                          customInput={<DateButton Range={"To"}/>}
                          timeInputLabel="Time:"
                          dateFormat="dd.MM.yyyy h:mm aa"
                          showTimeInput
                          selectsEnd
-                         startDate={startDate}
-                         endDate={endDate}
-                         minDate={startDate}
+                         startDate={from}
+                         endDate={to}
+                         minDate={from}
                          popperModifiers={{
                              preventOverflow: {
                                  enabled: true,

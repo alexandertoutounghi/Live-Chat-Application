@@ -13,12 +13,24 @@ const Textbox = (props) => {
     // const [isFileWaiti]
     const onSubmit = (data) => {
         console.log(data)
-        console.log(data.File);
-        setFile(data.File[0]);
+        console.log(data.File[0]);
+        var my_list = getHashTag(data.message)
+        console.log(my_list)
+    //    TODO write search to backend and get back the data to be passed up
+
+
+    }
+
+    const getHashTag = (text) => {
+        var list= []
+        var match
+        var regexp = /#(\w+)/g;
+        while (match = regexp.exec(text))
+            list.push("#"+match[1]);
+        return list
     }
 
     const handleFileChange = (e) => {
-
         // console.log("hello");
         // console.log(e.target.value);
         // e.target.value = ""

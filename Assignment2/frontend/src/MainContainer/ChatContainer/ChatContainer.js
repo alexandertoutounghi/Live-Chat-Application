@@ -13,16 +13,21 @@ const ChatContainer = (props) => {
   const [count,setCount] = useState(Number(sessionStorage.getItem("NumbMsgs")));
 
   const handleIncrement = () => {
-    var numb = Number(sessionStorage.getItem("NumbMsgs"));
-    numb += 1;
-    setCount(numb);
-    sessionStorage.setItem("NumbMsgs", numb);
+    console.log(count)
+
+    // var numb = Number(sessionStorage.getItem("NumbMsgs"));
+    // numb += 1;
+    setCount(count+1);
+    sessionStorage.setItem("NumbMsgs", count);
   }
   const handleDecrement = () => {
-    var numb = Number(sessionStorage.getItem("NumbMsgs"));
-    numb -= 1;
-    setCount(numb);
-    sessionStorage.setItem("NumbMsgs", numb);
+    if (count===0)
+        return
+    console.log(count)
+    // var numb = Number(sessionStorage.getItem("NumbMsgs"));
+    // numb -= 1;
+    setCount(count-1);
+    sessionStorage.setItem("NumbMsgs", count);
   }
 
 
@@ -35,10 +40,13 @@ const ChatContainer = (props) => {
       <Chatbox {...{ user, count }} />
       <TopBar
         {...{
-          username: user,
+          count,
+          user,
           setLoginPage,
           darkMode,
           setDarkMode,
+          handleDecrement,
+          handleIncrement,
         }}
       />
     </div>
