@@ -44,9 +44,10 @@ const EditMessageBox = (props: TextareaHTMLAttributes<HTMLTextAreaElement>) => {
                     height: textAreaHeight
                 }}
                 onChange={onChangeHandler}
-                onKeyPress={props.onKeyUp}
-                // onKeyDown={props.onKeyDown}
+                onKeyDown={props.onKeyDown}
+                // onKeyUp={props.onKeyUp}
             >
+
                                {props.content}
 
             </textarea>

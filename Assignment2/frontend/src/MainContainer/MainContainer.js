@@ -20,34 +20,39 @@ const MainContainer = (props) => {
 
     useEffect(() => {
             if (sessionStorage.getItem("Username") !== null)
-                setLoginPage("chat");
+                setUser(sessionStorage.getItem("Username"));
+                // setLoginPage("chat");
 
         }
         , [])
 
-    // const handleLogin = async (username) => {
-    //     if (username === "") {
-    //         username = "Anonymous";
-    //     }
-    //     const response = await sendData({username: username});
-    //     if (response === "found_account") {
-    //         user.current.name = username;
-    //         setLoginPage("chat");
-    //         sessionStorage.setItem("Username", username);
-    //     } else {
-    //         alert("Server rejected your login...")
-    //     }
-    // };
-    const handleLogin = (data) => {
-        sessionStorage.setItem("Username", data.username);
-        sessionStorage.setItem("NumbMsgs", 10);
+    const handleLogin = async (data) => {
+        // {"username":"antoine","passwordMD5":"0e5091a25295e44fea9957638527301f","fullName":"antoine farley","email":"antoine@example.com"}"
+        const val = {"authStatus":"true","username":"antoine"};
+        console.log(data);
+        // const response = await sendData(data);
+        // if (response.authStatus === "true") {
+        if (val.authStatus === "true") {
+            setLoginPage("chat");
+            sessionStorage.setItem("Username", val.username);
+            sessionStorage.setItem("NumbMsgs",10)
+            setUser(val.username);
+            // window.location.reload()
+        } else {
+            alert("Server rejected your login...")
+        }
 
-
-        // user.current.name = data.username;
-        // console.log(user.current.name);
-        // setUser(data.username);
-        setLoginPage("chat");
     };
+    // const handleLogin = (data) => {
+    //     sessionStorage.setItem("Username", data.username);
+    //     sessionStorage.setItem("NumbMsgs", 10);
+    //
+    //
+    //     // user.current.name = data.username;
+    //     // console.log(user.current.name);
+    //     // setUser(data.username);
+    //     setLoginPage("chat");
+    // };
 
 
 
@@ -78,9 +83,9 @@ const MainContainer = (props) => {
         <Div c="main-container">
             <BrowserRouter>
                 <Switch>
-                    { sessionStorage.getItem("Username") === null &&
+                    { user === null &&
                     <Route path="/" render={OptionsList} exact/>}
-                    {sessionStorage.getItem("Username")  !== null &&
+                    {user  !== null &&
                     <Route path="/" render={(props) => <ChatContainer {...{user, setLoginPage}} />} exact/>}
                     {/*<Route path="/login" render={<Login {...{handleLogin}}/>}/>*/}
                     <Route path="/login" render={(props) => <Login {...{handleLogin}}/>} exact/>

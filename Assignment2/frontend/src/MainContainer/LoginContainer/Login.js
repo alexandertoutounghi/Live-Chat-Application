@@ -16,6 +16,7 @@ const Login = (props) => {
 
     // const onSubmit = async (data) => {
     const onSubmit = (data) => {
+        console.log(data);
         // const response = await sendData(data);
         // if (response === "found_account") {
         //     localStorage.setItem("Username",data.username);
@@ -32,6 +33,8 @@ const Login = (props) => {
     }
 
 
+
+
     return (
         <Div>
             {sessionStorage.getItem("Username") !== null && <Redirect to={"/"}/>}
@@ -41,7 +44,7 @@ const Login = (props) => {
                     <h1>Member Login</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className={"welcome-msg"}>Please Sign in to Continue...</div>
-                        <input id={"username"} type="email" placeholder="Email" name={"username"}
+                        <input id={"username"} type="text" placeholder="Email" name={"username"}
                                ref={register({required: true})}/>
                         {/*<input id={"username"} type="email" placeholder="Email"  name={"username"} />*/}
                         <input type="password" placeholder={"Password"} name={"password"}

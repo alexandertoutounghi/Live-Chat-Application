@@ -27,9 +27,10 @@ const createMessage = (date, time, username, content, type = "others") => {
 };
 
 const Chatbox = (props) => {
-    const {user} = props;
+    const {user, count} = props;
     const intervalId = useRef(0);
     const [messages, setMessages] = useState([]);
+
 
 
     const sendMessage = async (message, username = sessionStorage.getItem("Username")) => {
@@ -56,7 +57,6 @@ const Chatbox = (props) => {
                 )
             );
             if (messages.length !== newMessages) {
-
                 setMessages(newMessages);
             }
         } catch (e) {
@@ -66,8 +66,33 @@ const Chatbox = (props) => {
 
     }
     React.useEffect(() => {
-        getMessages()
-    }, []);
+        const date =  new Date()
+        setMessages([createMessage(date.getDate(),date.getTime(),"Oranges","cry me a river"),
+        createMessage(date.getDate(),date.getTime(),"peaches","quack","self")
+        ])
+        // createMessage(date.getDate(),date.getTime(),"Oranges","others")
+        // createMessage(date.getDate(),date.getTime(),"peaches","self")
+        // getMessages()
+        // if (messages.length < count)
+        //     (messages
+        console.log(count)
+        console.log(messages)
+        console.log((messages.slice(Math.max(messages.length - count, 0))))
+
+        if (messages.length >= 1)
+            setMessages(messages.slice(Math.max(messages.length - count, 0)))
+
+    },[]);
+
+    const messageFilter = () => {
+        console.log(messages.length);
+        console.log("hello");
+        if (messages.length < count)
+            return messages
+        else
+            return messages.slice(Math.max(messages.length - 5, 0))
+
+    }
 
     return (
 
