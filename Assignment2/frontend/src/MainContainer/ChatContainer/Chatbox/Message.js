@@ -198,7 +198,7 @@ const Message = (props) => {
                         <div className={"file-size"}>{EditSize}</div>
                     </span>
                     {!editMode &&
-                    <FontAwesomeIcon icon={['fa', 'download']} className={"file-download-icon"} size={"2x"}/>}
+                    <FontAwesomeIcon icon={['fa', 'download']} className={"file-download-icon"} size={"2x"} title={"download..."}/>}
 
                     <div className={"edit-file-container"}>
                         {editMode &&

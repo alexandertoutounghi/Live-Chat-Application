@@ -12,20 +12,11 @@ const Textbox = (props) => {
     const [inputKey, setInputKey] = useState(new Date());
     // const [isFileWaiti]
     const onSubmit = (data) => {
-        // if (data.File[0] !== undefined)
-
-
         console.log(data)
         console.log(data.File[0]);
-        // setFile(data.File[0]);
-
-        // var mystring = 'huehue #arebaba,saas #ole #cool asdsad #aaa',
-        //     match;
-        // var regexp = /#(\w+)/g;
-        // while (match = regexp.exec( mystring))
-        //     console.log("#"+match[1]);
         var my_list = getHashTag(data.message)
         console.log(my_list)
+    //    TODO write search to backend and get back the data to be passed up
 
 
     }
