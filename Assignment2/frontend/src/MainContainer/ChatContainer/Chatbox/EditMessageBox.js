@@ -6,6 +6,7 @@ import React, {
 } from "react";
 
 const EditMessageBox = (props: TextareaHTMLAttributes<HTMLTextAreaElement>) => {
+    const { setFocus ,content, handleEdit } = props
     const textAreaRef = useRef(null);
     const [text, setText] = useState("");
     const [textAreaHeight, setTextAreaHeight] = useState("auto");
@@ -29,6 +30,7 @@ const EditMessageBox = (props: TextareaHTMLAttributes<HTMLTextAreaElement>) => {
         }
     };
 
+
     return (
         <div
             style={{
@@ -45,13 +47,15 @@ const EditMessageBox = (props: TextareaHTMLAttributes<HTMLTextAreaElement>) => {
                 }}
                 onChange={onChangeHandler}
                 onKeyDown={props.onKeyDown}
+                onFocus={() => setFocus(true) }
+                onBlur={() =>  setFocus(false)}
                 // onKeyUp={props.onKeyUp}
             >
 
-                               {props.content}
+                               {content}
 
             </textarea>
-            <p className={"edit-menu"}>Escape to <span onClick={props.handleEdit}  className={"edit-options cancel"}>cancel</span> &bull; enter
+            <p className={"edit-menu"}>Escape to <span onClick={handleEdit}  className={"edit-options cancel"}>cancel</span> &bull; enter
                 to <span className="edit-options">save</span></p>
         </div>
     );

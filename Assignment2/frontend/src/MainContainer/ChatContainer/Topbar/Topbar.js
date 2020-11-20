@@ -117,23 +117,23 @@ const StyledCaretDropdown = styled.div`
 `;
 
 const CaretDropdown = (props) => {
-    const {darkMode} = props;
+    const {darkMode, handleIncrement, handleDecrement, count} = props;
     const [show, setShow] = useState(false);
     const [functionMenu, setFunctionMenu] = useState("download");
-    const [numbMsg, setNumbMsg] = useState(10);
-    const [startDate, setStartDate] = useState(new Date());
-    const {register, handleSubmit, errors,control} = useForm();
-
+    // const [numbMsg, setNumbMsg] = useState(10);
+    const [from, setFrom] = useState(new Date());
+    const [to, setTo] = useState(new Date());
+    const {register, handleSubmit, errors, control} = useForm();
 
 
     const handleClick = (type) => {
         setFunctionMenu(type);
     };
 
-    React.useEffect(() => {
-        console.log(sessionStorage.getItem("NumbMsgs"));
-        setNumbMsg(sessionStorage.getItem("NumbMsgs"));
-    }, []);
+    // React.useEffect(() => {
+    //     console.log(sessionStorage.getItem("NumbMsgs"));
+    //     setNumbMsg(sessionStorage.getItem("NumbMsgs"));
+    // }, []);
 
     const makeActionToggle = (type, icon) => {
         return (
@@ -150,37 +150,13 @@ const CaretDropdown = (props) => {
         );
     };
 
-    const handleIncrement = () => {
-        var numb = Number(sessionStorage.getItem("NumbMsgs"));
-        numb += 1;
-        setNumbMsg(numb);
-        sessionStorage.setItem("NumbMsgs", numb);
-    }
-    const handleDecrement = () => {
-        var numb = Number(sessionStorage.getItem("NumbMsgs"));
-        numb -= 1;
-        setNumbMsg(numb);
-        sessionStorage.setItem("NumbMsgs", numb);
-    }
-
-
     const onSubmit = (data) => {
-        console.log(data);
-        // const response = await sendData(data);
-        // if (response === "found_account") {
-        //     localStorage.setItem("Username",data.username);
-        // }
-        // else {
-        //     alert("Server rejected your login...")
-        // }
-        // sessionStorage.setItem("Username",data.username);
-        // handleLogin(data);
-        // redirect("/chat");
-        // window.location.reload(true);
-
-
+        const To = to.toLocaleString('en-GB').replaceAll("/", "-").replace(",", "")
+        const From = from.toLocaleString('en-GB').replaceAll("/", "-").replace(",", "");
+        var from_to = {"From": From, "To": To};
+        var newObj = Object.assign({}, data, from_to)
+        /*TODO perform Post request and get data back */
     }
-
 
 
     return (
@@ -196,29 +172,29 @@ const CaretDropdown = (props) => {
                 {show && (
                     <div className="dropdown-container">
                         {/*<form>*/}
-                            <div className="dropdown-items"><h3>Search By...</h3></div>
-                            <div className="dropdown-items">
-                                <h3>Users</h3>
-                                <select name="users" id="" ref={register}>
-                                    <option value="" defaultValue={true}>Select an Option</option>
-                                    {/*TODO need to load users */}
-                                </select>
-                            </div>
-                            <div className="dropdown-items">
-                                <h3>Date</h3>
-                                <DateRange />
-                            </div>
+                        <div className="dropdown-items"><h3>Search By...</h3></div>
+                        <div className="dropdown-items">
+                            <h3>Users</h3>
+                            <select name="users" id="" ref={register}>
+                                <option value="" defaultValue={true}>Select an Option</option>
+                                {/*TODO need to load users */}
+                            </select>
+                        </div>
+                        <div className="dropdown-items">
+                            <h3>Date</h3>
+                            <DateRange {...{to, setTo, from, setFrom}} />
+                        </div>
 
-                            <div className="dropdown-items">
-                                <h3>Hashtags</h3>
-                                <select name="hashtag" id="" ref={register}>
-                                    <option value="" defaultValue={true}>Select an Option</option>
-                                </select>
-                            </div>
+                        <div className="dropdown-items">
+                            <h3>Hashtags</h3>
+                            <select name="hashtag" id="" ref={register}>
+                                <option value="" defaultValue={true}>Select an Option</option>
+                            </select>
+                        </div>
 
-                            <div className="dropdown-items">
-                                <button type="submit" onClick={handleSubmit(onSubmit)}>Search</button>
-                            </div>
+                        <div className="dropdown-items">
+                            <button type="submit" onClick={handleSubmit(onSubmit)}>Search</button>
+                        </div>
                         {/*</form>*/}
 
 
@@ -259,7 +235,7 @@ const CaretDropdown = (props) => {
                 <div className={"message-val"}>
                     <FontAwesomeIcon icon={['fas', 'minus-square']} className={"dec"}
                                      size={"lg"} onClick={handleDecrement}/>
-                    <input type="text" value={numbMsg}/>
+                    <input type="text" value={count}/>
                     {/*<span className="message-range">10</span>*/}
 
                     <FontAwesomeIcon icon={['fas', 'plus-square']} className="inc" color="gray"
@@ -273,7 +249,7 @@ const CaretDropdown = (props) => {
 };
 
 const Topbar = (props) => {
-    const {darkMode, setDarkMode} = props;
+    const {darkMode, setDarkMode, count, user, handleIncrement, handleDecrement} = props;
     const handleClick = () => {
         setDarkMode(!darkMode);
     };
@@ -291,8 +267,8 @@ const Topbar = (props) => {
         <div className={`topbar ${darkMode ? "dark" : ""}`}>
             <div className="navbar-nav">
                 {/*<Searchbar/>*/}
-                <CaretDropdown darkMode={darkMode}/>
-                <div className="username">Hello, {sessionStorage.getItem("Username")}</div>
+                <CaretDropdown darkMode={darkMode} {...{handleIncrement, handleDecrement, count}}/>
+                <div className="username">Hello, {user}</div>
                 <div style={{width: "fit-content"}}>
                     <ul className="nav-list right">
                         {/*<li>*/}

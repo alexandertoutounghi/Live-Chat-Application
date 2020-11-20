@@ -65,6 +65,13 @@
   &.others {
     justify-content: flex-start;
 
+    .file-attachment {
+      align-self: flex-start !important;
+
+
+    }
+
+
     .content {
       border-bottom-left-radius: 0 !important;
     }
@@ -118,8 +125,7 @@
       }
 
       .file-download-icon {
-        margin-left: 1rem;
-
+        //margin-left: 1rem;
         &:hover {
           cursor: pointer;
           background-color: rgb(214, 207, 207)
@@ -127,8 +133,8 @@
       }
 
       .edit-file-container {
-        align-self: flex-start;
-        display: flex;
+        //align-self: flex-start;
+        //display: flex;
         //flex-direction: column;
         input[type="file"] {
           display: none;

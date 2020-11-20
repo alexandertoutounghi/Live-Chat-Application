@@ -28,15 +28,16 @@ const MainContainer = (props) => {
 
     const handleLogin = async (data) => {
         // {"username":"antoine","passwordMD5":"0e5091a25295e44fea9957638527301f","fullName":"antoine farley","email":"antoine@example.com"}"
-        // const val = {"authStatus":"true","username":"antoine"};
-        // console.log(data);
-        const response = await sendData(data);
-        if (response.authStatus === "true") {
-        if (response.authStatus === "true") {
+        const val = {"authStatus":"true","username":"antoine"};
+        console.log(data);
+        // const response = await sendData(data);
+        // JSON.parse(response)
+        // if (response.authStatus === "true") {
+        if (val.authStatus === "true") {
             setLoginPage("chat");
-            sessionStorage.setItem("Username", response.username);
+            sessionStorage.setItem("Username", val.username);
             sessionStorage.setItem("NumbMsgs",10)
-            setUser(response.username);
+            setUser(val.username);
             // window.location.reload()
         } else {
             alert("Server rejected your login...")
@@ -64,7 +65,7 @@ const MainContainer = (props) => {
                     <ul className="auth-options-list">
                         <li className="auth-options-list-item" onClick={() => setLoginPage("login")}><Link
                             to="/login">Login</Link></li>
-                        <li className="auth-options-list-item" onClick={() => setLoginPage("chat")}><Link to="/register">Register</Link></li>
+                        {/*<li className="auth-options-list-item" onClick={() => setLoginPage("chat")}><Link to="/register">Register</Link></li>*/}
                     </ul>
                 </Div>
             </Div>
