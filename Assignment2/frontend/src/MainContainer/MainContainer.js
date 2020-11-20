@@ -28,15 +28,15 @@ const MainContainer = (props) => {
 
     const handleLogin = async (data) => {
         // {"username":"antoine","passwordMD5":"0e5091a25295e44fea9957638527301f","fullName":"antoine farley","email":"antoine@example.com"}"
-        const val = {"authStatus":"true","username":"antoine"};
-        console.log(data);
-        // const response = await sendData(data);
-        // if (response.authStatus === "true") {
-        if (val.authStatus === "true") {
+        // const val = {"authStatus":"true","username":"antoine"};
+        // console.log(data);
+        const response = await sendData(data);
+        if (response.authStatus === "true") {
+        if (response.authStatus === "true") {
             setLoginPage("chat");
-            sessionStorage.setItem("Username", val.username);
+            sessionStorage.setItem("Username", response.username);
             sessionStorage.setItem("NumbMsgs",10)
-            setUser(val.username);
+            setUser(response.username);
             // window.location.reload()
         } else {
             alert("Server rejected your login...")
