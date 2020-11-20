@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useRef, useEffect} from "react";
 import {Div} from "../../../Utils/Utils";
 import "./Textbox.scss";
@@ -8,11 +8,24 @@ import {useForm} from "react-hook-form";
 
 const Textbox = (props) => {
     const {register, handleSubmit, errors} = useForm();
+    const [file, setFile] = useState(null);
+    const [inputKey, setInputKey] = useState(new Date());
+    // const [isFileWaiti]
     const onSubmit = (data) => {
-
-        console.log(data);
+        console.log(data)
+        console.log(data.File);
+        setFile(data.File[0]);
     }
 
+    const handleFileChange = (e) => {
+
+        // console.log("hello");
+        // console.log(e.target.value);
+        // e.target.value = ""
+        // console.log(e.target.files[0].name);
+        setFile(e.target.files[0].name);
+
+    }
 
 
     // useEffect(() => {
@@ -64,22 +77,33 @@ const Textbox = (props) => {
 
     useEffect(() => {
         console.log("mounted");
-        refs.input.current.focus();
+        // refs.input.current.focus();
     }, []);
 
     return (
         <Div c="textbox flex-row">
-
+            <div className="uploader">
                 <label htmlFor="file-upload" className="upload" title={"Upload a File"} ref={register}>
                     <FontAwesomeIcon icon={['fas', 'file-upload']} color="black" size="2x"/>
                 </label>
-                <input id="file-upload" type="file" ref={register}/>
-            {/*<FontAwesomeIcon icon={['fas', 'file-upload']} color="black" size="2x"/>*/}
+                <input id="file-upload" key={file} type="file" ref={register} name={"File"}
+                       onChange={handleFileChange}/>
+                {<h6>{file}</h6>}
+            </div>
+
+            {file !== null &&
+                <div className="remove-upload">
+
+                    <FontAwesomeIcon icon={['fas', 'minus-circle']} color="black" size="md" onClick={() => setFile(null)} title={"remove document"}/>
+                </div>
+
+            }
+
             <Div c="textbox-wrapper">
                 {((
                     h = handlers,
                     props = {
-                        ref: refs.input,
+                        // ref: refs.input,
                         className: "text-input",
                         onKeyDown: h.onKeyDown,
                         onKeyUp: h.onKeyUp,
@@ -87,9 +111,9 @@ const Textbox = (props) => {
                     }
                 ) =>
                     type === "input" ? (
-                        <input type="text" {...props} ref={register}/>
+                        <input type="text" {...props} name="someothertext" ref={register}/>
                     ) : (
-                        <textarea  ref={register} onChange={handlers.onChange} {...props} />
+                        <textarea name="message" ref={register} onChange={handlers.onChange} {...props} />
                     ))()}
 
                 <div
@@ -98,9 +122,9 @@ const Textbox = (props) => {
                     className={`textbox-button${
                         type === "textarea" ? " unavailable" : ""
                     }`}
-                    // onClick={handleSubmit(onSubmit)}
+                    onClick={handleSubmit(onSubmit)}
 
-                    onClick={() => handlers.onSend()}
+                    // onClick={() => handlers.onSend()}
                 >
                     {buttonContent}
                 </div>

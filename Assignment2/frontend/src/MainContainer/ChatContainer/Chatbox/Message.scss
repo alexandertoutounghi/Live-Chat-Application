@@ -40,6 +40,7 @@
           background-color: #545252;
           border-radius: 4px;
         }
+
         margin: 0;
         padding: 0.5rem;
       }
@@ -71,6 +72,8 @@
     .username-container,
     .content-container {
       justify-content: flex-start;
+      //display: flex;
+      //flex-direction: column;
     }
   }
 
@@ -92,6 +95,66 @@
     height: fit-content;
     display: flex;
     flex-direction: column;
+
+    .file-attachment {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 3px;
+      align-self: flex-end;
+      justify-self: flex-end;
+      display: flex;
+      margin-top: 1rem;
+
+      span {
+        margin-left: 0.5rem;
+        display: flex;
+        flex-direction: column;
+
+        .file-size {
+          font-size: 0.75rem;
+          color: rgba(0, 0, 0, 0.7);
+
+        }
+      }
+
+      .file-download-icon {
+        margin-left: 1rem;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgb(214, 207, 207)
+        }
+      }
+
+      .edit-file-container {
+        align-self: flex-start;
+        display: flex;
+        //flex-direction: column;
+        input[type="file"] {
+          display: none;
+        }
+        .hide {display: none}
+
+        svg {
+          margin: 0.5rem;
+        }
+        .edit-attachment {
+          &:hover {
+            color: blue;
+            cursor: pointer;
+          }
+        }
+
+        .delete-attachment {
+          &:hover {
+            color: red;
+            cursor: pointer;
+          }
+        }
+
+      }
+
+    }
 
 
     .content-container {
@@ -117,7 +180,7 @@
       .edit {
         textarea {
           height: 0.5rem;
-          width:50rem;
+          width: 50rem;
           outline: none;
           resize: none;
           overflow: hidden;
@@ -125,10 +188,13 @@
           padding: 1rem;
           font-size: large;
         }
+
         .edit-menu {
-          margin:0;
+          margin: 0;
+
           .edit-options {
             color: red;
+
             &:hover {
               cursor: pointer;
               text-decoration: underline;

@@ -125,6 +125,7 @@ const CaretDropdown = (props) => {
     const {register, handleSubmit, errors,control} = useForm();
 
 
+
     const handleClick = (type) => {
         setFunctionMenu(type);
     };
@@ -179,6 +180,9 @@ const CaretDropdown = (props) => {
 
 
     }
+
+
+
     return (
         <div className={"left-menu"}>
             <StyledCaretDropdown
@@ -197,34 +201,12 @@ const CaretDropdown = (props) => {
                                 <h3>Users</h3>
                                 <select name="users" id="" ref={register}>
                                     <option value="" defaultValue={true}>Select an Option</option>
+                                    {/*TODO need to load users */}
                                 </select>
                             </div>
                             <div className="dropdown-items">
                                 <h3>Date</h3>
-                                {/*<DateRange register={register}/>*/}
-                                <Controller
-                                    as={DatePicker}
-                                    control={control}
-                                    selected={startDate}
-                                    onChange={date => setStartDate(date)}
-                                    timeInputLabel="Time:"
-                                    dateFormat="dd.MM.yyyy h:mm aa"
-                                    showTimeInput
-                                    selectsStart
-                                    startDate={startDate}
-                                    popperModifiers={{
-                                        preventOverflow: {
-                                            enabled: true,
-                                        },
-                                    }}
-
-
-                                    // valueName="selected" // DateSelect value's name is selected
-                                    // onChange={([selected]) => selected}
-                                    name="ReactDatepicker"
-                                    // className="input"
-                                />
-                                {/*<Controller/>*/}
+                                <DateRange />
                             </div>
 
                             <div className="dropdown-items">

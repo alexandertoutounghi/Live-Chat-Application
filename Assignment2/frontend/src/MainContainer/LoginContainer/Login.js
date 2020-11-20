@@ -44,7 +44,7 @@ const Login = (props) => {
                     <h1>Member Login</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className={"welcome-msg"}>Please Sign in to Continue...</div>
-                        <input id={"username"} type="email" placeholder="Email" name={"username"}
+                        <input id={"username"} type="text" placeholder="Email" name={"username"}
                                ref={register({required: true})}/>
                         {/*<input id={"username"} type="email" placeholder="Email"  name={"username"} />*/}
                         <input type="password" placeholder={"Password"} name={"password"}

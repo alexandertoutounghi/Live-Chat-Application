@@ -1,5 +1,5 @@
 // import React, {useState} from "react";
-import React, { useState, CSSProperties, useEffect, useRef } from "react";
+import React, {useState, CSSProperties, useEffect, useRef} from "react";
 // import {useRef} from "react";
 import {Div} from "../../../Utils/Utils";
 import "./Message.scss";
@@ -10,11 +10,14 @@ import EditMessageBox from "./EditMessageBox";
 
 
 const Message = (props) => {
-    const {type, content, date, time, username} = props;
+    const {type, content, date, time, username, attachment} = props;
     //edited.
     const [editMode, setEditMode] = useState(false);
-    const [isModified, setIsModified] =useState(false);
-    const [Content,setContent] = useState(content);
+    const [isModified, setIsModified] = useState(false);
+    const [Content, setContent] = useState(content);
+    const [EditName, setEditName] = useState("Filename")
+    const [EditSize, setEditSize] = useState("FileSize.kB");
+    const [fileEdited, setfileEdited] = useState(false)
 
     // const hashcode,username,etc.
 
@@ -27,37 +30,61 @@ const Message = (props) => {
         contentRef.current.classList.add("editing")
     }
 
-    // useEffect(() => {
-    //     if ()
-    //
-    // },[])
-
-    onkeyup = (e) => {
+    onkeydown = (e) => {
         // console.log(e.key);
-        if (e.key === "Escape")
+        if (e.key === "Escape") {
             setEditMode(false);
-        else if (e.key === "Enter") {
-            if (e.target.value !== content) {
-            //    send the content to the business layer
-            //    modify the date
+            setfileEdited(false);
+            //TODO this would be a prop loaded from the server
+            setEditName("Filename")
+            //TODO this would be a prop loaded from the server
+            setEditSize("FileSize.kB")
 
-                // TODO send the content to the business layer of the edited stuff with a new date and everything
+        }
+        else if (e.key === "Enter" && !e.shiftKey) {
+
+            e.preventDefault()
+            //if the text or the file has been changed
+            console.log("isfiledited",fileEdited)
+            console.log(e.target.value)
+            console.log(content)
+            console.log("content",e.target.value !== content)
+            console.log(fileEdited===true)
+            console.log(false || false)
+
+
+
+            if ((e.target.value !== content) || (fileEdited===true))  {
+                //    send the content to the business layer
+                //    modify the date
+                console.log("hellooo")
+
+                //TODO send to server the necessary info
+                //if text edited only --> send only text
+                //if file edited only --> only file
+                //if both text and file edited -->send both
+
                 setEditMode(false);
+                //TODO get from server if modified passed down as a prop
                 setIsModified(true);
                 setContent(e.target.value);
 
 
+
+
             }
+            else {
+                setEditMode(false);
+            }
+            // console.log(isModified)
         }
     }
 
 
-
-
     //handler
     const handleClose = () => {
-        contentRef.current.blur();
-        contentRef.current.classList.remove("editing")
+        // contentRef.current.blur();
+        // contentRef.current.classList.remove("editing")
     }
 
 
@@ -68,7 +95,7 @@ const Message = (props) => {
 
     const MessageOptions = (props) => {
         return (
-            <Div c="user-options"  >
+            <Div c="user-options">
 
                 <ul className={"options-list"}>
                     <li className={"options-list-item"} title="More Options">
@@ -102,11 +129,59 @@ const Message = (props) => {
                     <Div c="kw">&nbsp;on&nbsp;</Div>
                     <Div c="date">{date}</Div>
                     {/*TODO check if the date is modified header to display it. */}
-                    {isModified?<Div c={"edited"}>&nbsp; <a title={"hello"}>(edited)</a>&nbsp;</Div>:""}
+                    {isModified===true? <Div c={"edited"}>&nbsp; <a title={"hello"}>(edited)</a>&nbsp;</Div> : ""}
                 </Div>
+
             </Div>
         );
     }
+
+    const fileAttachment = () => {
+        return (
+            <FontAwesomeIcon className={"file-download-icon"} icon={['fa', 'download']} size={"2x"}
+                             title="Download"/>
+        );
+    }
+    const fileAttachmentEdit = () => {
+        return (
+            <div>
+                <label htmlFor="file-edit-download" className="fil">
+                    <FontAwesomeIcon icon={['fas', 'file-download']} color="black" size="2x"/>
+                </label>
+                <input id="file-upload" type="file" name={"File"}/>
+            </div>
+        )
+    }
+
+    const handleFileEdit = (e) => {
+        setEditName(e.target.files[0].name)
+        const size = e.target.files[0].size
+        setfileEdited(true)
+
+        if (size < 100)
+            setEditSize(size+" bytes")
+        // else if (Math.round(size/1024) < 1000)
+        //     console.log(Math.round(size/1024)," MB")
+        else if ((size >  100) && (Math.round(size/(1024)) < 100))
+            setEditSize((size/1024).toFixed(1)+ " KB")
+        else
+           setEditSize((size/1024/1024).toFixed(1) + " MB")
+
+        // console.log(Math.round(size/1024/1024),"MB")
+
+
+
+
+        // console.log(e.target.files[0].size/1024/1024, "MB")
+        //file has been edited
+        // setfileEdited(true)
+        // setEditName(e.target.File[0]);
+        // setEd
+
+
+
+    }
+
 
     return (
 
@@ -117,13 +192,45 @@ const Message = (props) => {
 
             <Div c="message-container">
                 <Div c="content-container">
-                    <div className={`${editMode ? "edit" : "content"}`} ref={contentRef} contentEditable="true">
+                    <div className={`${editMode ? "edit" : "content"}`}  contentEditable="true">
                         {editMode ? <EditMessageBox handleEdit={handleEdit} content={props.content}/> : Content}
                     </div>
+
                 </Div>
+
                 {editMode ? "" : <UserInfoContainer {...props} />}
+                <div className={"file-attachment"}>
+                    <FontAwesomeIcon icon={['fa', 'file-alt']} size={"2x"}/>
+                    <span>
+                        <div className={"file-name"}>{EditName}</div>
+                        <div className={"file-size"}>{EditSize}</div>
+
+                    </span>
+                    {!editMode &&
+                    <FontAwesomeIcon icon={['fa', 'download']} className={"file-download-icon"} size={"2x"}/>}
+
+                    <div className={"edit-file-container"}>
+                        {editMode &&
+                        <div>
+                            <label htmlFor="file-edit-attachment">
+                                <FontAwesomeIcon icon={['fa', 'pencil-alt']} size={"md"} title="Edit Attachment"
+                                                 className={"edit-attachment"}/>
+                            </label>
+                            <input id="file-edit-attachment" type="file" name={"File"}
+                                   onChange={handleFileEdit}/>
+
+
+                            <FontAwesomeIcon icon={['fa', 'trash-alt']} size={"md"} title="Delete Attachment"
+                                             className="delete-attachment"/>
+                        </div>
+                        }
+                    </div>
+
+
+                </div>
 
             </Div>
+
         </Div>
     );
 };

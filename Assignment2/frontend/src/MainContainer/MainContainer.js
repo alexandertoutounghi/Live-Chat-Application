@@ -20,24 +20,28 @@ const MainContainer = (props) => {
 
     useEffect(() => {
             if (sessionStorage.getItem("Username") !== null)
-                setLoginPage("chat");
+                setUser(sessionStorage.getItem("Username"));
+                // setLoginPage("chat");
 
         }
         , [])
 
     const handleLogin = async (data) => {
+        // {"username":"antoine","passwordMD5":"0e5091a25295e44fea9957638527301f","fullName":"antoine farley","email":"antoine@example.com"}"
+        const val = {"authStatus":"true","username":"antoine"};
         console.log(data);
-        // if (data.username === "") {
-        //     username = "Anonymous";
-        // }
-        const response = await sendData(data);
-        if (response === "found_account") {
-            // user.current.name = username;
+        // const response = await sendData(data);
+        // if (response.authStatus === "true") {
+        if (val.authStatus === "true") {
             setLoginPage("chat");
-            sessionStorage.setItem("Username", data.username);
+            sessionStorage.setItem("Username", val.username);
+            sessionStorage.setItem("NumbMsgs",10)
+            setUser(val.username);
+            // window.location.reload()
         } else {
             alert("Server rejected your login...")
         }
+
     };
     // const handleLogin = (data) => {
     //     sessionStorage.setItem("Username", data.username);
@@ -79,9 +83,9 @@ const MainContainer = (props) => {
         <Div c="main-container">
             <BrowserRouter>
                 <Switch>
-                    { sessionStorage.getItem("Username") === null &&
+                    { user === null &&
                     <Route path="/" render={OptionsList} exact/>}
-                    {sessionStorage.getItem("Username")  !== null &&
+                    {user  !== null &&
                     <Route path="/" render={(props) => <ChatContainer {...{user, setLoginPage}} />} exact/>}
                     {/*<Route path="/login" render={<Login {...{handleLogin}}/>}/>*/}
                     <Route path="/login" render={(props) => <Login {...{handleLogin}}/>} exact/>
