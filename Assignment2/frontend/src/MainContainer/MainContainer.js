@@ -22,29 +22,41 @@ const MainContainer = (props) => {
     if (sessionStorage.getItem("Username") !== null) setLoginPage("chat");
   }, []);
 
-  const handleLogin = async (data) => {
-    const response = await sendData("login", data);
+  const handleLogin = async (usr) => {
+    const { username, password } = usr;
+    const response = await sendData("login", { username, password });
     console.log(response);
-    if (response) {
-      // console.log(response);
-      // user.current.name = data.username;
-      // setLoginPage("chat");
-      // sessionStorage.setItem("Username", data.username);
+    if (response.authStatus === "true") {
+      setLoginPage("chat");
+      sessionStorage.setItem("Username", response.username);
     } else {
-      // alert("Server rejected your login...");
+      alert("Server rejected your login...");
     }
   };
 
-  // const handleLogin = (data) => {
-  //     sessionStorage.setItem("Username", data.username);
-  //     sessionStorage.setItem("NumbMsgs", 10);
-
+  // const handleLogin = async (data) => {
+    // const response = await sendData("login", data);
+    // console.log(response);
+    // if (response) {
+  //     // console.log(response);
   //     // user.current.name = data.username;
-  //     // console.log(user.current.name);
-  //     // setUser(data.username);
-  //     setLoginPage("chat");
+  //     // setLoginPage("chat");
+  //     // sessionStorage.setItem("Username", data.username);
+  //   } else {
+  //     // alert("Server rejected your login...");
+  //   }
   // };
 
+/*   const handleLogin = (data) => {
+      sessionStorage.setItem("Username", data.username);
+      sessionStorage.setItem("NumbMsgs", 10);
+
+      user.current.name = data.username;
+       console.log(user.current.name);
+       setUser(data.username);
+       setLoginPage("chat");
+   };
+ */
   const OptionsList = (props) => {
     return (
       <Div>

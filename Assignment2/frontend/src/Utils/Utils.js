@@ -5,7 +5,7 @@ export const Div = (props) => {
   return <div className={c} {...rest}></div>;
 };
 
-const url = "http://localhost:3000/ChatServlet_war/";
+const url = "http://localhost:3000/MsgBoard_war";
 const paths = {
   login: "/LoginServlet",
   fileupload: "/FileUploadServlet",

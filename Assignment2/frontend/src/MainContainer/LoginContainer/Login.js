@@ -39,8 +39,8 @@ const Login = (props) => {
             <div className={"welcome-msg"}>Please Sign in to Continue...</div>
             <input
               id={"username"}
-              type="email"
-              placeholder="Email"
+              type="text"
+              placeholder="Username"
               name={"username"}
               ref={register({ required: false })}
             />
