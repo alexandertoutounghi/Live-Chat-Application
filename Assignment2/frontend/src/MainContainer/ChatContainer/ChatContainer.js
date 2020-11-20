@@ -10,6 +10,21 @@ const ChatContainer = (props) => {
   const { user, setLoginPage } = props;
 
   const [darkMode, setDarkMode] = useState(false);
+  const [count,setCount] = useState(Number(sessionStorage.getItem("NumbMsgs")));
+
+  const handleIncrement = () => {
+    var numb = Number(sessionStorage.getItem("NumbMsgs"));
+    numb += 1;
+    setCount(numb);
+    sessionStorage.setItem("NumbMsgs", numb);
+  }
+  const handleDecrement = () => {
+    var numb = Number(sessionStorage.getItem("NumbMsgs"));
+    numb -= 1;
+    setCount(numb);
+    sessionStorage.setItem("NumbMsgs", numb);
+  }
+
 
   return (
     <div
@@ -17,7 +32,7 @@ const ChatContainer = (props) => {
         darkMode ? " times-hidden" : ""
       }`}
     >
-      <Chatbox {...{ user }} />
+      <Chatbox {...{ user, count }} />
       <TopBar
         {...{
           username: user,

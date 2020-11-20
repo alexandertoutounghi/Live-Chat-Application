@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import DatePicker from 'react-datepicker';
 import "./DateRange.scss";
-import {useFormContext} from "react-hook-form";
+import {Controller, useForm, useFormContext} from "react-hook-form";
 
 const DateButton = ({Range, value, onClick}) => (
     <div className="range-container" onClick={onClick}>
@@ -10,6 +10,7 @@ const DateButton = ({Range, value, onClick}) => (
         {/*<li className="date-picker-item" onClick={onClick}>*/}
         <div className={"range-label"}>
             <FontAwesomeIcon icon={['far', 'calendar-alt']} color={"#4c8bf5"} className={"calendar"}/>
+            {console.log(value)}
             {value}
         </div>
         {/*</li>*/}
@@ -18,7 +19,6 @@ const DateButton = ({Range, value, onClick}) => (
 
 
 const DateRange = (props) => {
-    const { register } = useFormContext(); // retrieve all hook methods
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     return (
@@ -38,12 +38,10 @@ const DateRange = (props) => {
                                  enabled: true,
                              },
                          }}
-                         ref={props.register}
             />}
 
-            {/*<li>*/}
             <hr/>
-            {/*</li>*/}
+
             {<DatePicker selected={endDate}
                          onChange={date => setEndDate(date)}
                          customInput={<DateButton Range={"To"}/>}
@@ -59,8 +57,6 @@ const DateRange = (props) => {
                                  enabled: true,
                              },
                          }}
-                         ref={register}
-
             />}
 
 

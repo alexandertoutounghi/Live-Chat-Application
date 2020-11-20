@@ -6,17 +6,57 @@
 
   position: relative;
 
-  input[type="file"] {
-    display: none;
-  }
 
-  .upload {
-    margin-top: 0.2rem;
-    &:hover {
-      cursor: pointer;
+  .uploader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    svg {
+      //margin:0;
+      //padding:;
     }
+
+    h6 {
+      &:hover {
+        cursor: pointer;
+      }
+
+      color: red;
+      padding: 0;
+      margin: 0;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .upload {
+      margin-top: 0.2rem;
+
+      &:hover {
+        cursor: pointer;
+
+      }
+    }
+
+
+
   }
 
+  .remove-upload {
+    margin-left: 0.1rem;
+      svg {
+        &:hover {
+          color: red;
+          cursor: pointer;
+        }
+      }
+  }
 
   .textbox-wrapper {
     max-width: 500px;

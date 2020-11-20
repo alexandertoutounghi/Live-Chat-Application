@@ -18,7 +18,7 @@ public class DbAccess {
       Connection conn = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/assignment2",
         "root",
-        "root"
+        ""
       )
     ) {
       // Prepares statement object for sending query

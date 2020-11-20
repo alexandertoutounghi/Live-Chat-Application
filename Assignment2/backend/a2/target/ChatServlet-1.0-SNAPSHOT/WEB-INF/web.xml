@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <servlet-name>ChatServlet</servlet-name>
-        <servlet-class>com.msgboardservlet.MsgBoardServlet</servlet-class>
+        <servlet-name>FileDownloadServlet</servlet-name>
+        <servlet-class>com.filedownloadservlet.FileDownloadServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ChatServlet</servlet-name>
-        <url-pattern>/ChatServlet</url-pattern>
+        <servlet-name>FileDownloadServlet</servlet-name>
+        <url-pattern>/FileDownloadServlet</url-pattern>
     </servlet-mapping>
 </web-app>
